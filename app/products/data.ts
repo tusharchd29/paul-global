@@ -19,4 +19,5 @@ export const categoryMeta:Record<string,{label:string;intro:string;number:string
  'Feed Additives':{label:'Feed Additives',intro:'Functional nutrition product families for feed-industry buyers.',number:'06'}
 };
 export function slugify(v:string){return v.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'')}
-export function getProduct(slug:string){return products.find(p=>slugify(p.name)===slug)}
+export function productSlug(p:Product){return `${slugify(p.category)}--${slugify(p.name)}`}
+export function getProduct(slug:string){return products.find(p=>productSlug(p)===slug)}
