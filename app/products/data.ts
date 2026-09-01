@@ -1,4 +1,37 @@
-export type Product={name:string;category:string;type:string;problem:string;summary:string;applications:string[];benefits:string[]};
+export type Product={name:string;category:string;type:string;problem:string;summary:string;applications:string[];benefits:string[];problemTags:string[]};
+
+// The "problem map" a Gujarat Enzyme field-sales guide uses to route a buyer's stated
+// problem to the right products, grouped by sector. Product names below must match the
+// exact names used in the `make()` calls further down this file.
+export type ProblemGroup={sector:string;items:{label:string;productNames:string[]}[]};
+export const problemGuide:ProblemGroup[]=[
+ {sector:'Dairy & Cattle',items:[
+  {label:'Low appetite, indigestion or liver',productNames:['Neoliv']},
+  {label:'Energy deficit or ketosis risk',productNames:['NEOBOLITE']},
+  {label:'Poor fibre digestion or feed utilisation',productNames:['Myeast','Neobiotic-Rz36Cr','Neobiotic-Rz36Cr Star','NEOBIOTIC','ZYMIX','Rockett']},
+  {label:'Low milk yield or low milk fat',productNames:['NEOMILK','Rockett','BooosT','NEOBOLITE']},
+  {label:'Calcium or mineral deficiency',productNames:['Spherucal','Neomin 9','Neomin 18','Neovitaz AD3.E']},
+  {label:'Mycotoxin risk',productNames:['M-MOS']},
+  {label:'Reproductive or uterine issues',productNames:['Utrocent plus Vet.']},
+  {label:'Rumen acidosis or heat stress',productNames:['Buffering Start']},
+ ]},
+ {sector:'Poultry',items:[
+  {label:'Poor FCR or feed efficiency',productNames:['EnzyBond','AGX','Phytaaz','POWER PRO ACE']},
+  {label:'NSP or high gut viscosity',productNames:['EnzyBond','AGX']},
+  {label:'Protein digestion',productNames:['POWER PRO ACE']},
+  {label:'Gut health or probiotic support',productNames:['Nutri9','BiomaS','Lysozymex','MUCINZYME']},
+  {label:'Mycotoxin risk or immunity',productNames:['M-MOS']},
+  {label:'Fly or litter problems',productNames:['LitteraZ']},
+ ]},
+ {sector:'Aquaculture',items:[
+  {label:'Ammonia or nitrite',productNames:['AQUABIOTIC NRB','NITROCLEAN']},
+  {label:'Poor water quality or pond ecosystem',productNames:['Aquabiotic','AQUABIOTIC NRB','RHODOKLIN']},
+  {label:'Poor digestion or FCR',productNames:['Aquabiotic WS','Myeast AQUA','AQUA PROTEXX']},
+  {label:'Liver or feed intake',productNames:['Neoliv Aqua']},
+  {label:'Mycotoxin risk',productNames:['M-MOS']},
+ ]},
+];
+const PROBLEM_TAGS:Record<string,string[]>=(()=>{const m:Record<string,string[]>={};problemGuide.forEach(g=>g.items.forEach(it=>it.productNames.forEach(n=>{(m[n]=m[n]||[]).push(it.label)})));return m})();
 
 // Real product data sourced from Gujarat Enzyme brochures (poultry, dairy & cattle, aquaculture),
 // supplied by the client. Composition/benefit claims below are taken directly from those brochures.
@@ -71,10 +104,11 @@ const CATEGORY_FALLBACK:Record<string,{problem:string;summaryTail:string;applica
 };
 
 const make=(names:string[],category:string,type:string,application:string)=>names.map(name=>{
+ const tags=PROBLEM_TAGS[name]||[];
  const tech=TECH[name];
- if(tech)return{name,category,type,problem:tech.problem,summary:tech.summary,applications:tech.applications,benefits:tech.benefits};
+ if(tech)return{name,category,type,problem:tech.problem,summary:tech.summary,applications:tech.applications,benefits:tech.benefits,problemTags:tags};
  const fb=CATEGORY_FALLBACK[category];
- return{name,category,type,problem:fb?fb.problem:'Technical detail available on request.',summary:`${name} is ${fb?fb.summaryTail:`part of the ${category.toLowerCase()} portfolio.`}`,applications:fb?fb.applications:[application],benefits:fb?fb.benefits:['Available for international B2B enquiry','Technical information available on request']};
+ return{name,category,type,problem:fb?fb.problem:'Technical detail available on request.',summary:`${name} is ${fb?fb.summaryTail:`part of the ${category.toLowerCase()} portfolio.`}`,applications:fb?fb.applications:[application],benefits:fb?fb.benefits:['Available for international B2B enquiry','Technical information available on request'],problemTags:tags};
 });
 
 export const products:Product[]=[
