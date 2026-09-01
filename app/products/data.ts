@@ -120,13 +120,13 @@ export const products:Product[]=[
 ...make(['Mineral supplements','Yeast-based solutions','Functional nutrition solutions'],'Feed Additives','Functional nutrition','Animal feed and nutrition programs'),
 ];
 export const categories=[...new Set(products.map(p=>p.category))];
-export const categoryMeta:Record<string,{label:string;intro:string;number:string}>={
- 'Poultry Nutrition':{label:'Poultry',intro:'Enzyme, microbial and functional solutions for gut health, digestion and feed-conversion efficiency in broiler and layer programs.',number:'01'},
- 'Dairy & Cattle':{label:'Dairy & Cattle',intro:'Nutrition, mineral and functional solutions spanning transition-period support, rumen function and young-stock programs.',number:'02'},
- 'Aquaculture':{label:'Aquaculture',intro:'Pond water-quality, microbial and gut-health solutions for professional aquaculture programs.',number:'03'},
- 'Enzymes':{label:'Enzymes',intro:'A technical enzyme portfolio spanning carbohydrases, proteases, phytase and lipase — each targeting a specific digestibility or anti-nutritional-factor challenge.',number:'04'},
- 'Probiotics & Prebiotics':{label:'Probiotics & Prebiotics',intro:'Live microbial strains and non-digestible prebiotic substrates that work together to support a balanced, pathogen-resistant gut microbiome.',number:'05'},
- 'Feed Additives':{label:'Feed Additives',intro:'Mineral, yeast-based and functional nutrition product families for feed-industry buyers.',number:'06'}
+export const categoryMeta:Record<string,{label:string;intro:string}>={
+ 'Poultry Nutrition':{label:'Poultry',intro:'Enzyme, microbial and functional solutions for gut health, digestion and feed-conversion efficiency in broiler and layer programs.'},
+ 'Dairy & Cattle':{label:'Dairy & Cattle',intro:'Nutrition, mineral and functional solutions spanning transition-period support, rumen function and young-stock programs.'},
+ 'Aquaculture':{label:'Aquaculture',intro:'Pond water-quality, microbial and gut-health solutions for professional aquaculture programs.'},
+ 'Enzymes':{label:'Enzymes',intro:'A technical enzyme portfolio spanning carbohydrases, proteases, phytase and lipase — each targeting a specific digestibility or anti-nutritional-factor challenge.'},
+ 'Probiotics & Prebiotics':{label:'Probiotics & Prebiotics',intro:'Live microbial strains and non-digestible prebiotic substrates that work together to support a balanced, pathogen-resistant gut microbiome.'},
+ 'Feed Additives':{label:'Feed Additives',intro:'Mineral, yeast-based and functional nutrition product families for feed-industry buyers.'}
 };
 export function slugify(v:string){return v.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'')}
 export function productSlug(p:Product){return `${slugify(p.category)}--${slugify(p.name)}`}
