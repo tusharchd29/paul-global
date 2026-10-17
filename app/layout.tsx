@@ -1,8 +1,11 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import SiteChrome from './components/SiteChrome';
+import { SITE_URL } from './sitemap';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  openGraph: { siteName: 'AHWAN LAB', type: 'website', locale: 'en_IN' },
   title: 'AHWAN LAB | Animal Health, Wellness and Nutrition',
   description: 'Customized enzyme, probiotic and yeast solutions for poultry and animal health — Calshell, Progrow, Livoshield, Phytomin Pro, Digesmo-Pro and XP-Zyme.',
 };
