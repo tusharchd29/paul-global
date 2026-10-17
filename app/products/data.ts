@@ -1,28 +1,10 @@
 export type Row=[string,string];
 export type Grade={spec:string;form:string;pack:string};
-export type Product={name:string;category:string;type:string;tagline:string;summary:string;image?:string;notice?:string;sections?:{title:string;body:string}[];composition?:{title:string;rows:Row[]}[];points?:string[];benefits:string[];dosage:string[];presentation?:string;storage?:string;matrix?:{note:string;columns:string[];rows:[string,string,string][]};grades?:Grade[];problemTags:string[]};
-
-// The "problem map" routes a buyer's stated problem to the right products. Product names
-// below must match the exact `name` values further down this file. Every link is taken from
-// the indication / benefit lists printed in the AHWAN LAB brochure.
-export type ProblemGroup={sector:string;items:{label:string;productNames:string[]}[]};
-export const problemGuide:ProblemGroup[]=[
- {sector:'Poultry',items:[
-  {label:'Weak egg shells or skeletal integrity',productNames:['Calshell']},
-  {label:'Poor FCR or weight gain',productNames:['Progrow','Livoshield','XP-Zyme','Calshell']},
-  {label:'Gut health or mortality',productNames:['Progrow']},
-  {label:'Ammonia in litter',productNames:['Progrow']},
-  {label:'Liver stress or low immunity',productNames:['Livoshield']},
-  {label:'High phosphorus / DCP cost',productNames:['Phytomin Pro','XP-Zyme']},
-  {label:'Protein digestion or protein cost',productNames:['Digesmo-Pro']},
-  {label:'Fibre (NSP) in the diet',productNames:['XP-Zyme']},
- ]},
-];
-const PROBLEM_TAGS:Record<string,string[]>=(()=>{const m:Record<string,string[]>={};problemGuide.forEach(g=>g.items.forEach(it=>it.productNames.forEach(n=>{(m[n]=m[n]||[]).push(it.label)})));return m})();
+export type Product={name:string;category:string;type:string;tagline:string;summary:string;image?:string;notice?:string;sections?:{title:string;body:string}[];composition?:{title:string;rows:Row[]}[];points?:string[];benefits:string[];dosage:string[];presentation?:string;storage?:string;matrix?:{note:string;columns:string[];rows:[string,string,string][]};grades?:Grade[]};
 
 // Finished poultry formulations, transcribed from the AHWAN LAB brochure (composition, indication,
 // dose and presentation exactly as printed; obvious spelling slips corrected).
-const formulations:Omit<Product,'category'|'problemTags'>[]=[
+const formulations:Omit<Product,'category'>[]=[
  {name:'Calshell',type:'Calcium supplement',tagline:'Calcium granules to improve egg shell',image:'/products/calshell.png',
   summary:'Calcium granules built on a microcrystalline hydroxyapatite complex (MCHC), delivering calcium and phosphorus together with vitamin D3, vitamin B12, magnesium and manganese.',
   notice:'Animal feed supplement — for animal use only, not for human use.',
@@ -104,16 +86,15 @@ const STRAIN_GROUPS:{type:string;summary:string;names:string[]}[]=[
 ];
 const YEASTS=['Saccharomyces cerevisiae','Saccharomyces boulardii'];
 
-const tagged=(p:Omit<Product,'problemTags'>):Product=>({...p,problemTags:PROBLEM_TAGS[p.name]||[]});
 const gradeTagline=(g:Grade[])=>[...new Set(g.map(x=>x.form))].join(' · ');
 
 // Ingredient catalogues come first: supplying these to a buyer's specification is the core
 // offer. The finished formulations follow as AHWAN LAB's own in-house work.
 export const products:Product[]=[
- ...ENZYMES.map(e=>tagged({name:e.name,category:'Enzymes',type:'Feed enzyme',tagline:gradeTagline(e.grades),summary:e.summary,grades:e.grades,benefits:[],dosage:[]})),
- ...STRAIN_GROUPS.flatMap(g=>g.names.map(name=>tagged({name,category:'Probiotics',type:g.type,tagline:'Water soluble powder',summary:g.summary,grades:[{spec:CFU,form:'Water soluble powder',pack:PACK}],benefits:[],dosage:[]}))),
- ...YEASTS.map(name=>tagged({name,category:'Yeast',type:'Yeast culture',tagline:'Water soluble powder · Powder',summary:'A live yeast culture supplied as a standalone raw material for probiotic and feed formulations.',grades:[{spec:CFU,form:'Water soluble powder',pack:PACK},{spec:CFU,form:'Powder',pack:PACK}],benefits:[],dosage:[]})),
- ...formulations.map(f=>tagged({...f,category:'Our Formulations'})),
+ ...ENZYMES.map(e=>({name:e.name,category:'Enzymes',type:'Feed enzyme',tagline:gradeTagline(e.grades),summary:e.summary,grades:e.grades,benefits:[],dosage:[]})),
+ ...STRAIN_GROUPS.flatMap(g=>g.names.map(name=>({name,category:'Probiotics',type:g.type,tagline:'Water soluble powder',summary:g.summary,grades:[{spec:CFU,form:'Water soluble powder',pack:PACK}],benefits:[],dosage:[]}))),
+ ...YEASTS.map(name=>({name,category:'Yeast',type:'Yeast culture',tagline:'Water soluble powder · Powder',summary:'A live yeast culture supplied as a standalone raw material for probiotic and feed formulations.',grades:[{spec:CFU,form:'Water soluble powder',pack:PACK},{spec:CFU,form:'Powder',pack:PACK}],benefits:[],dosage:[]})),
+ ...formulations.map(f=>({...f,category:'Our Formulations'})),
 ];
 export const categories=[...new Set(products.map(p=>p.category))];
 export const categoryMeta:Record<string,{label:string;intro:string}>={

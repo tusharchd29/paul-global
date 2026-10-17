@@ -1,10 +1,18 @@
 'use client';
-import {useState} from 'react';
+import {useEffect,useRef,useState} from 'react';
 const REQUESTS=['A specific enzyme','A specific probiotic strain','Yeast culture','Make my own composition','A custom solution for a problem','One of your formulations','Other'];
+// Links from the Solution Finder carry ?need=&product=&message= so the buyer's problem arrives pre-filled.
+const NEED:Record<string,string>={problem:REQUESTS[4],ingredient:REQUESTS[0],composition:REQUESTS[3]};
 
 export default function EnquiryForm(){
  const [status,setStatus]=useState<'idle'|'sending'|'sent'|'error'>('idle');
  const [error,setError]=useState('');
+ const formRef=useRef<HTMLFormElement>(null);
+ useEffect(()=>{
+  const params=new URLSearchParams(window.location.search);const form=formRef.current;if(!form)return;
+  const set=(name:string,value:string|null|undefined)=>{const el=form.elements.namedItem(name) as HTMLInputElement|null;if(el&&value)el.value=value};
+  set('interest',NEED[params.get('need')||'']);set('product',params.get('product'));set('message',params.get('message'));
+ },[]);
 
  const onSubmit=async(e:React.FormEvent<HTMLFormElement>)=>{
   e.preventDefault();
@@ -31,7 +39,7 @@ export default function EnquiryForm(){
   return <div className="enquiry-form"><div className="form-success"><div className="eyebrow">Requirement received</div><h3 className="serif">Thank you. Let's take it from here.</h3><p>Our team can review your requirement and follow up with the right commercial or technical response.</p><button type="button" className="btn btn-light" onClick={()=>setStatus('idle')}>Send another enquiry</button></div></div>;
  }
 
- return <form className="enquiry-form" onSubmit={onSubmit}>
+ return <form ref={formRef} className="enquiry-form" onSubmit={onSubmit}>
   <div className="form-row"><label>Full name<input required name="name" placeholder="Your name"/></label><label>Company name<input required name="company" placeholder="Company / organisation"/></label></div>
   <div className="form-row"><label>Business email<input required type="email" name="email" placeholder="name@company.com"/></label><label>Country<input required name="country" placeholder="Country / state"/></label></div>
   <div className="form-row"><label>What do you need?<select name="interest" defaultValue=""><option value="" disabled>Select one</option>{REQUESTS.map(r=><option key={r}>{r}</option>)}</select></label><label>Ingredient / product<input name="product" placeholder="e.g. Phytase 10,000 FTU/g, or your blend name"/></label></div>
