@@ -61,11 +61,11 @@ export async function POST(req: NextRequest) {
   }
 
   const resend = new Resend(apiKey);
-  const fromAddress = process.env.RESEND_FROM_EMAIL || 'Paul Global Website <onboarding@resend.dev>';
-  const toAddress = process.env.RESEND_TO_EMAIL || 'exports@paulglobal.com';
+  const fromAddress = process.env.RESEND_FROM_EMAIL || 'AHWAN LAB Website <onboarding@resend.dev>';
+  const toAddress = process.env.RESEND_TO_EMAIL || 'info@ahwanlab.com';
 
   const html = `
-    <h2>New enquiry from Paul Global website</h2>
+    <h2>New enquiry from AHWAN LAB website</h2>
     <p><strong>Name:</strong> ${escapeHtml(name)}</p>
     <p><strong>Company:</strong> ${escapeHtml(company)}</p>
     <p><strong>Email:</strong> ${escapeHtml(email)}</p>
