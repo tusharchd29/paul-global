@@ -35,11 +35,20 @@ function Result({s,enquiryHref,whatsappHref}:{s:Solution;enquiryHref:string;what
   {s.caution&&<p className="finder-caution">{s.caution}</p>}
   {s.primary.length>0&&<div className="finder-picks">{s.primary.map(x=><Pick key={x.name} name={x.name} reason={x.reason} label="Use"/>)}</div>}
   {s.also.length>0&&<><h4 className="finder-sub">Also helps</h4><div className="finder-picks small">{s.also.map(x=><Pick key={x.name} name={x.name} reason={x.reason} label="Also consider"/>)}</div></>}
-  <div className="finder-split">
-   <div className="finder-box"><div className="eyebrow">{s.primary.length?'Build a custom blend from':'Custom microbial blend from'}</div>{s.ingredients.length?<ul>{s.ingredients.map(x=><li key={x.name}><Link href={productHref(x.name)}>{x.name}</Link><span>{x.reason}</span></li>)}</ul>:<p>Ask us about a custom herbal or nutritional blend for this problem.</p>}<p className="finder-box-note">Any of these can be supplied on their own, or blended to your specification.</p></div>
-   <div className="finder-box dark"><div className="eyebrow">What to track</div><ul>{s.track.map(x=><li key={x}>{x}</li>)}</ul><p className="finder-box-note">Dose and inclusion rates should be confirmed with your nutritionist or veterinarian.</p></div>
-  </div>
+  <Supporting s={s}/>
+  <div className="finder-box dark finder-track"><div><div className="eyebrow">What to track</div><ul>{s.track.map(x=><li key={x}>{x}</li>)}</ul></div><p className="finder-box-note">Dose and inclusion rates should be confirmed with your nutritionist or veterinarian.</p></div>
  </section>
+}
+
+// Supporting ingredients grouped by catalogue (Enzymes, Probiotics, Yeast) so buyers see the
+// enzymes and strains behind each problem next to our own formulation, with their standard spec.
+const GROUPS=[['Enzymes','Enzymes'],['Probiotics','Probiotics'],['Yeast','Yeast']] as const;
+function Supporting({s}:{s:Solution}){
+ const rows=s.ingredients.map(x=>({...x,p:productByName(x.name)})).filter(x=>x.p);
+ return <div className="finder-support">
+  <div className="finder-support-head"><div><div className="eyebrow">{s.primary.length?'Supporting enzymes, probiotics & yeast':'Recommended enzymes & probiotics'}</div><h3 className="serif">{s.primary.length?'Use alongside, or build your own blend':'Build your custom microbial blend'}</h3></div><p>Each is supplied on its own at the activity or CFU count you need, or blended to your specification.</p></div>
+  {GROUPS.map(([cat,label])=>{const items=rows.filter(x=>x.p!.category===cat);return items.length>0&&<div className="finder-support-group" key={cat}><span className={`finder-badge ${cat.toLowerCase()}`}>{label}</span><div className="finder-support-grid">{items.map(({name,reason,p})=><Link key={name} href={productHref(name)} className="finder-ingredient"><span className="finder-ingredient-type">{p!.type}</span><h4 className="serif">{name}</h4><p>{reason}</p><span className="finder-ingredient-spec">{p!.grades?.[0].spec}<em>{[...new Set(p!.grades?.map(g=>g.form))].join(' · ')}</em></span></Link>)}</div></div>})}
+ </div>
 }
 
 function Pick({name,reason,label}:{name:string;reason:string;label:string}){
