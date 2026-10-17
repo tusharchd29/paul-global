@@ -36,3 +36,13 @@
 @media(max-width:1100px){.formulation-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.category-directory{grid-template-columns:repeat(2,minmax(0,1fr))}.categories.catalogue-tease{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:900px){.role-grid{grid-template-columns:1fr}.contact-heading{grid-template-columns:1fr;gap:28px}.how-it-works ul{columns:1}.nav .brand-tagline{display:none}}
 @media(max-width:600px){.formulation-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.categories.catalogue-tease{grid-template-columns:1fr}.formulation-card img{height:120px}.product-hero h1{font-size:48px}.brand-word{font-size:21px}.products-nav .brand-tagline,.product-header .brand-tagline{display:none}}
+/* Custom-solutions positioning: offer cards, ingredient library, process steps */
+.offer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.offer-card{background:#fff;border:1px solid rgba(10,22,51,.08);border-top:3px solid #3567c6;border-radius:6px;padding:34px 30px;display:flex;flex-direction:column;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}.offer-card:hover{transform:translateY(-8px);box-shadow:0 22px 45px rgba(10,22,51,.14)}.offer-card h3{font-size:30px;line-height:1.05;margin:18px 0 14px;color:#041b4f}.offer-card p{font-size:14px;line-height:1.7;color:#5c6372;margin:0 0 26px}.offer-card strong{margin-top:auto;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#3567c6}
+.offer-no{font:700 13px 'Roboto Condensed',Arial,sans-serif;letter-spacing:.14em;color:#3567c6}
+.ingredients-section{background:#fff}.categories.ingredient-tease{grid-template-columns:repeat(3,1fr)}.ingredient-tease .category-no{position:relative;color:rgba(255,255,255,.7);margin-bottom:auto}.ingredient-note{margin:30px 0 0;font-size:15px;color:#5c6372}.ingredient-note a{color:#0a2766;font-weight:700}
+.process-section{background:#eef2fa}.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:step}.process-grid>div{border-top:1px solid rgba(10,22,51,.15);padding-top:22px}.process-grid h3{font-size:24px;line-height:1.1;margin:12px 0 10px;color:#041b4f}.process-grid p{margin:0;font-size:14px;line-height:1.65;color:#5c6372}
+.dark-section .formulation-grid{margin:10px 0 0}.dark-section .formulation-card{border-color:transparent}
+.category-directory+.catalogue-or{margin-top:64px}
+@media(max-width:1100px){.categories.ingredient-tease{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:900px){.offer-grid,.categories.ingredient-tease{grid-template-columns:1fr}.process-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.process-grid{grid-template-columns:1fr}.offer-card h3{font-size:26px}}

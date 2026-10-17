@@ -1,6 +1,6 @@
 'use client';
 import {useState} from 'react';
-import {categories} from '../products/data';
+const REQUESTS=['A specific enzyme','A specific probiotic strain','Yeast culture','Make my own composition','A custom solution for a problem','One of your formulations','Other'];
 
 export default function EnquiryForm(){
  const [status,setStatus]=useState<'idle'|'sending'|'sent'|'error'>('idle');
@@ -34,8 +34,8 @@ export default function EnquiryForm(){
  return <form className="enquiry-form" onSubmit={onSubmit}>
   <div className="form-row"><label>Full name<input required name="name" placeholder="Your name"/></label><label>Company name<input required name="company" placeholder="Company / organisation"/></label></div>
   <div className="form-row"><label>Business email<input required type="email" name="email" placeholder="name@company.com"/></label><label>Country<input required name="country" placeholder="Country / state"/></label></div>
-  <div className="form-row"><label>I'm interested in<select name="interest" defaultValue=""><option value="" disabled>Select a category</option>{categories.map(c=><option key={c}>{c}</option>)}<option>Custom formulation</option></select></label><label>Product name<input name="product" placeholder="If known"/></label></div>
-  <label>Tell us about your requirement<textarea required name="message" rows={5} placeholder="Application, quantity, specification, market or any technical question…"/></label>
+  <div className="form-row"><label>What do you need?<select name="interest" defaultValue=""><option value="" disabled>Select one</option>{REQUESTS.map(r=><option key={r}>{r}</option>)}</select></label><label>Ingredient / product<input name="product" placeholder="e.g. Phytase 10,000 FTU/g, or your blend name"/></label></div>
+  <label>Tell us about your requirement<textarea required name="message" rows={5} placeholder="Specification or composition, application, species, quantity and pack — or describe the problem you are seeing…"/></label>
   <label className="upload-field">Attach specification / RFQ<input type="file" name="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.xlsx,.csv"/></label>
   {status==='error'&&<p className="form-error" role="alert">{error}</p>}
   <div className="form-submit"><small>By submitting, you are asking AHWAN LAB to respond to your business enquiry.</small><button className="btn btn-gold" type="submit" disabled={status==='sending'}>{status==='sending'?'Sending…':'Send My Requirement ↗'}</button></div>
