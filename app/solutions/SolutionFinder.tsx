@@ -1,6 +1,7 @@
 'use client';
 import {useEffect,useMemo,useRef,useState} from 'react';
 import Link from 'next/link';
+import {SITE} from '../site';
 import {AREAS,solutions,matchSolutions,productByName,productHref,type Area,type Solution} from './data';
 
 const examples=['My eggs have thin shells','Strong ammonia smell in the shed','Birds are not gaining weight','DCP is making feed too expensive'];
@@ -24,13 +25,13 @@ export default function SolutionFinder(){
     {text.trim()&&!list.length&&<div className="finder-empty"><p>We couldn&rsquo;t match that to a known problem — every farm is different. Send it to our team and we&rsquo;ll work out a solution with you.</p><a className="btn btn-gold" href={`/?need=problem&message=${encodeURIComponent(`What I'm seeing: ${text}`)}#contact`}>Ask our team ↗</a></div>}
    </div></div>
   </div>
-  <div ref={resultRef} className="finder-result-anchor">{picked&&<Result key={picked.id} s={picked} enquiryHref={enquiry(picked)}/>}</div>
+  <div ref={resultRef} className="finder-result-anchor">{picked&&<Result key={picked.id} s={picked} enquiryHref={enquiry(picked)} whatsappHref={SITE.whatsapp(`Hello AHWAN LAB, I need help with: ${picked.label}${area?` (${area})`:''}. ${text}`.trim())}/>}</div>
  </div>
 }
 
-function Result({s,enquiryHref}:{s:Solution;enquiryHref:string}){
+function Result({s,enquiryHref,whatsappHref}:{s:Solution;enquiryHref:string;whatsappHref:string}){
  return <section className="finder-result">
-  <div className="finder-result-head"><div><div className="eyebrow">Recommended solution</div><h2 className="serif">{s.label}</h2><p>{s.why}</p></div><a className="btn btn-gold" href={enquiryHref}>Send this to our team ↗</a></div>
+  <div className="finder-result-head"><div><div className="eyebrow">Recommended solution</div><h2 className="serif">{s.label}</h2><p>{s.why}</p></div><div className="finder-actions"><a className="btn btn-light" href={whatsappHref} target="_blank" rel="noopener">WhatsApp us</a><a className="btn btn-gold" href={enquiryHref}>Send this to our team ↗</a></div></div>
   {s.caution&&<p className="finder-caution">{s.caution}</p>}
   {s.primary.length>0&&<div className="finder-picks">{s.primary.map(x=><Pick key={x.name} name={x.name} reason={x.reason} label="Use"/>)}</div>}
   {s.also.length>0&&<><h4 className="finder-sub">Also helps</h4><div className="finder-picks small">{s.also.map(x=><Pick key={x.name} name={x.name} reason={x.reason} label="Also consider"/>)}</div></>}

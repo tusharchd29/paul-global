@@ -89,7 +89,7 @@ const YEASTS=['Saccharomyces cerevisiae','Saccharomyces boulardii'];
 const gradeTagline=(g:Grade[])=>[...new Set(g.map(x=>x.form))].join(' · ');
 
 // Ingredient catalogues come first: supplying these to a buyer's specification is the core
-// offer. The finished formulations follow as AHWAN LAB's own in-house work.
+// offer. The finished formulations follow as AHWAN LAB's own formulations.
 export const products:Product[]=[
  ...ENZYMES.map(e=>({name:e.name,category:'Enzymes',type:'Feed enzyme',tagline:gradeTagline(e.grades),summary:e.summary,grades:e.grades,benefits:[],dosage:[]})),
  ...STRAIN_GROUPS.flatMap(g=>g.names.map(name=>({name,category:'Probiotics',type:g.type,tagline:'Water soluble powder',summary:g.summary,grades:[{spec:CFU,form:'Water soluble powder',pack:PACK}],benefits:[],dosage:[]}))),
