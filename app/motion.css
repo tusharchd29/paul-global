@@ -1,0 +1,63 @@
+/* Motion layer 2: page entrance, header entrance, cursor spotlight on cards, button sheen,
+   image zoom, and scroll-driven effects (progress bar, parallax, line draws).
+   Everything here is decoration: content is visible and usable without it. Scroll-driven
+   effects only run where the browser supports scroll timelines, and nothing here runs for
+   visitors who prefer reduced motion. */
+
+@media (prefers-reduced-motion:no-preference){
+
+ /* Page entrance on every navigation (each page renders a new <main>) */
+ main{animation:pageIn .6s cubic-bezier(.2,.8,.2,1) both}
+ @keyframes pageIn{from{opacity:0}to{opacity:1}}
+
+ /* Inner-page headers: eyebrow, title and intro rise in turn, title unmasks line by line */
+ .products-title>*{animation:heroIn .9s cubic-bezier(.2,.8,.2,1) both}
+ .products-title>:nth-child(2){animation-delay:.1s}.products-title>:nth-child(3){animation-delay:.2s}.products-title>:nth-child(4){animation-delay:.3s}
+ .products-title h1,.hero-copy h1{animation-name:titleIn}
+ @keyframes titleIn{from{opacity:0;transform:translateY(40px);clip-path:inset(-10% -10% 100% -10%)}to{opacity:1;transform:none;clip-path:inset(-10% -10% -25% -10%)}}
+ .products-header:after{animation:ringDrift 18s ease-in-out infinite alternate}
+ @keyframes ringDrift{to{transform:translate(-60px,40px) scale(1.08)}}
+
+ /* Accent colour in headings shimmers once as it arrives */
+ .serif em{background:linear-gradient(100deg,currentColor 40%,#a9c4f5 50%,currentColor 60%) 100% 0/250% 100% no-repeat;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:emShine 2.4s .6s cubic-bezier(.4,0,.2,1) both}
+ @keyframes emShine{from{background-position:100% 0}to{background-position:0 0}}
+
+ /* Cursor spotlight: SiteChrome sets --mx/--my on the hovered card */
+ .offer-card,.industry-card,.product-card,.doc-card,.formulation-card,.category,.faq-grid details{position:relative;overflow:hidden}
+ .offer-card:after,.industry-card:after,.product-card:after,.doc-card:after,.formulation-card:after,.category:after,.faq-grid details:after{content:'';position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .35s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(53,103,198,.13),transparent 45%)}
+ .category:after,.dark-section .formulation-card:after{background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.16),transparent 45%)}
+ .offer-card:hover:after,.industry-card:hover:after,.product-card:hover:after,.doc-card:hover:after,.formulation-card:hover:after,.category:hover:after,.faq-grid details:hover:after{opacity:1}
+ .doc-card{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}.doc-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(10,22,51,.1)}
+ .doc-card:hover .doc-code{background:#3567c6;color:#fff;transform:rotate(-8deg) scale(1.06)}.doc-code{transition:background .3s,color .3s,transform .4s cubic-bezier(.2,.8,.2,1)}
+ .industry-card strong,.offer-card strong,.product-cta{transition:letter-spacing .3s,color .3s}.industry-card:hover strong,.offer-card:hover strong,.product-link:hover .product-cta{letter-spacing:.18em}
+
+ /* Product drum images lift and zoom slightly on hover */
+ .formulation-card img{transition:transform .6s cubic-bezier(.2,.8,.2,1)}.formulation-card:hover img{transform:translateY(-6px) scale(1.06)}
+
+ /* Primary buttons: a light sheen sweeps across on hover */
+ .btn-gold{position:relative;overflow:hidden;isolation:isolate}
+ .btn-gold:before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+ .btn-gold:hover:before{transform:translateX(120%)}
+
+ /* FAQ answers slide open */
+ .faq-grid details[open] p{animation:heroIn .45s cubic-bezier(.2,.8,.2,1) both}
+ .faq-grid summary span{transition:transform .3s}.faq-grid details[open] summary span{transform:rotate(45deg)}
+
+ /* Scroll-driven effects, where supported */
+ @supports (animation-timeline:scroll()){
+  body:before{content:'';position:fixed;top:0;left:0;right:0;height:3px;z-index:120;background:linear-gradient(90deg,#3567c6,#8fb0ef);transform-origin:0 50%;animation:scrollBar linear both;animation-timeline:scroll(root)}
+  @keyframes scrollBar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+  /* Hero art drifts slower than the page; header watermark rises */
+  .hero-visual,.products-header:before{animation:parallax linear both;animation-timeline:scroll(root);animation-range:0 100vh}
+  @keyframes parallax{to{translate:0 120px}}
+
+  /* Step rows and document cards draw their top rule as they enter the viewport */
+  .process-grid>div{border-top-color:transparent;background:linear-gradient(#3567c6,#3567c6) 0 0/0 2px no-repeat;animation:drawLine linear both;animation-timeline:view();animation-range:entry 10% cover 35%}
+  @keyframes drawLine{to{background-size:100% 2px}}
+
+  /* Stats band: numbers scale up gently as the band crosses the viewport */
+  .stats-grid strong{animation:statPop linear both;animation-timeline:view();animation-range:entry 0% cover 30%}
+  @keyframes statPop{from{opacity:.3;transform:scale(.85)}to{opacity:1;transform:none}}
+ }
+}

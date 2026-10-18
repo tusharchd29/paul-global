@@ -8,6 +8,7 @@ import {products,categories,categoryMeta,slugify,productSlug} from '../products/
 import {industries,industrySlug} from '../industries/data';
 
 const REVEAL='.section-head,.offer-card,.category,.formulation-card,.process-grid>div,.doc-card,.industry-card,.faq-grid details,.tech-step,.directory-card,.product-card,.detail-card,.stats-grid>div,.problem-panel,.finder-panel,.catalogue-intro,.enquiry-form';
+const SPOTLIGHT='.offer-card,.industry-card,.product-card,.doc-card,.formulation-card,.category,.faq-grid details';
 const NAV=[['/solutions','Solution Finder'],['/industries','Industries'],['/products','Ingredients'],['/#formulations','Our Formulations'],['/export','Export'],['/about','Company']];
 
 export default function SiteChrome(){
@@ -25,6 +26,18 @@ export default function SiteChrome(){
   els.forEach(el=>io.observe(el));
   return()=>io.disconnect();
  },[pathname]);
+ // Cursor spotlight: cards in SPOTLIGHT read --mx/--my (see motion.css) to place a soft glow under
+ // the pointer. One delegated listener, updated at most once per frame.
+ useEffect(()=>{
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!window.matchMedia('(hover: hover)').matches)return;
+  let frame=0;
+  const onMove=(e:PointerEvent)=>{
+   cancelAnimationFrame(frame);
+   frame=requestAnimationFrame(()=>{const el=(e.target as Element|null)?.closest?.<HTMLElement>(SPOTLIGHT);if(!el)return;const r=el.getBoundingClientRect();el.style.setProperty('--mx',`${e.clientX-r.left}px`);el.style.setProperty('--my',`${e.clientY-r.top}px`)});
+  };
+  document.addEventListener('pointermove',onMove,{passive:true});
+  return()=>{document.removeEventListener('pointermove',onMove);cancelAnimationFrame(frame)};
+ },[]);
  return <>
   <header className={`sticky-bar ${showTop?'visible':''}`} aria-hidden={!showTop}><div className="container"><Link href="/" className="logo" aria-label={SITE.name} tabIndex={showTop?0:-1}><Logo/></Link><nav>{NAV.map(([href,label])=><Link key={href} href={href} tabIndex={showTop?0:-1}>{label}</Link>)}</nav><Link className="btn btn-gold" href="/#contact" tabIndex={showTop?0:-1}>Share Your Requirement ↗</Link></div></header>
   <footer className="site-footer">
