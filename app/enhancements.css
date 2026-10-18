@@ -90,3 +90,11 @@ section[id]{scroll-margin-top:64px}
 .products-title .hero-actions{margin-top:28px}.technical .hero-actions{margin-top:30px}
 @media(max-width:900px){.doc-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.doc-grid{grid-template-columns:1fr}}
+/* Industries: overview grid, homepage application tiles and per-industry pages */
+.industries-section{background:#fff}.industry-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.industry-grid.compact{grid-template-columns:repeat(4,1fr);gap:14px}.industry-card{background:#fff;border:1px solid rgba(10,22,51,.1);border-left:3px solid #3567c6;border-radius:6px;padding:28px 26px;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,background .3s}.industry-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(10,22,51,.12)}.industry-card h2,.industry-card h3{font-size:28px;line-height:1.05;margin:14px 0 10px;color:#041b4f}.industry-card p{font-size:14px;line-height:1.6;color:#5c6372;margin:0 0 20px}.industry-card strong{margin-top:auto;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#3567c6}.industry-grid.compact .industry-card{padding:22px 20px;background:#f4f6fa}.industry-grid.compact .industry-card:hover{background:#fff}.industry-grid.compact h3{font-size:22px}.industry-grid.compact p{font-size:13px;margin:0}
+.industry-card:focus-visible,.problem-chip:focus-visible,.offer-card:focus-visible{outline:3px solid #3567c6;outline-offset:3px}
+.enquiry-list{margin-top:36px;display:grid;gap:14px}.enquiry-list .eyebrow{color:#5c6372}.enquiry-list small{color:#5c6372;font-size:12px}.products-title .eyebrow a:hover{color:#fff;text-decoration:underline}
+.footer-main{grid-template-columns:1.5fr .8fr 1fr .9fr .8fr}
+@media(max-width:900px){.industry-grid,.industry-grid.compact{grid-template-columns:1fr 1fr}.footer-main{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.industry-grid,.industry-grid.compact{grid-template-columns:1fr}.footer-main{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.industry-card,.industry-card:hover{transition:none;transform:none}}

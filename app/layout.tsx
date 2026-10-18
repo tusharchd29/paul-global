@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   openGraph: { siteName: 'AHWAN LAB', type: 'website', locale: 'en_IN' },
   title: 'AHWAN LAB | Animal Health, Wellness and Nutrition',
-  description: 'Customized enzyme, probiotic and yeast solutions for poultry and animal health — Calshell, Progrow, Livoshield, Phytomin Pro, Digesmo-Pro and XP-Zyme.',
+  description: 'Customized enzyme, probiotic and yeast solutions for animal health, food and industry — Calshell, Progrow, Livoshield, Phytomin Pro, Digesmo-Pro and XP-Zyme.',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
