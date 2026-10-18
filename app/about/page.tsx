@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import {MenuButton} from '../components/SiteMenu';
 import Logo from '../components/Logo';
 import QualitySection from '../components/QualitySection';
 import {SITE} from '../site';
@@ -17,7 +18,7 @@ const model=[
  ['Documented supply','Supplied in your format, with COA, SDS and TDS on request, in India or for export.'],
 ];
 export default function About(){return <main className="products-page">
- <header className="products-header"><div className="container"><div className="products-nav"><Link className="logo" href="/" aria-label={SITE.name}><Logo tagline/></Link><nav className="products-links"><Link href="/">Home</Link><Link href="/industries">Industries</Link><Link href="/products">Ingredients</Link><Link href="/export">Export</Link><a href="/#contact">Contact</a></nav><Link className="btn btn-gold" href="/#contact">Share Your Requirement</Link></div><div className="products-title"><div className="eyebrow">AHWAN LAB · About us</div><h1 className="serif">A better option for<br/><em>biotechnology products.</em></h1><p>AHWAN LAB develops customized enzyme, probiotic and yeast solutions. The profound knowledge and rich experience of our business associates in enzyme technology have helped us earn a distinguished position in our market segment.</p></div></div></header>
+ <header className="products-header"><div className="container"><div className="products-nav"><Link className="logo" href="/" aria-label={SITE.name}><Logo tagline/></Link><nav className="products-links"><Link href="/">Home</Link><Link href="/industries">Industries</Link><Link href="/products">Ingredients</Link><Link href="/export">Export</Link><a href="/#contact">Contact</a></nav><div className="nav-actions"><Link className="btn btn-gold" href="/#contact">Share Your Requirement</Link><MenuButton/></div></div><div className="products-title"><div className="eyebrow">AHWAN LAB · About us</div><h1 className="serif">A better option for<br/><em>biotechnology products.</em></h1><p>AHWAN LAB develops customized enzyme, probiotic and yeast solutions. The profound knowledge and rich experience of our business associates in enzyme technology have helped us earn a distinguished position in our market segment.</p></div></div></header>
 
  <section className="section portfolio-tease"><div className="container">
   <div className="section-head"><div><div className="eyebrow">What drives us</div><h2 className="serif">Mission, vision<br/><em>and approach.</em></h2></div></div>
