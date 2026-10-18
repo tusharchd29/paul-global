@@ -6,8 +6,8 @@ import Logo from './Logo';
 import {SITE} from '../site';
 import {products,categories,categoryMeta,slugify,productSlug} from '../products/data';
 
-const REVEAL='.section-head,.offer-card,.category,.formulation-card,.process-grid>div,.faq-grid details,.tech-step,.directory-card,.product-card,.detail-card,.stats-grid>div,.problem-panel,.finder-panel,.catalogue-intro,.enquiry-form';
-const NAV=[['/solutions','Solution Finder'],['/products','Ingredients'],['/#formulations','Our Formulations'],['/#company','Company']];
+const REVEAL='.section-head,.offer-card,.category,.formulation-card,.process-grid>div,.doc-card,.faq-grid details,.tech-step,.directory-card,.product-card,.detail-card,.stats-grid>div,.problem-panel,.finder-panel,.catalogue-intro,.enquiry-form';
+const NAV=[['/solutions','Solution Finder'],['/products','Ingredients'],['/#formulations','Our Formulations'],['/export','Export'],['/#company','Company']];
 
 export default function SiteChrome(){
  const [showTop,setShowTop]=useState(false);
@@ -30,7 +30,7 @@ export default function SiteChrome(){
    <div className="container">
     <div className="footer-main">
      <div className="footer-brand"><Link href="/" className="footer-logo" aria-label={SITE.name}><Logo tagline/></Link><p>Customized enzyme, probiotic and yeast solutions for poultry and animal health — built to your specification.</p><a href={`mailto:${SITE.email}`} className="footer-email">{SITE.email}</a><a href={SITE.phoneHref} className="footer-email">{SITE.phone}</a><span>{SITE.address.join(' ')}</span></div>
-     <div className="footer-column"><h4>Explore</h4><Link href="/">Home</Link><Link href="/solutions">Solution Finder</Link><Link href="/products">Ingredients</Link><a href="/#offer">Custom Solutions</a><a href="/#company">Our Company</a><a href="/#contact">Share a Requirement</a></div>
+     <div className="footer-column"><h4>Explore</h4><Link href="/">Home</Link><Link href="/solutions">Solution Finder</Link><Link href="/products">Ingredients</Link><a href="/#offer">Custom Solutions</a><Link href="/export">Export &amp; Distributors</Link><a href="/#quality">Quality</a><a href="/#company">Our Company</a><a href="/#contact">Share a Requirement</a></div>
      <div className="footer-column"><h4>Our Formulations</h4>{products.filter(p=>p.category==='Our Formulations').map(p=><Link key={p.name} href={`/products/${productSlug(p)}`}>{p.name}</Link>)}</div>
      <div className="footer-column"><h4>Ingredients</h4>{categories.filter(c=>c!=='Our Formulations').map(c=><Link key={c} href={`/products#${slugify(c)}`}>{categoryMeta[c].label}</Link>)}</div>
          </div>
