@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import {MenuButton} from '../components/SiteMenu';
 import Logo from '../components/Logo';
 import EnquiryForm from '../components/EnquiryForm';
 import QualitySection from '../components/QualitySection';
@@ -29,7 +30,7 @@ const faqs=[
 ];
 
 export default function Export(){return <main className="products-page">
- <header className="products-header"><div className="container"><div className="products-nav"><Link className="logo" href="/" aria-label={SITE.name}><Logo tagline/></Link><nav className="products-links"><Link href="/">Home</Link><Link href="/industries">Industries</Link><Link href="/products">Ingredients</Link><a href="#quality">Quality</a><a href="#distributor">Distributors</a><a href="#contact">Contact</a></nav><a className="btn btn-gold" href="#contact">Request a Quotation</a></div><div className="products-title"><div className="eyebrow">AHWAN LAB · Export &amp; distributors</div><h1 className="serif">Shipping from Ahmedabad<br/><em>to feed and food makers abroad.</em></h1><p>Enzymes, probiotic strains, yeast cultures and ready formulations for poultry and animal feed — made to your specification, documented for your registration and packed for export.</p><div className="hero-actions"><a className="btn btn-gold" href="#contact">Request a quotation</a><a className="btn btn-light" href="#distributor">Become a distributor</a></div></div></div></header>
+ <header className="products-header"><div className="container"><div className="products-nav"><Link className="logo" href="/" aria-label={SITE.name}><Logo tagline/></Link><nav className="products-links"><Link href="/">Home</Link><Link href="/industries">Industries</Link><Link href="/products">Ingredients</Link><a href="#quality">Quality</a><a href="#distributor">Distributors</a><a href="#contact">Contact</a></nav><div className="nav-actions"><a className="btn btn-gold" href="#contact">Request a Quotation</a><MenuButton/></div></div><div className="products-title"><div className="eyebrow">AHWAN LAB · Export &amp; distributors</div><h1 className="serif">Shipping from Ahmedabad<br/><em>to feed and food makers abroad.</em></h1><p>Enzymes, probiotic strains, yeast cultures and ready formulations for poultry and animal feed — made to your specification, documented for your registration and packed for export.</p><div className="hero-actions"><a className="btn btn-gold" href="#contact">Request a quotation</a><a className="btn btn-light" href="#distributor">Become a distributor</a></div></div></div></header>
 
  <section className="section portfolio-tease"><div className="container">
   <div className="section-head"><div><div className="eyebrow">For importers</div><h2 className="serif">Why import<br/><em>from AHWAN LAB.</em></h2></div><p className="muted" style={{maxWidth:470}}>For importers, distributors and feed manufacturers who need a dependable source of feed enzymes, probiotics and yeast.</p></div>

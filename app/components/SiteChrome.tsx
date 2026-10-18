@@ -3,6 +3,7 @@ import Link from 'next/link';
 import {useEffect,useState} from 'react';
 import {usePathname} from 'next/navigation';
 import Logo from './Logo';
+import {MenuButton} from './SiteMenu';
 import {SITE} from '../site';
 import {products,categories,categoryMeta,slugify,productSlug} from '../products/data';
 import {industries,industrySlug} from '../industries/data';
@@ -26,7 +27,7 @@ export default function SiteChrome(){
   return()=>io.disconnect();
  },[pathname]);
  return <>
-  <header className={`sticky-bar ${showTop?'visible':''}`} aria-hidden={!showTop}><div className="container"><Link href="/" className="logo" aria-label={SITE.name} tabIndex={showTop?0:-1}><Logo/></Link><nav>{NAV.map(([href,label])=><Link key={href} href={href} tabIndex={showTop?0:-1}>{label}</Link>)}</nav><Link className="btn btn-gold" href="/#contact" tabIndex={showTop?0:-1}>Share Your Requirement</Link></div></header>
+  <header className={`sticky-bar ${showTop?'visible':''}`} aria-hidden={!showTop}><div className="container"><Link href="/" className="logo" aria-label={SITE.name} tabIndex={showTop?0:-1}><Logo/></Link><nav>{NAV.map(([href,label])=><Link key={href} href={href} tabIndex={showTop?0:-1}>{label}</Link>)}</nav><div className="nav-actions"><Link className="btn btn-gold" href="/#contact" tabIndex={showTop?0:-1}>Share Your Requirement</Link><MenuButton tabIndex={showTop?0:-1}/></div></div></header>
   <footer className="site-footer">
    <div className="container">
     <div className="footer-main">

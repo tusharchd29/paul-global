@@ -42,3 +42,37 @@
   @keyframes drawLine{to{background-size:100% 1px}}
  }
 }
+
+/* Site menu: three-line button in every header, slide-in panel from the right (SiteMenu.tsx) */
+.nav-actions{display:flex;align-items:center;gap:12px}
+.menu-button{appearance:none;width:46px;height:46px;border-radius:6px;border:1px solid rgba(255,255,255,.28);background:transparent;display:grid;place-content:center;gap:5px;cursor:pointer;flex:none;transition:background .2s,border-color .2s}
+.menu-button span{display:block;width:20px;height:2px;background:#fff;border-radius:2px}
+.menu-button span:nth-child(2){width:14px;justify-self:end}
+.menu-button:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.5)}
+.menu-button:focus-visible,.menu-close:focus-visible,.menu-panel a:focus-visible{outline:2px solid #8fb0ef;outline-offset:3px}
+.sticky-bar .menu-button{width:40px;height:40px}
+.menu-open,.menu-open body{overflow:hidden}
+.site-menu{position:fixed;inset:0;z-index:200;visibility:hidden;transition:visibility 0s .4s}
+.site-menu.open{visibility:visible;transition:none}
+.menu-backdrop{position:absolute;inset:0;background:rgba(3,17,47,.55);opacity:0;transition:opacity .35s}
+.site-menu.open .menu-backdrop{opacity:1}
+.menu-panel{position:absolute;top:0;right:0;bottom:0;width:min(520px,100%);background:#041640;color:#fff;padding:26px 36px 36px;overflow-y:auto;display:flex;flex-direction:column;gap:28px;transform:translateX(100%);transition:transform .4s cubic-bezier(.2,.8,.2,1);box-shadow:-20px 0 60px rgba(0,0,0,.3)}
+.site-menu.open .menu-panel{transform:none}
+.menu-top{display:flex;justify-content:space-between;align-items:center;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.12)}
+.menu-top .eyebrow{color:#8fb0ef}
+.menu-close{appearance:none;width:44px;height:44px;border-radius:6px;border:1px solid rgba(255,255,255,.28);background:transparent;position:relative;cursor:pointer}
+.menu-close span{position:absolute;left:11px;top:21px;width:20px;height:2px;background:#fff;border-radius:2px;transform:rotate(45deg)}.menu-close span+span{transform:rotate(-45deg)}
+.menu-close:hover{background:rgba(255,255,255,.1)}
+.menu-main{display:grid}
+.menu-main a{font:700 26px/1.15 'Roboto Condensed',Arial,sans-serif;padding:9px 0;color:#fff;border-bottom:1px solid rgba(255,255,255,.07);transition:color .2s,padding-left .25s}
+.menu-main a:hover,.menu-main a[aria-current=page]{color:#8fb0ef;padding-left:6px}
+.menu-groups{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.menu-groups div{display:flex;flex-direction:column;gap:8px}
+.menu-groups h4{margin:0 0 4px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8fb0ef}
+.menu-groups a{font-size:13px;color:#c5ccdb;word-break:break-word}.menu-groups a:hover{color:#fff}
+.menu-cta{align-self:flex-start;margin-top:auto}
+@media (prefers-reduced-motion:no-preference){
+ .site-menu.open .menu-main a{animation:heroIn .45s cubic-bezier(.2,.8,.2,1) both}
+ .site-menu.open .menu-main a:nth-child(n){animation-delay:calc(.04s * var(--i,0) + .1s)}
+}
+@media(max-width:600px){.menu-panel{padding:20px 22px 30px}.menu-main a{font-size:23px}.menu-groups{grid-template-columns:1fr}.nav-actions{gap:8px}.nav-actions .btn{display:none}}
