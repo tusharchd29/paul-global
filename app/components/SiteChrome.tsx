@@ -26,7 +26,7 @@ export default function SiteChrome(){
   return()=>io.disconnect();
  },[pathname]);
  return <>
-  <header className={`sticky-bar ${showTop?'visible':''}`} aria-hidden={!showTop}><div className="container"><Link href="/" className="logo" aria-label={SITE.name} tabIndex={showTop?0:-1}><Logo/></Link><nav>{NAV.map(([href,label])=><Link key={href} href={href} tabIndex={showTop?0:-1}>{label}</Link>)}</nav><Link className="btn btn-gold" href="/#contact" tabIndex={showTop?0:-1}>Share Your Requirement ↗</Link></div></header>
+  <header className={`sticky-bar ${showTop?'visible':''}`} aria-hidden={!showTop}><div className="container"><Link href="/" className="logo" aria-label={SITE.name} tabIndex={showTop?0:-1}><Logo/></Link><nav>{NAV.map(([href,label])=><Link key={href} href={href} tabIndex={showTop?0:-1}>{label}</Link>)}</nav><Link className="btn btn-gold" href="/#contact" tabIndex={showTop?0:-1}>Share Your Requirement</Link></div></header>
   <footer className="site-footer">
    <div className="container">
     <div className="footer-main">

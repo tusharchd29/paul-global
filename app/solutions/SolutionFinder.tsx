@@ -22,7 +22,7 @@ export default function SolutionFinder(){
    <div className="finder-step"><span className="finder-step-no">2</span><div className="finder-grow"><strong>Describe what you&rsquo;re seeing</strong><div className="finder-search"><input value={text} onChange={e=>setText(e.target.value)} placeholder="e.g. eggs breaking in the tray, birds not gaining weight…" aria-label="Describe the problem"/>{text&&<button onClick={()=>setText('')} aria-label="Clear">×</button>}</div>{!text&&<div className="finder-examples">Try: {examples.map(x=><button key={x} onClick={()=>setText(x)}>{x}</button>)}</div>}</div></div>
    <div className="finder-step"><span className="finder-step-no">3</span><div className="finder-grow"><strong>{text.trim()?(list.length?'Closest matches':'No match yet'):'Or pick the problem'}</strong>
     <div className="finder-grid">{list.map((s,i)=><button key={s.id} style={{animationDelay:`${i*40}ms`}} className={`finder-card ${picked?.id===s.id?'active':''}`} onClick={()=>choose(s)}><span>{s.areas.join(' · ')}</span><h3 className="serif">{s.label}</h3><p>{s.symptom}</p></button>)}</div>
-    {text.trim()&&!list.length&&<div className="finder-empty"><p>We couldn&rsquo;t match that to a known problem — every farm is different. Send it to our team and we&rsquo;ll work out a solution with you.</p><a className="btn btn-gold" href={`/?need=problem&message=${encodeURIComponent(`What I'm seeing: ${text}`)}#contact`}>Ask our team ↗</a></div>}
+    {text.trim()&&!list.length&&<div className="finder-empty"><p>We couldn&rsquo;t match that to a known problem — every farm is different. Send it to our team and we&rsquo;ll work out a solution with you.</p><a className="btn btn-gold" href={`/?need=problem&message=${encodeURIComponent(`What I'm seeing: ${text}`)}#contact`}>Ask our team</a></div>}
    </div></div>
   </div>
   <div ref={resultRef} className="finder-result-anchor">{picked&&<Result key={picked.id} s={picked} enquiryHref={enquiry(picked)} whatsappHref={SITE.whatsapp(`Hello AHWAN LAB, I need help with: ${picked.label}${area?` (${area})`:''}. ${text}`.trim())}/>}</div>
@@ -31,7 +31,7 @@ export default function SolutionFinder(){
 
 function Result({s,enquiryHref,whatsappHref}:{s:Solution;enquiryHref:string;whatsappHref:string}){
  return <section className="finder-result">
-  <div className="finder-result-head"><div><div className="eyebrow">Recommended solution</div><h2 className="serif">{s.label}</h2><p>{s.why}</p></div><div className="finder-actions"><a className="btn btn-light" href={whatsappHref} target="_blank" rel="noopener">WhatsApp us</a><a className="btn btn-gold" href={enquiryHref}>Send this to our team ↗</a></div></div>
+  <div className="finder-result-head"><div><div className="eyebrow">Recommended solution</div><h2 className="serif">{s.label}</h2><p>{s.why}</p></div><div className="finder-actions"><a className="btn btn-light" href={whatsappHref} target="_blank" rel="noopener">WhatsApp us</a><a className="btn btn-gold" href={enquiryHref}>Send this to our team</a></div></div>
   {s.caution&&<p className="finder-caution">{s.caution}</p>}
   {s.primary.length>0&&<div className="finder-picks">{s.primary.map(x=><Pick key={x.name} name={x.name} reason={x.reason} label="Use"/>)}</div>}
   {s.also.length>0&&<><h4 className="finder-sub">Also helps</h4><div className="finder-picks small">{s.also.map(x=><Pick key={x.name} name={x.name} reason={x.reason} label="Also consider"/>)}</div></>}
@@ -53,5 +53,5 @@ function Supporting({s}:{s:Solution}){
 
 function Pick({name,reason,label}:{name:string;reason:string;label:string}){
  const p=productByName(name);
- return <Link href={productHref(name)} className="finder-pick">{p?.image&&<img src={p.image} alt="" loading="lazy"/>}<div><span className="finder-pick-label">{label}</span><h3 className="serif">{name}</h3><p>{reason}</p>{p?.dosage[0]&&<p className="finder-dose"><strong>Dose:</strong> {p.dosage[0]}</p>}<span className="product-cta">Full details ↗</span></div></Link>
+ return <Link href={productHref(name)} className="finder-pick">{p?.image&&<img src={p.image} alt="" loading="lazy"/>}<div><span className="finder-pick-label">{label}</span><h3 className="serif">{name}</h3><p>{reason}</p>{p?.dosage[0]&&<p className="finder-dose"><strong>Dose:</strong> {p.dosage[0]}</p>}<span className="product-cta">Full details</span></div></Link>
 }

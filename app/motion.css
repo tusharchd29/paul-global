@@ -1,0 +1,44 @@
+/* Calmer, more editorial finish. Overrides parts of enhancements.css: fewer flourishes,
+   quieter motion, squarer buttons, and headline accents set in ink italic instead of blue.
+   Motion here is limited to things that help reading: sections settle in, images respond
+   to hover, FAQ answers open smoothly. Nothing moves for visitors who prefer reduced motion. */
+
+/* Headlines: sentence case; the second line is an italic in the same ink, not a blue accent.
+   Dark sections keep a softer blue so the line still separates on navy. */
+.hero-copy h1{text-transform:none;letter-spacing:-.01em}
+.product-hero h1{text-transform:none}
+.serif em{font-style:italic;color:inherit}
+:root .eyebrow{letter-spacing:.1em}
+
+/* Buttons: squarer and plainer */
+/* :root raises specificity above globals.css, whose own rules load after this file */
+:root .btn{border-radius:6px;box-shadow:none}
+:root .btn:hover{transform:none;box-shadow:none;filter:brightness(1.08)}
+:root .btn-light:hover{filter:none;background:#eef2fa}
+
+/* Hover: a small lift and a firmer border instead of big floating cards */
+.category:hover,.directory-card:hover,.offer-card:hover,.industry-card:hover,.finder-pick:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(10,22,51,.08)}
+.offer-card:hover,.industry-card:hover{border-color:rgba(10,22,51,.22)}
+.problem-chip:hover{transform:none}
+
+/* Hero: keep the product drums, drop the decorative loops around them */
+.hero:before{animation:none}
+.hero-ring{animation:none}
+
+@media (prefers-reduced-motion:no-preference){
+ /* Sections settle in with a shorter, smaller move */
+ .reveal{transform:translateY(14px);transition-duration:.6s}
+
+ /* Product drum images lift slightly on hover */
+ .formulation-card img{transition:transform .5s cubic-bezier(.2,.8,.2,1)}.formulation-card:hover img{transform:translateY(-4px)}
+
+ /* FAQ answers open smoothly; the plus turns into a cross */
+ .faq-grid details[open] p{animation:heroIn .4s cubic-bezier(.2,.8,.2,1) both}
+ .faq-grid summary span{transition:transform .3s}.faq-grid details[open] summary span{transform:rotate(45deg)}
+
+ /* Step rows draw their top rule as they come into view, where scroll timelines exist */
+ @supports (animation-timeline:view()){
+  .process-grid>div{border-top-color:transparent;background:linear-gradient(currentColor,currentColor) 0 0/0 1px no-repeat;animation:drawLine linear both;animation-timeline:view();animation-range:entry 10% cover 35%}
+  @keyframes drawLine{to{background-size:100% 1px}}
+ }
+}
