@@ -47,6 +47,6 @@ export default function EnquiryForm({interest}:{interest?:string}={}){
   <label>Tell us about your requirement<textarea required name="message" rows={5} placeholder="Specification or composition, application, species, quantity and pack — or describe the problem you are seeing…"/></label>
   <label className="upload-field">Attach specification / RFQ<input type="file" name="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.xlsx,.csv"/></label>
   {status==='error'&&<p className="form-error" role="alert">{error}</p>}
-  <div className="form-submit"><small>By submitting, you are asking AHWAN LAB to respond to your business enquiry.</small><button className="btn btn-gold" type="submit" disabled={status==='sending'}>{status==='sending'?'Sending…':'Send My Requirement ↗'}</button></div>
+  <div className="form-submit"><small>By submitting, you are asking AHWAN LAB to respond to your business enquiry.</small><button className="btn btn-gold" type="submit" disabled={status==='sending'}>{status==='sending'?'Sending…':'Send My Requirement'}</button></div>
  </form>;
 }
