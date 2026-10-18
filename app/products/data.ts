@@ -91,14 +91,14 @@ const gradeTagline=(g:Grade[])=>[...new Set(g.map(x=>x.form))].join(' · ');
 // Ingredient catalogues come first: supplying these to a buyer's specification is the core
 // offer. The finished formulations follow as AHWAN LAB's own formulations.
 export const products:Product[]=[
- ...ENZYMES.map(e=>({name:e.name,category:'Enzymes',type:'Feed enzyme',tagline:gradeTagline(e.grades),summary:e.summary,grades:e.grades,benefits:[],dosage:[]})),
+ ...ENZYMES.map(e=>({name:e.name,category:'Enzymes',type:'Enzyme',tagline:gradeTagline(e.grades),summary:e.summary,grades:e.grades,benefits:[],dosage:[]})),
  ...STRAIN_GROUPS.flatMap(g=>g.names.map(name=>({name,category:'Probiotics',type:g.type,tagline:'Water soluble powder',summary:g.summary,grades:[{spec:CFU,form:'Water soluble powder',pack:PACK}],benefits:[],dosage:[]}))),
  ...YEASTS.map(name=>({name,category:'Yeast',type:'Yeast culture',tagline:'Water soluble powder · Powder',summary:'A live yeast culture supplied as a standalone raw material for probiotic and feed formulations.',grades:[{spec:CFU,form:'Water soluble powder',pack:PACK},{spec:CFU,form:'Powder',pack:PACK}],benefits:[],dosage:[]})),
  ...formulations.map(f=>({...f,category:'Our Formulations'})),
 ];
 export const categories=[...new Set(products.map(p=>p.category))];
 export const categoryMeta:Record<string,{label:string;intro:string}>={
- 'Enzymes':{label:'Enzymes',intro:'Feed enzymes in powder and water-soluble grades — phytase, protease, carbohydrases, lipase and specialty activities — to your required specification.'},
+ 'Enzymes':{label:'Enzymes',intro:'Enzymes in powder and water-soluble grades — phytase, protease, carbohydrases, lipase and specialty activities — for feed, food and industrial use, to your required specification.'},
  'Probiotics':{label:'Probiotics',intro:'Lactic acid, spore-forming, environmental and fungal strains at 5 to 20 billion CFU per gram, available as standalone raw materials.'},
  'Yeast':{label:'Yeast',intro:'Saccharomyces cerevisiae and Saccharomyces boulardii cultures in water-soluble and standard powder grades.'},
  'Our Formulations':{label:'Our Formulations',intro:'Formulations we have developed and use in the industry ourselves — proof of what we can build for you, and a starting point for your own custom blend.'},
