@@ -18,15 +18,15 @@ const featuredProducts=products.filter(p=>p.category!=='Our Formulations').slice
 export default function Home(){return <main className="home-industrial">
 <header className="industrial-hero">
   <div className="industrial-hero-image" aria-hidden="true">
-    <video className="industrial-bg-video" autoPlay muted loop playsInline preload="metadata" poster="https://images.pexels.com/videos/30183210/pexels-photo-30183210.jpeg?auto=compress&cs=tinysrgb&w=1920">
-      <source src="https://videos.pexels.com/video-files/30183210/30183210-hd_1920_1080_25fps.mp4" type="video/mp4"/>
+    <video className="industrial-bg-video" autoPlay muted loop playsInline preload="metadata" poster="https://images.pexels.com/videos/32386621/pexels-photo-32386621.jpeg?auto=compress&cs=tinysrgb&w=1920">
+      <source src="https://videos.pexels.com/video-files/32386621/32386621-hd_1920_1080_25fps.mp4" type="video/mp4"/>
     </video>
   </div>
   <div className="container">
     <nav className="nav industrial-nav">
       <a href="/" className="logo" aria-label={SITE.name}><Logo tagline/></a>
-      <div className="navlinks"><a href="/products">Products</a><a href="/industries">Industries</a><a href="#manufacturing">Manufacturing &amp; Quality</a><a href="/export">Export</a><a href="/about">About</a><a href="#contact">Contact</a></div>
-      <div className="nav-actions"><a className="btn btn-gold" href="#contact">Discuss your requirement</a><MenuButton/></div>
+      <div className="navlinks"><a href="/products">Products</a><a href="/industries">Industries</a><a href="#manufacturing">Manufacturing &amp; Quality</a><a href="/export">Export</a><a href="/about">About</a><a href="/contact">Contact</a></div>
+      <div className="nav-actions"><a className="btn btn-gold" href="/contact">Discuss your requirement</a><MenuButton/></div>
     </nav>
     <div className="industrial-hero-copy">
       <div className="industrial-kicker"><span></span> AHWAN LAB / INDUSTRIAL BIOTECHNOLOGY</div>
@@ -60,8 +60,8 @@ export default function Home(){return <main className="home-industrial">
 <section className="industrial-manufacturing section" id="manufacturing">
   <div className="container industrial-manufacturing-grid">
     <div className="industrial-manufacturing-visual" aria-label="Illustrative industrial manufacturing footage from free stock video">
-      <video className="industrial-section-video" autoPlay muted loop playsInline preload="none" poster="https://images.pexels.com/videos/31767897/pexels-photo-31767897.jpeg?auto=compress&cs=tinysrgb&w=1200">
-        <source src="https://videos.pexels.com/video-files/31767897/31767897-hd_1920_1080_25fps.mp4" type="video/mp4"/>
+      <video className="industrial-section-video" autoPlay muted loop playsInline preload="none" poster="https://images.pexels.com/videos/32386533/pexels-photo-32386533.jpeg?auto=compress&cs=tinysrgb&w=1200">
+        <source src="https://videos.pexels.com/video-files/32386533/32386533-hd_1920_1080_25fps.mp4" type="video/mp4"/>
       </video>
       <div className="industrial-stock-label">ILLUSTRATIVE STOCK FOOTAGE</div>
       <div className="industrial-visual-top"><span>MANUFACTURING PARTNERSHIP</span><span>AHWAN LAB</span></div>
@@ -86,5 +86,5 @@ export default function Home(){return <main className="home-industrial">
 
 <QualitySection/>
 
-<section className="section industrial-contact" id="contact"><div className="container"><div className="industrial-contact-heading"><div><div className="eyebrow">Contact AHWAN LAB</div><h2 className="serif">Let's discuss<br/><em>your process.</em></h2><p>Tell us what you are trying to achieve and the specification you need to meet.</p></div><div className="industrial-contact-details"><div><span>Address</span><p>{SITE.address.map(l=><span key={l}>{l}<br/></span>)}</p></div><div><span>Phone / WhatsApp</span><p><a href={SITE.phoneHref}>{SITE.phone}</a> · <a href={SITE.whatsapp()} target="_blank" rel="noopener">WhatsApp</a></p></div><div><span>Email</span><p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p></div></div></div><EnquiryForm/></div></section>
+
 </main>}
