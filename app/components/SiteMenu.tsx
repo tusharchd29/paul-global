@@ -10,7 +10,7 @@ import {industries,industrySlug} from '../industries/data';
 // The provider wraps the whole body so any header (server or client) can place a MenuButton.
 const MenuContext=createContext<{open:boolean;setOpen:(v:boolean)=>void}>({open:false,setOpen:()=>{}});
 
-const PAGES:[string,string][]=[['/','Home'],['/solutions','Solutions by Industry'],['/industries','Industries'],['/products','Products & Ingredients'],['/#manufacturing','Manufacturing & Quality'],['/solutions','Solutions by Industry'],['/export','Export & Distributors'],['/about','Quality & Company'],['/about','About Us'],['/#contact','Contact']];
+const PAGES:[string,string][]=[['/','Home'],['/products','Products & Ingredients'],['/industries','Industries'],['/solutions','Solutions by Industry'],['/#manufacturing','Manufacturing & Quality'],['/export','Export & Distributors'],['/about','About Us'],['/#contact','Contact']];
 const formulations=products.filter(p=>p.category==='Our Formulations');
 
 export function MenuButton({tabIndex}:{tabIndex?:number}){
