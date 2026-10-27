@@ -28,7 +28,7 @@ export default function Home(){return <main className="home-industrial">
       <div className="industrial-kicker"><span></span> AHWAN LAB / INDUSTRIAL BIOTECHNOLOGY</div>
       <h1 className="serif">Enzyme solutions<br/><em>for complex processes.</em></h1>
       <p>Industrial enzymes, microbial cultures and tailored formulations—matched to your application, process and specification.</p>
-      <div className="industrial-hero-actions"><a className="btn btn-gold" href="/products">Explore products <span aria-hidden="true">↗</span></a><a className="industrial-secondary" href="#contact">Tell us what you need <span aria-hidden="true">→</span></a></div>
+      <div className="industrial-hero-actions"><a className="btn btn-gold" href="/products">Explore products <span aria-hidden="true">↗</span></a><a className="industrial-secondary" href="/solutions">Find a solution <span aria-hidden="true">→</span></a></div>
       <div className="industrial-hero-note"><span>01 / APPLICATION</span><span>02 / SPECIFICATION</span><span>03 / SUPPLY</span></div>
     </div>
     <div className="industrial-hero-caption"><span>SCIENCE APPLIED TO INDUSTRY</span><span>INDIA · INDUSTRIAL MARKETS</span></div>
