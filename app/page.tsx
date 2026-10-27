@@ -1,4 +1,3 @@
-import EnquiryForm from './components/EnquiryForm';
 import {MenuButton} from './components/SiteMenu';
 import Logo from './components/Logo';
 import QualitySection from './components/QualitySection';
@@ -81,7 +80,7 @@ export default function Home(){return <main className="home-industrial">
 </section>
 
 <section className="industrial-partner-band">
-  <div className="container industrial-partner-content"><div><div className="eyebrow">From requirement to supply</div><h2 className="serif">A clear brief makes<br/><em>a better starting point.</em></h2></div><p>Share your industry, application, target specification and estimated quantity. If you do not know which enzyme or culture you need, describe the process challenge and we can review it with you.</p><a className="btn btn-gold" href="#contact">Discuss your requirement <span>↗</span></a></div>
+  <div className="container industrial-partner-content"><div><div className="eyebrow">From requirement to supply</div><h2 className="serif">A clear brief makes<br/><em>a better starting point.</em></h2></div><p>Share your industry, application, target specification and estimated quantity. If you do not know which enzyme or culture you need, describe the process challenge and we can review it with you.</p><a className="btn btn-gold" href="/contact">Discuss your requirement <span>↗</span></a></div>
 </section>
 
 <QualitySection/>
