@@ -6,17 +6,17 @@ import QualitySection from '../components/QualitySection';
 import {SITE} from '../site';
 import {products,productSlug} from '../products/data';
 
-export const metadata={title:'Export & Distributors | AHWAN LAB',description:'Import enzymes, probiotics, yeast and ready formulations for poultry and animal feed from AHWAN LAB, India — supplied to your specification, with COA, SDS and TDS. Distributor enquiries welcome.'};
+export const metadata={title:'Export & Distributors | AHWAN LAB',description:'Source industrial enzymes, probiotic strains, yeast and selected formulations from India for food, starch, textile, paper, detergent, agriculture, wastewater, biofuel and animal feed applications. Distributor enquiries welcome.'};
 
 const formulations=products.filter(p=>p.category==='Our Formulations');
 const why=[
- ['01','Built to your specification','Activity, CFU count, carrier and form matched to your market, your feed and your registration — not a fixed catalogue grade.'],
- ['02','Documents for registration','COA, SDS and TDS for each product, and Certificate of Origin for each shipment, to support your import registration.'],
- ['03','From trial lot to full lots','Start with samples and a trial quantity, then move to regular commercial lots as your market grows.'],
+ ['01','Built to your specification','Product activity, strain, carrier and form reviewed against your application, market requirements and the available specification.'],
+ ['02','Documents for registration','Available product documentation and shipment-origin documents confirmed for the selected product and destination.'],
+ ['03','From trial lot to full lots','Trial quantities and commercial supply options discussed according to product availability and manufacturing requirements.'],
 ];
 const terms=[
  ['Incoterms','Quoted FOB India or CIF your nearest port, in USD.'],
- ['Packing','25 kg HDPE drums or bags, palletised for export, or packed as agreed — including your own label.'],
+ ['Packing','Packaging, export labelling and private-label options confirmed per product, order and destination.'],
  ['Samples','Samples for evaluation and trials, sent by courier before the first order.'],
  ['Quotation','Quantity, lead time and payment terms confirmed with each quotation.'],
 ];
