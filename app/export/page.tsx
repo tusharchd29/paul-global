@@ -2,7 +2,6 @@ import Link from 'next/link';
 import {MenuButton} from '../components/SiteMenu';
 import Logo from '../components/Logo';
 import EnquiryForm from '../components/EnquiryForm';
-import QualitySection from '../components/QualitySection';
 import {SITE} from '../site';
 import {products,productSlug} from '../products/data';
 
@@ -42,7 +41,6 @@ export default function Export(){return <main className="products-page">
   <div className="process-grid">{terms.map(([t,d],i)=><div key={t}><span className="offer-no">{String(i+1).padStart(2,'0')}</span><h3 className="serif">{t}</h3><p>{d}</p></div>)}</div>
  </div></section>
 
- <QualitySection/>
 
  <section className="section technical" id="distributor"><div className="container"><div className="technical-grid">
   <div><div className="eyebrow">Become a distributor</div><h2 className="serif">Represent AHWAN LAB<br/><em>in your country.</em></h2><p className="lead">We are looking for distribution partners in poultry and animal-health markets. You bring the market; we bring the product range, the documents and the technical support.</p><ul className="strength-list">{offer.map(s=><li key={s}>{s}</li>)}</ul><div className="hero-actions"><a className="btn btn-gold" href="#contact">Apply to distribute</a><a className="btn btn-light" href={SITE.whatsapp('Hello AHWAN LAB, I am interested in becoming a distributor in:')} target="_blank" rel="noopener">WhatsApp us</a></div></div>
