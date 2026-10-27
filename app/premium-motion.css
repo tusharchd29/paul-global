@@ -283,3 +283,42 @@
 
 .industrial-nav .menu-button{display:none}
 @media(max-width:780px){.industrial-nav .menu-button{display:inline-flex}}
+
+/* Balanced, industry-led product and solution discovery */
+.product-discovery-heading,.industry-solution-heading{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:36px}
+.product-discovery-heading h2,.industry-solution-heading h2{font-size:clamp(38px,4.8vw,62px);line-height:1;letter-spacing:-.04em;margin:12px 0 0}
+.product-discovery-heading h2 em,.industry-solution-heading h2 em{font-style:normal;color:#5d9892}
+.product-discovery-heading>p,.industry-solution-heading>p{max-width:500px;color:#647276;font-size:14px;line-height:1.85;margin:0}
+.product-industry-directory{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.product-industry-link{display:grid;grid-template-columns:28px 1fr 20px;gap:15px;align-items:start;padding:22px;background:#f0f3f1;border:1px solid #e0e7e4;min-height:145px;transition:background .2s,border-color .2s,transform .2s}
+.product-industry-link:hover{background:#fff;border-color:#9abcb6;transform:translateY(-2px)}
+.product-industry-link>span{font-size:9px;color:#7a9a96;letter-spacing:.12em;padding-top:4px}
+.product-industry-link h3{font-size:24px;line-height:1.1;margin:0 0 8px;letter-spacing:-.025em}
+.product-industry-link p{font-size:12px;line-height:1.65;color:#667579;margin:0}
+.product-industry-link>b{color:#477e79;font-weight:400}
+.product-discovery-divider{display:flex;align-items:center;gap:18px;margin:72px 0 35px;color:#73908c;font-size:9px;letter-spacing:.17em}
+.product-discovery-divider:before,.product-discovery-divider:after{content:"";height:1px;background:#dbe3df;flex:1}
+.industry-solution-explorer{padding:34px;background:#f0f4f1;border:1px solid #e0e8e3;margin-bottom:46px}
+.industry-solution-options{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.industry-solution-option{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px;background:#fff;border:1px solid #dce6e1;color:#203e40;text-align:left;font:inherit;font-size:12px;cursor:pointer;min-height:55px}
+.industry-solution-option b{font-weight:400;color:#709995}
+.industry-solution-option:hover,.industry-solution-option.active{border-color:#4b8982;background:#e0eeea}
+.industry-solution-results{margin-top:28px;padding-top:26px;border-top:1px solid #d7e2dc}
+.industry-solution-results-head{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:22px}
+.industry-solution-results-head h3{font-size:32px;line-height:1;margin:8px 0}
+.industry-solution-results-head p{max-width:700px;color:#5c6f70;font-size:13px;line-height:1.75;margin:0}
+.industry-solution-results-head .btn{white-space:nowrap;border-radius:2px}
+.industry-use-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.industry-use-card{padding:20px;background:#fff;border:1px solid #e1e8e4;display:flex;flex-direction:column;min-height:205px}
+.industry-use-card>span{font-size:8px;letter-spacing:.13em;color:#799692}
+.industry-use-card h4{font-size:21px;margin:19px 0 9px;line-height:1.1}
+.industry-use-card p{font-size:12px;line-height:1.7;color:#647477;margin:0 0 18px;flex:1}
+.industry-use-card a{font-size:11px;font-weight:700;color:#326e69}
+.industry-solution-note{font-size:12px;line-height:1.7;color:#637575;margin:22px 0 0}
+.industry-solution-cta{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:25px;padding-top:22px;border-top:1px solid #d7e2dc}
+.industry-solution-cta p{font-size:13px;color:#405d5d;margin:0}
+.industry-solution-cta .btn{border-radius:2px}
+.poultry-finder-divider{display:flex;align-items:center;gap:16px;margin:40px 0 22px;color:#73908c;font-size:9px;letter-spacing:.15em}
+.poultry-finder-divider:before,.poultry-finder-divider:after{content:"";height:1px;background:#dce4e0;flex:1}
+@media(max-width:900px){.product-industry-directory{grid-template-columns:repeat(2,minmax(0,1fr))}.industry-solution-options{grid-template-columns:repeat(3,minmax(0,1fr))}.industry-use-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product-discovery-heading,.industry-solution-heading{gap:25px}}
+@media(max-width:650px){.product-discovery-heading,.industry-solution-heading{grid-template-columns:1fr;gap:16px}.product-industry-directory{grid-template-columns:1fr}.product-industry-link{min-height:0}.industry-solution-explorer{padding:18px}.industry-solution-options{grid-template-columns:repeat(2,minmax(0,1fr))}.industry-solution-results-head{flex-direction:column;align-items:start}.industry-use-grid{grid-template-columns:1fr}.industry-use-card{min-height:0}.industry-solution-cta{align-items:start;flex-direction:column}.product-discovery-divider{margin:45px 0 25px}.poultry-finder-divider{font-size:7px;letter-spacing:.08em}}
