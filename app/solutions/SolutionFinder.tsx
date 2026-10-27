@@ -3,6 +3,8 @@ import {useEffect,useMemo,useRef,useState} from 'react';
 import Link from 'next/link';
 import {SITE} from '../site';
 import {AREAS,solutions,matchSolutions,productByName,productHref,type Area,type Solution} from './data';
+import {industries,industrySlug} from '../industries/data';
+import {products,productSlug} from '../products/data';
 
 const examples=['My eggs have thin shells','Strong ammonia smell in the shed','Birds are not gaining weight','DCP is making feed too expensive'];
 
@@ -10,6 +12,8 @@ export default function SolutionFinder(){
  const [area,setArea]=useState<Area|''>('');
  const [text,setText]=useState('');
  const [picked,setPicked]=useState<Solution|null>(null);
+ const [industryName,setIndustryName]=useState('');
+ const selectedIndustry=industries.find(i=>i.name===industryName);
  const resultRef=useRef<HTMLDivElement>(null);
  useEffect(()=>{const params=new URLSearchParams(window.location.search);const p=solutions.find(s=>s.id===params.get('p'));const q=params.get('q');if(q)setText(q);if(p){setPicked(p);setTimeout(()=>resultRef.current?.scrollIntoView({behavior:'smooth',block:'start'}),150)}},[]);
  const matched=useMemo(()=>matchSolutions(text),[text]);
