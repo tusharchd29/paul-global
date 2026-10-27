@@ -21,7 +21,7 @@ export default function Home(){return <main className="home-industrial">
   <div className="container">
     <nav className="nav industrial-nav">
       <a href="/" className="logo" aria-label={SITE.name}><Logo tagline/></a>
-      <div className="navlinks"><a href="/products">Products</a><a href="/industries">Industries</a><a href="#manufacturing">Manufacturing &amp; Quality</a><a href="/about">About</a><a href="#contact">Contact</a></div>
+      <div className="navlinks"><a href="/products">Products</a><a href="/industries">Industries</a><a href="#manufacturing">Manufacturing &amp; Quality</a><a href="/export">Export</a><a href="/about">About</a><a href="#contact">Contact</a></div>
       <div className="nav-actions"><a className="btn btn-gold" href="#contact">Discuss your requirement</a><MenuButton/></div>
     </nav>
     <div className="industrial-hero-copy">
