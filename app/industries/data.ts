@@ -49,6 +49,10 @@ export const industries:Industry[]=[
   intro:'Enzymes convert starch and fibre into fermentable sugars, and yeast ferments them to ethanol.',
   uses:[{name:'Amylase',role:'Liquefaction of grain mash.'},{name:'Protease',role:'Releases free amino nitrogen to support yeast during fermentation.'},{name:'Beta-glucanase',role:'Reduces mash viscosity.'},{name:'Xylanase',role:'Reduces mash viscosity and releases sugars from fibre.'},{name:'Cellulase',role:'Converts fibre to fermentable sugars.'},{name:'Saccharomyces cerevisiae',role:'Ferments sugars to ethanol.'}],
   enquiry:['Glucoamylase']},
+
+ {name:'Polymer & Bioprocessing',short:'Enzyme options for selected polymer, bioconversion and process applications.',intro:'Some polymer and bioprocessing workflows use enzymes or biological catalysts for specific conversion steps. The process chemistry, substrate, operating conditions and desired output need to be reviewed before a product can be recommended.',uses:[],enquiry:['Process-specific enzyme or biocatalyst'],note:'This is a discovery category, not a claim that every polymer application is supported. Availability and technical fit must be confirmed with the manufacturing partner.'},
+ {name:'Soil Stabilisation',short:'Explore biological and enzyme-based options for soil and ground-treatment projects.',intro:'Soil-treatment requirements vary by soil type, moisture, loading, climate and intended use. A technical brief and project conditions are needed before identifying whether an enzyme or microbial product is appropriate.',uses:[],enquiry:['Project-specific soil treatment solution'],note:'No performance or engineering claim is made without site-specific data and validation.'},
+
 ];
 
 export const industrySlug=(i:Industry)=>slugify(i.name);
