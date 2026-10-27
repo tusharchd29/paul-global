@@ -2,7 +2,7 @@ export type Row=[string,string];
 export type Grade={spec:string;form:string;pack:string};
 export type Product={name:string;category:string;type:string;tagline:string;summary:string;image?:string;notice?:string;sections?:{title:string;body:string}[];composition?:{title:string;rows:Row[]}[];points?:string[];benefits:string[];dosage:string[];presentation?:string;storage?:string;matrix?:{note:string;columns:string[];rows:[string,string,string][]};grades?:Grade[]};
 
-// Finished poultry formulations, transcribed from the AHWAN LAB brochure (composition, indication,
+// Finished poultry formulations, transcribed from the supplied product brochure (composition, indication,
 // dose and presentation exactly as printed; obvious spelling slips corrected).
 const formulations:Omit<Product,'category'>[]=[
  {name:'Calshell',type:'Calcium supplement',tagline:'Calcium granules to improve egg shell',image:'/products/calshell.png',
@@ -101,7 +101,7 @@ export const categoryMeta:Record<string,{label:string;intro:string}>={
  'Enzymes':{label:'Enzymes',intro:'Enzymes in powder and water-soluble grades — phytase, protease, carbohydrases, lipase and specialty activities — for feed, food and industrial use, to your required specification.'},
  'Probiotics':{label:'Probiotics',intro:'Lactic acid, spore-forming, environmental and fungal strains at 5 to 20 billion CFU per gram, available as standalone raw materials.'},
  'Yeast':{label:'Yeast',intro:'Saccharomyces cerevisiae and Saccharomyces boulardii cultures in water-soluble and standard powder grades.'},
- 'Our Formulations':{label:'Our Formulations',intro:'Formulations we have developed and use in the industry ourselves — proof of what we can build for you, and a starting point for your own custom blend.'},
+ 'Our Formulations':{label:'Formulations',intro:'Selected ready formulations. Composition, product claims, source and availability remain product-specific; formulations are presented as supplied and are not altered without the formulation owner’s approval.'},
 };
 export function slugify(v:string){return v.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'')}
 export function productSlug(p:Product){return `${slugify(p.category)}--${slugify(p.name)}`}
