@@ -57,8 +57,10 @@ export const industries:Industry[]=[
 
 export const industrySlug=(i:Industry)=>slugify(i.name);
 export const getIndustry=(slug:string)=>industries.find(i=>industrySlug(i)===slug);
-// Catalogue products used in an industry, in the order listed. Prefers the ingredient over a formulation of the same name.
+// Match catalogue names robustly (e.g. β-glucanase vs Beta-glucanase) without inventing product aliases.
+const normalizeIngredient=(name:string)=>name.toLowerCase().replace(/β/g,'beta').replace(/α/g,'alpha').replace(/[^a-z0-9]+/g,'');
+const sameIngredient=(a:string,b:string)=>{const x=normalizeIngredient(a),y=normalizeIngredient(b);return x===y||x.startsWith(y)||y.startsWith(x)};
 export function industryProducts(i:Industry):{product:Product;role:string}[]{
- return i.uses.flatMap(u=>{const product=products.find(p=>p.name===u.name&&p.category!=='Our Formulations');return product?[{product,role:u.role}]:[]});
+ return i.uses.flatMap(u=>{const product=products.find(p=>p.category!=='Our Formulations'&&sameIngredient(p.name,u.name));return product?[{product,role:u.role}]:[]});
 }
-export const industriesFor=(name:string)=>industries.filter(i=>i.uses.some(u=>u.name===name));
+export const industriesFor=(name:string)=>industries.filter(i=>i.uses.some(u=>sameIngredient(u.name,name)));
