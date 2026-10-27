@@ -17,7 +17,11 @@ const featuredProducts=products.filter(p=>p.category!=='Our Formulations').slice
 
 export default function Home(){return <main className="home-industrial">
 <header className="industrial-hero">
-  <div className="industrial-hero-image" aria-hidden="true"></div>
+  <div className="industrial-hero-image" aria-hidden="true">
+    <video className="industrial-bg-video" autoPlay muted loop playsInline preload="metadata" poster="https://images.pexels.com/videos/30183210/pexels-photo-30183210.jpeg?auto=compress&cs=tinysrgb&w=1920">
+      <source src="https://videos.pexels.com/video-files/30183210/30183210-hd_1920_1080_25fps.mp4" type="video/mp4"/>
+    </video>
+  </div>
   <div className="container">
     <nav className="nav industrial-nav">
       <a href="/" className="logo" aria-label={SITE.name}><Logo tagline/></a>
@@ -55,10 +59,14 @@ export default function Home(){return <main className="home-industrial">
 
 <section className="industrial-manufacturing section" id="manufacturing">
   <div className="container industrial-manufacturing-grid">
-    <div className="industrial-manufacturing-visual" aria-label="Manufacturing and quality overview">
+    <div className="industrial-manufacturing-visual" aria-label="Illustrative industrial manufacturing footage from free stock video">
+      <video className="industrial-section-video" autoPlay muted loop playsInline preload="none" poster="https://images.pexels.com/videos/31767897/pexels-photo-31767897.jpeg?auto=compress&cs=tinysrgb&w=1200">
+        <source src="https://videos.pexels.com/video-files/31767897/31767897-hd_1920_1080_25fps.mp4" type="video/mp4"/>
+      </video>
+      <div className="industrial-stock-label">ILLUSTRATIVE STOCK FOOTAGE</div>
       <div className="industrial-visual-top"><span>MANUFACTURING PARTNERSHIP</span><span>AHWAN LAB</span></div>
-      <div className="industrial-visual-mark"><span></span><span></span><span></span><i></i></div>
-      <div className="industrial-visual-bottom"><span>FERMENTATION</span><span>FORMULATION</span><span>QUALITY CONTROL</span></div>
+      
+      <div className="industrial-visual-bottom"><span>SCIENCE</span><span>PROCESS</span><span>APPLICATION</span></div>
     </div>
     <div className="industrial-manufacturing-copy"><div className="eyebrow">Manufacturing &amp; quality</div><h2 className="serif">Built on a clear<br/><em>specification.</em></h2><p>AHWAN LAB’s portfolio is manufactured through its manufacturing partner, Gujarat Enzyme. Product availability, specifications, documentation and claims are confirmed product by product before supply.</p><p>We aim to make technical information easier to evaluate—from the requested activity or strain to the product form, pack and documentation required for your application.</p><a className="industrial-inline-link" href="/about">Learn about AHWAN LAB <span>↗</span></a><p className="industrial-note">Manufacturing imagery and facility-specific claims will be added only where media rights and the underlying facts are confirmed.</p></div>
   </div>
