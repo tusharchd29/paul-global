@@ -93,7 +93,7 @@ const gradeTagline=(g:Grade[])=>[...new Set(g.map(x=>x.form))].join(' · ');
 export const products:Product[]=[
  ...ENZYMES.map(e=>({name:e.name,category:'Enzymes',type:'Enzyme',tagline:gradeTagline(e.grades),summary:e.summary,grades:e.grades,benefits:[],dosage:[]})),
  ...STRAIN_GROUPS.flatMap(g=>g.names.map(name=>({name,category:'Probiotics',type:g.type,tagline:'Water soluble powder',summary:g.summary,grades:[{spec:CFU,form:'Water soluble powder',pack:PACK}],benefits:[],dosage:[]}))),
- ...YEASTS.map(name=>({name,category:'Yeast',type:'Yeast culture',tagline:'Water soluble powder · Powder',summary:'A live yeast culture supplied as a standalone raw material for probiotic and feed formulations.',grades:[{spec:CFU,form:'Water soluble powder',pack:PACK},{spec:CFU,form:'Powder',pack:PACK}],benefits:[],dosage:[]})),
+ ...YEASTS.map(name=>({name,category:'Yeast',type:'Yeast culture',tagline:'Water soluble powder · Powder',summary:'A live yeast culture supplied as a standalone raw material; suitable applications and strain specifications are confirmed per product.',grades:[{spec:CFU,form:'Water soluble powder',pack:PACK},{spec:CFU,form:'Powder',pack:PACK}],benefits:[],dosage:[]})),
  ...formulations.map(f=>({...f,category:'Our Formulations'})),
 ];
 export const categories=[...new Set(products.map(p=>p.category))];
