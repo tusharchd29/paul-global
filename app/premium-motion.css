@@ -337,3 +337,21 @@
 .industrial-visual-top{top:24px}.industrial-visual-bottom{bottom:22px;border-top:1px solid rgba(255,255,255,.35);padding-top:14px}
 @media(max-width:700px){.industrial-bg-video{opacity:.3}.industrial-hero:after{background:linear-gradient(90deg,rgba(3,12,29,.91),rgba(4,18,42,.62)),linear-gradient(0deg,rgba(3,12,29,.48),transparent 55%)}.industrial-manufacturing-visual{min-height:320px}.industrial-stock-label{bottom:58px;font-size:8px}}
 @media(prefers-reduced-motion:reduce){.industrial-bg-video,.industrial-section-video{display:none}}
+
+/* Video stacking and mobile autoplay visibility fixes */
+.industrial-hero-image{z-index:0!important}
+.industrial-bg-video{z-index:0;display:block;pointer-events:none}
+.industrial-hero:after{z-index:1!important}
+.industrial-hero .container{z-index:2!important}
+.industrial-manufacturing-visual{isolation:isolate}
+.industrial-section-video{z-index:0!important;display:block;pointer-events:none}
+.industrial-manufacturing-visual:after{z-index:1!important}
+.industrial-visual-top,.industrial-visual-bottom,.industrial-stock-label{z-index:2}
+@media(max-width:700px){
+ .industrial-hero{min-height:760px}
+ .industrial-hero-image{inset:0}
+ .industrial-bg-video{opacity:.34;object-position:center}
+ .industrial-hero .container{padding-left:20px;padding-right:20px}
+ .industrial-manufacturing-visual{min-height:300px}
+}
+@media(prefers-reduced-motion:reduce){.industrial-bg-video,.industrial-section-video{display:none!important}}
