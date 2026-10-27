@@ -7,8 +7,8 @@ import { SITE_URL } from './sitemap';
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   openGraph: { siteName: 'AHWAN LAB', type: 'website', locale: 'en_IN' },
-  title: 'AHWAN LAB | Animal Health, Wellness and Nutrition',
-  description: 'Customized enzyme, probiotic and yeast solutions for animal health, food and industry — Calshell, Progrow, Livoshield, Phytomin Pro, Digesmo-Pro and XP-Zyme.',
+  title: 'AHWAN LAB | Industrial Enzyme Solutions',
+  description: 'Industrial enzymes, microbial cultures and tailored formulations for food, starch, textile, paper, detergents and other industrial applications.',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
