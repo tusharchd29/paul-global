@@ -5,16 +5,16 @@ import QualitySection from '../components/QualitySection';
 import {SITE} from '../site';
 import {industries,industrySlug} from '../industries/data';
 import {categoryMeta,slugify} from '../products/data';
-export const metadata={title:'About Us | AHWAN LAB',description:'AHWAN LAB develops customized enzyme, probiotic and yeast solutions, manufactured at a partner facility in Gujarat, India, for animal feed, food and industry.'};
+export const metadata={title:'About Us | AHWAN LAB',description:'AHWAN LAB supplies enzyme, probiotic and yeast solutions for industrial applications, with manufacturing through Gujarat Enzyme and product specifications confirmed by range.'};
 const pillars=[
  ['Mission','Quality enzymes at affordable prices','Deliver quality enzymes at affordable prices, to global standards.'],
- ['Vision','Leadership in enzyme solutions','Gain leadership positions in poultry, animal-health and industrial enzymes.'],
+ ['Vision','Leadership in enzyme solutions','Build a trusted position in industrial enzyme and microbial solutions across relevant markets.'],
  ['Approach','Tailor-made for your application','Every product is matched to a specification agreed with you — activity, strain, form and pack.'],
 ];
 const model=[
  ['Your requirement','You share the ingredient, composition or problem, with the application and quantity.'],
- ['Our specification','Our technical team matches activity, strains, carrier and form to your application.'],
- ['Partner manufacturing','Produced at our partner manufacturing facility in Gujarat, India, to the agreed specification.'],
+ ['Our specification','We review the requested application and match it to available products and their confirmed technical specifications.'],
+ ['Partner manufacturing','Manufacturing is supported by Gujarat Enzyme; the applicable product specification and supply terms are confirmed before order.'],
  ['Documented supply','Supplied in your format, with COA, SDS and TDS on request, in India or for export.'],
 ];
 export default function About(){return <main className="products-page">
