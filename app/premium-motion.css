@@ -322,3 +322,18 @@
 .poultry-finder-divider:before,.poultry-finder-divider:after{content:"";height:1px;background:#dce4e0;flex:1}
 @media(max-width:900px){.product-industry-directory{grid-template-columns:repeat(2,minmax(0,1fr))}.industry-solution-options{grid-template-columns:repeat(3,minmax(0,1fr))}.industry-use-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product-discovery-heading,.industry-solution-heading{gap:25px}}
 @media(max-width:650px){.product-discovery-heading,.industry-solution-heading{grid-template-columns:1fr;gap:16px}.product-industry-directory{grid-template-columns:1fr}.product-industry-link{min-height:0}.industry-solution-explorer{padding:18px}.industry-solution-options{grid-template-columns:repeat(2,minmax(0,1fr))}.industry-solution-results-head{flex-direction:column;align-items:start}.industry-use-grid{grid-template-columns:1fr}.industry-use-card{min-height:0}.industry-solution-cta{align-items:start;flex-direction:column}.product-discovery-divider{margin:45px 0 25px}.poultry-finder-divider{font-size:7px;letter-spacing:.08em}}
+
+/* Accessible, lightweight free-stock video backgrounds for the industrial redesign */
+.industrial-hero{position:relative;isolation:isolate;overflow:hidden;background:#06142b}
+.industrial-hero-image{position:absolute;inset:0;z-index:-2;overflow:hidden;background:linear-gradient(115deg,#06142b 0%,#0a2850 55%,#06142b 100%)}
+.industrial-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;filter:saturate(.72) contrast(1.08)}
+.industrial-hero:after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(3,12,29,.94) 0%,rgba(4,18,42,.82) 43%,rgba(4,18,42,.45) 100%),linear-gradient(0deg,rgba(3,12,29,.56),transparent 45%)}
+.industrial-hero .container{position:relative;z-index:1}
+.industrial-manufacturing-visual{position:relative;isolation:isolate;min-height:430px;overflow:hidden;background:#07172c;color:#fff}
+.industrial-section-video{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;opacity:.76;filter:saturate(.72) contrast(1.05)}
+.industrial-manufacturing-visual:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(3,12,29,.62),rgba(3,12,29,.12) 45%,rgba(3,12,29,.82))}
+.industrial-stock-label{position:absolute;right:18px;bottom:58px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.78)}
+.industrial-visual-top,.industrial-visual-bottom{position:absolute;left:24px;right:24px;display:flex;justify-content:space-between;gap:12px;color:#fff;font-size:9px;letter-spacing:.14em;text-transform:uppercase}
+.industrial-visual-top{top:24px}.industrial-visual-bottom{bottom:22px;border-top:1px solid rgba(255,255,255,.35);padding-top:14px}
+@media(max-width:700px){.industrial-bg-video{opacity:.3}.industrial-hero:after{background:linear-gradient(90deg,rgba(3,12,29,.91),rgba(4,18,42,.62)),linear-gradient(0deg,rgba(3,12,29,.48),transparent 55%)}.industrial-manufacturing-visual{min-height:320px}.industrial-stock-label{bottom:58px;font-size:8px}}
+@media(prefers-reduced-motion:reduce){.industrial-bg-video,.industrial-section-video{display:none}}
