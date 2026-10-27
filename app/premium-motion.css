@@ -355,3 +355,38 @@
  .industrial-manufacturing-visual{min-height:300px}
 }
 @media(prefers-reduced-motion:reduce){.industrial-bg-video,.industrial-section-video{display:none!important}}
+
+
+/* Final mobile refinement: shorter homepage hero and a dedicated enquiry page */
+@media(max-width:700px){
+ .industrial-hero{min-height:0!important}
+ .industrial-hero .container{padding-left:20px;padding-right:20px}
+ .industrial-nav{height:74px}
+ .industrial-hero-copy{padding-top:68px!important;padding-bottom:46px!important}
+ .industrial-hero-copy h1{font-size:clamp(43px,10.2vw,62px)!important;line-height:.98!important;letter-spacing:-.045em!important;margin:22px 0 22px!important}
+ .industrial-hero-copy>p{font-size:16px!important;line-height:1.65!important;max-width:100%!important;margin-bottom:22px!important}
+ .industrial-hero-actions{gap:12px!important;align-items:center}
+ .industrial-hero-actions .btn{padding:14px 16px;font-size:12px}
+ .industrial-hero-note{gap:12px!important;margin-top:32px!important;flex-wrap:wrap}
+ .industrial-hero-note span{font-size:8px!important;letter-spacing:.08em!important}
+ .industrial-hero-caption{position:static!important;display:flex;justify-content:space-between;gap:12px;padding:18px 0 22px!important;font-size:8px!important;letter-spacing:.08em!important}
+ .industrial-intro.section,.industrial-applications.section,.industrial-manufacturing.section,.industrial-featured.section{padding-top:62px!important;padding-bottom:62px!important}
+ .industrial-intro-grid{gap:22px!important;margin-bottom:30px!important}
+ .industrial-family-grid{gap:10px!important}
+ .industrial-industry-grid{gap:10px!important}
+ .industrial-manufacturing-visual{min-height:280px!important}
+ .industrial-product-grid{gap:14px!important}
+ .industrial-partner-content{padding-top:42px!important;padding-bottom:42px!important}
+}
+.contact-page-section{background:#f5f7f6}
+.contact-page .products-header{background:#06142b;color:#fff}
+.contact-page .products-title{padding-bottom:72px}
+.contact-page .industrial-contact-heading{margin-bottom:38px}
+.contact-page .enquiry-form{max-width:100%;margin:0 auto}
+@media(max-width:650px){
+ .contact-page .products-title{padding-top:48px;padding-bottom:48px}
+ .contact-page .products-title h1{font-size:clamp(44px,11vw,62px);line-height:.98}
+ .contact-page .industrial-contact-heading{display:block}
+ .contact-page .industrial-contact-details{margin-top:30px}
+ .contact-page .enquiry-form{padding:22px}
+}
