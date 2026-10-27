@@ -4,37 +4,26 @@ import Logo from '../components/Logo';
 import QualitySection from '../components/QualitySection';
 import {SITE} from '../site';
 import {industries,industrySlug} from '../industries/data';
-import {categoryMeta,slugify} from '../products/data';
-export const metadata={title:'About Us | AHWAN LAB',description:'AHWAN LAB supplies enzyme, probiotic and yeast solutions for industrial applications, with manufacturing through Gujarat Enzyme and product specifications confirmed by range.'};
+
+export const metadata={title:'About AHWAN LAB | Biotechnology & Enzyme Solutions',description:'Learn about AHWAN LAB’s biotechnology approach, enzyme and microbial product ranges, manufacturing, research and quality.'};
 const pillars=[
- ['Mission','Quality enzymes at affordable prices','Deliver quality enzymes at affordable prices, to global standards.'],
- ['Vision','Leadership in enzyme solutions','Build a trusted position in industrial enzyme and microbial solutions across relevant markets.'],
- ['Approach','Tailor-made for your application','Every product is matched to a specification agreed with you — activity, strain, form and pack.'],
+ ['Research-led','Biotechnology with purpose','Developing and selecting enzyme and microbial solutions around real application needs.'],
+ ['Quality-focused','Consistency through process','Technical specifications, process controls and documentation matter at every stage of supply.'],
+ ['Application-led','Solutions beyond one industry','Enzyme and microbial technologies can serve food, feed, agriculture and diverse industrial processes.']
 ];
-const model=[
- ['Your requirement','You share the ingredient, composition or problem, with the application and quantity.'],
- ['Our specification','We review the requested application and match it to available products and their confirmed technical specifications.'],
- ['Partner manufacturing','Manufacturing is supported by Gujarat Enzyme; the applicable product specification and supply terms are confirmed before order.'],
- ['Documented supply','Supplied in your format, with COA, SDS and TDS on request, in India or for export.'],
+const capabilities=[
+ ['Submerged fermentation','Microbial production in controlled liquid systems, where applicable to the organism and product.'],
+ ['Solid-state fermentation','Fermentation on suitable solid substrates for selected organisms and process requirements.'],
+ ['Downstream processing','Recovery, separation and processing steps used to prepare products for their intended form.'],
+ ['Formulation & blending','Product finishing and application-led formulations, subject to the agreed specification.'],
+ ['Quality documentation','Batch and product documentation appropriate to the product, market and customer requirement.']
 ];
 export default function About(){return <main className="products-page">
- <header className="products-header"><div className="container"><div className="products-nav"><Link className="logo" href="/" aria-label={SITE.name}><Logo tagline/></Link><nav className="products-links"><Link href="/">Home</Link><Link href="/industries">Industries</Link><Link href="/products">Ingredients</Link><Link href="/export">Export</Link><a href="/#contact">Contact</a></nav><div className="nav-actions"><Link className="btn btn-gold" href="/#contact">Share Your Requirement</Link><MenuButton/></div></div><div className="products-title"><div className="eyebrow">AHWAN LAB · About us</div><h1 className="serif">A better option for<br/><em>biotechnology products.</em></h1><p>AHWAN LAB develops customized enzyme, probiotic and yeast solutions. The profound knowledge and rich experience of our business associates in enzyme technology have helped us earn a distinguished position in our market segment.</p></div></div></header>
-
- <section className="section portfolio-tease"><div className="container">
-  <div className="section-head"><div><div className="eyebrow">What drives us</div><h2 className="serif">Mission, vision<br/><em>and approach.</em></h2></div></div>
-  <div className="offer-grid">{pillars.map(([k,t,d])=><div className="offer-card" key={k}><span className="offer-no">{k}</span><h3 className="serif">{t}</h3><p>{d}</p></div>)}</div>
- </div></section>
-
- <section className="section technical"><div className="container"><div className="technical-grid">
-  <div><div className="eyebrow">How we work</div><h2 className="serif">Our science.<br/><em>Partner manufacturing.</em></h2><p className="lead">We focus on what matters to the buyer — the right specification, technical support and dependable supply. Our products are manufactured at a partner facility in Gujarat, India, to the specification we agree with you.</p><div className="hero-actions"><a className="btn btn-gold" href="/#contact">Share your requirement</a><Link className="btn btn-light" href="/export">Export &amp; distributors</Link></div></div>
-  <div className="technical-board"><div className="board-top"><span>AHWAN LAB</span><span>FROM REQUIREMENT TO SUPPLY</span></div><div className="tech-steps">{model.map(([t,d],i)=><div className="tech-step" key={t}><span className="tech-step-label">{String(i+1).padStart(2,'0')}</span><h4 className="serif">{t}</h4><p>{d}</p></div>)}</div></div>
- </div></div></section>
-
- <section className="section"><div className="container">
-  <div className="section-head"><div><div className="eyebrow">What we supply</div><h2 className="serif">Three product<br/><em>families.</em></h2></div><p className="muted" style={{maxWidth:470}}>Supplied on their own to your specification, or blended into a formulation.</p></div>
-  <div className="categories catalogue-tease ingredient-tease">{['Enzymes','Probiotics','Yeast'].map(c=><Link className="category" href={`/products#${slugify(c)}`} key={c}><h3 className="serif">{categoryMeta[c].label}</h3><p>{categoryMeta[c].intro}</p><strong>Browse {categoryMeta[c].label.toLowerCase()}</strong></Link>)}</div>
-  <div className="enquiry-list" style={{marginTop:40}}><span className="eyebrow">Industries we serve</span><div className="problem-chip-row">{industries.map(i=><Link className="problem-chip" key={i.name} href={`/industries/${industrySlug(i)}`}>{i.name}</Link>)}</div></div>
- </div></section>
-
- <QualitySection/>
+<header className="products-header"><div className="container"><div className="products-nav"><Link className="logo" href="/" aria-label={SITE.name}><Logo tagline/></Link><nav className="products-links"><Link href="/">Home</Link><Link href="/products">Products</Link><Link href="/industries">Industries</Link><Link href="/contact">Contact</Link></nav><div className="nav-actions"><Link className="btn btn-gold" href="/contact">Talk to our team</Link><MenuButton/></div></div><div className="products-title"><div className="eyebrow">AHWAN LAB · About</div><h1 className="serif">Biotechnology built<br/><em>around applications.</em></h1><p>AHWAN LAB brings enzyme and microbial solutions into focus for manufacturers and businesses across food, feed, agriculture and industrial markets. Our approach connects product knowledge, application needs and manufacturing expertise.</p></div></div></header>
+<section className="section portfolio-tease"><div className="container"><div className="section-head"><div><div className="eyebrow">What guides us</div><h2 className="serif">Science with<br/><em>practical purpose.</em></h2></div></div><div className="offer-grid">{pillars.map(([k,t,d])=><article className="offer-card" key={k}><span className="offer-no">{k}</span><h3 className="serif">{t}</h3><p>{d}</p></article>)}</div></div></section>
+<section className="section technical" id="manufacturing"><div className="container"><div className="technical-grid"><div><div className="eyebrow">Manufacturing approach</div><h2 className="serif">From biotechnology<br/><em>to useful products.</em></h2><p className="lead">Gujarat Enzyme is the manufacturing business associated with this biotechnology portfolio. Its public company information describes experience in enzyme and probiotic production and manufacturing capabilities spanning fermentation, processing, formulation and packaging.</p><p className="muted">Specific plant capabilities, site details, certifications and product specifications should be confirmed for the product and supply arrangement being discussed.</p><div className="hero-actions"><Link className="btn btn-gold" href="/contact">Discuss a requirement</Link><Link className="btn btn-light" href="/products">Explore product families</Link></div></div><div className="technical-board"><div className="board-top"><span>PROCESS OVERVIEW</span><span>AHWAN LAB</span></div><div className="tech-steps">{capabilities.map(([t,d],i)=><div className="tech-step" key={t}><span className="tech-step-label">{String(i+1).padStart(2,'0')}</span><h4 className="serif">{t}</h4><p>{d}</p></div>)}</div></div></div></div></section>
+<section className="section" id="research"><div className="container"><div className="section-head"><div><div className="eyebrow">Research, development & quality</div><h2 className="serif">Built on evaluation.<br/><em>Improved through learning.</em></h2></div><p className="muted" style={{maxWidth:480}}>Product performance depends on the enzyme or strain, the process conditions and the application. Technical review helps ensure that expectations are grounded in the applicable specification.</p></div><div className="manufacturing-points"><div><span>Application review</span><p className="muted">Understand the substrate, process conditions and target outcome.</p></div><div><span>Product specification</span><p className="muted">Review the relevant activity, strain, form and documentation for the grade.</p></div><div><span>Quality documentation</span><p className="muted">Confirm available batch records and product documents for the intended supply.</p></div></div></div></section>
+<section className="section"><div className="container"><div className="section-head"><div><div className="eyebrow">Industries</div><h2 className="serif">Broad applications.<br/><em>Specific requirements.</em></h2></div></div><div className="problem-chip-row">{industries.map(i=><Link className="problem-chip" key={i.name} href={`/industries/${industrySlug(i)}`}>{i.name}</Link>)}</div></div></section>
+<QualitySection/>
+<section className="industrial-partner-band"><div className="container industrial-partner-content"><div><div className="eyebrow">Start a conversation</div><h2 className="serif">Let's explore<br/><em>what fits your process.</em></h2></div><p>Tell us what you make, what the process needs to achieve and which technical parameters matter most.</p><Link className="btn btn-gold" href="/contact">Contact AHWAN LAB ↗</Link></div></section>
 </main>}
