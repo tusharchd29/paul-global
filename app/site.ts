@@ -1,7 +1,7 @@
 // Brand and contact details for AHWAN LAB.
 export const SITE={
  name:'AHWAN LAB',
- tagline:'Animal Health, Wellness and Nutrition',
+ tagline:'Industrial Biotechnology',
  email:'info@ahwanlab.com',
  phone:'+91 86997 33446',
  phoneHref:'tel:+918699733446',
