@@ -21,9 +21,9 @@ const terms=[
  ['Quotation','Quantity, lead time and payment terms confirmed with each quotation.'],
 ];
 const offer=['Product range across enzymes, probiotics, yeast and ready formulations','Technical support on dose, application and field trials','Documents for product registration in your country','Private-label packing for your own brand','Territory arrangements discussed with committed partners'];
-const lookFor=['An established business in feed additives, premixes or animal health','A sales network reaching feed mills, integrators or farms','Ability to handle import registration in your country','Interest in building the range over the long term'];
+const lookFor=['An established business serving relevant industrial customers or ingredient buyers','A sales network in one or more target sectors such as food, starch, textile, paper, detergent, agriculture, wastewater, biofuel or animal feed','Ability to manage import requirements and product registration where applicable','Interest in building a technical product range over the long term'];
 const faqs=[
- ['Do you supply buyers outside India?','Yes. We supply importers, distributors and feed manufacturers outside India. Share your country, products and quantity and we will send a quotation.'],
+ ['Do you supply buyers outside India?','We welcome enquiries from importers and distributors serving industrial ingredient markets. Share your country, application, products and estimated quantity so we can confirm feasibility and terms.'],
  ['Can you help with product registration in my country?','We provide the product documents usually asked for — COA, SDS, TDS and Certificate of Origin. Tell us what your authority requires and we will confirm what we can supply.'],
  ['Can I get samples before ordering?','Yes. We send samples for evaluation and field trials before the first commercial order.'],
  ['Can you pack under my brand?','Yes. We can supply in your pack size and with your own label, to the specification we agree with you.'],
@@ -50,7 +50,7 @@ export default function Export(){return <main className="products-page">
  </div></div></section>
 
  <section className="section dark-section"><div className="container">
-  <div className="section-head"><div><div className="eyebrow">Ready to distribute</div><h2 className="serif">Our own<br/><em>formulations.</em></h2></div><p className="market-copy">Formulations we have developed and use in the industry ourselves — a ready range to launch in your market, or a base for a blend made to your specification.</p></div>
+  <div className="section-head"><div><div className="eyebrow">Ready to distribute</div><h2 className="serif">Selected<br/><em>formulations.</em></h2></div><p className="market-copy">Formulations we have developed and use in the industry ourselves — a ready range to launch in your market, or a base for a blend made to your specification.</p></div>
   <div className="formulation-grid">{formulations.map(p=><Link className="formulation-card" href={`/products/${productSlug(p)}`} key={p.name}>{p.image&&<img src={p.image} alt={`${p.name} drum`} loading="lazy"/>}<div><h3 className="serif">{p.name}</h3><p>{p.tagline}</p></div></Link>)}</div>
  </div></section>
 
