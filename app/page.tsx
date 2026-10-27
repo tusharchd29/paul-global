@@ -1,55 +1,82 @@
 import EnquiryForm from './components/EnquiryForm';
 import {MenuButton} from './components/SiteMenu';
 import Logo from './components/Logo';
-import Counter from './components/Counter';
 import QualitySection from './components/QualitySection';
-import {solutions} from './solutions/data';
 import {SITE} from './site';
 import {industries,industrySlug} from './industries/data';
 import {products,categoryMeta,slugify,productSlug} from './products/data';
-const formulations=products.filter(p=>p.category==='Our Formulations');
-const ingredients=['Enzymes','Probiotics','Yeast'].map(c=>({c,count:products.filter(p=>p.category===c).length}));
-const library=products.filter(p=>p.category!=='Our Formulations');
-const quickProblems=['weak-egg-shells','poor-fcr','gut-health-mortality','ammonia-litter','phosphorus-cost','protein-cost'].map(id=>solutions.find(s=>s.id===id)!);
-const offers=[
- ['01','Need a specific ingredient?','Source an enzyme, probiotic strain or yeast at the activity, CFU count and form you need — powder, water-soluble or enteric-coated granules, packed in 25 kg HDPE drums or bags.','Ask for an ingredient'],
- ['02','Have your own composition?','Send us your formula. We work on your composition as it is, or help refine it, and deliver it to your specification.','Share your composition'],
- ['03','Have a problem to solve?','Tell us what you are seeing — egg-shell quality, gut health, FCR, phosphorus or protein cost — and we will develop a customized solution around it.','Describe the problem'],
-];
-const steps=[['Share your requirement','The ingredient, specification, composition or problem — with the species, application and quantity.'],['We work out the specification','Our technical team matches activity, strains, carrier and form to your application.'],['Produced to your specification','Made to the agreed activity, form and pack, with the specification confirmed with you before supply.'],['Supplied in your format','Powder, water-soluble or granules, in 25 kg HDPE drums or bags, or as agreed.']];
-const strengths=['Deep experience in enzyme technology across our business associates.','A broad library of enzymes, probiotic strains and yeast cultures to draw on.','Our own formulations, developed by us and used in the industry.','Activity, form and pack customized to each buyer\u2019s specification.'];
-const faqs=[['Can you make a product to my own composition?','Yes. Share your composition and target specification through the enquiry form. Our team will review it and come back on feasibility, form and pack.'],['Can I order just one enzyme or probiotic strain?','Yes. Our enzyme, probiotic and yeast catalogues are available as standalone ingredients at the activity or CFU count you need.'],['What if I only know the problem, not the product?','That is a good place to start. Describe what you are seeing in the field and our team will work out a customized solution with you.'],['Can I buy your own formulations?','Yes. Calshell, Progrow, Livoshield, Phytomin Pro, Digesmo-Pro and XP-Zyme are formulations we use in the industry ourselves, and they can also serve as a base for your custom blend.'],['Do you supply buyers outside India?','Yes. We supply importers, distributors and feed manufacturers outside India, with COA, SDS and TDS for each product. See our Export & Distributors page for terms.']];
-export default function Home(){return <main>
-<header className="hero hero-immersive">
-<div className="container">
-<nav className="nav"><a href="/" className="logo" aria-label={SITE.name}><Logo tagline/></a><div className="navlinks"><a href="/solutions">Solution Finder</a><a href="/industries">Industries</a><a href="/products">Ingredients</a><a href="#formulations">Our Formulations</a><a href="/export">Export</a><a href="/about">Company</a><a href="#contact">Contact</a></div><div className="nav-actions"><a className="btn btn-gold" href="#contact">Start a formulation</a><MenuButton/></div></nav>
-<div className="hero-stage">
-<div className="hero-copy hero-copy-immersive">
-<div className="hero-kicker"><span className="live-dot"></span> AHWAN LAB / APPLIED ENZYME SCIENCE</div>
-<h1 className="serif">Built around<br/><em>your biology.</em></h1>
-<p>Enzymes, probiotics and yeast solutions engineered around your formulation, your specification and the problem you need to solve.</p>
-<div className="hero-actions"><a className="btn btn-gold" href="/solutions">Explore solutions <span aria-hidden="true">↗</span></a><a className="hero-text-link" href="#contact">Bring us your brief <span aria-hidden="true">→</span></a></div>
-<div className="hero-micro-proof"><span>01 <b>Custom formulations</b></span><span>02 <b>Ingredient library</b></span><span>03 <b>Made to specification</b></span></div>
-</div>
-<div className="hero-visual hero-visual-immersive" aria-hidden="true">
-<div className="science-grid"></div><div className="science-orbit orbit-a"></div><div className="science-orbit orbit-b"></div><div className="science-core"></div>
-<div className="science-index index-top"><span>FIELD NOTE / 001</span><b>FORMULATION SYSTEM</b></div>
-{formulations.filter(p=>['Progrow','Calshell','XP-Zyme'].includes(p.name)).map((p,i)=><div key={p.name} className={`product-float product-float-${i+1}`}><img src={p.image} alt=""/><span>{p.name.toUpperCase()}</span></div>)}
-<div className="science-readout"><span className="readout-label">ACTIVE LIBRARY</span><strong>{library.length.toString().padStart(2,'0')}<small>+</small></strong><span>enzymes · cultures · strains</span><i></i><span className="readout-status"><b></b> SPECIFICATION FIRST</span></div>
-<div className="science-index index-bottom"><span>ACTIVITY / STRAIN / FORM</span><span>INDIA · GLOBAL SUPPLY</span></div>
-</div>
-</div>
-<div className="hero-footer-line"><span>ANIMAL HEALTH / FEED / FOOD / INDUSTRY</span><span>PRECISION IN EVERY FORMULA <b>↘</b></span></div>
-</div></header>
-<div className="marquee" aria-label="Ingredients we supply"><div className="marquee-track">{[0,1].map(k=><span key={k} aria-hidden={k===1}>{library.map(p=><em key={p.name}>{p.name}</em>)}</span>)}</div></div>
-<section className="stats-band"><div className="container stats-grid"><div><strong><Counter to={library.length}/></strong><span>ingredients in our library</span></div><div><strong><Counter to={formulations.length}/></strong><span>own formulations</span></div><div><strong><Counter to={20} suffix=" bn"/></strong><span>CFU per gram, up to</span></div><div><strong><Counter to={1500000}/></strong><span>U/g enzyme activity, up to</span></div></div></section>
-<section className="section industries-section" id="industries"><div className="container"><div className="section-head"><div><div className="eyebrow">Applications</div><h2 className="serif">Industries<br/><em>we serve.</em></h2></div><p className="muted" style={{maxWidth:470}}>The same enzyme science, put to work across feed, food and industrial processes. Pick your industry to see what we supply for it.</p></div><div className="industry-grid compact">{industries.map(i=><a className="industry-card" href={`/industries/${industrySlug(i)}`} key={i.name}><h3 className="serif">{i.name}</h3><p>{i.short}</p></a>)}</div></div></section>
-<section className="section problem-section" id="problem"><div className="container"><div className="problem-panel"><div><div className="eyebrow">Solution Finder</div><h2 className="serif">Tell us the problem.<br/><em>We&rsquo;ll name the product.</em></h2><p className="muted">Describe what you&rsquo;re seeing in the flock, the feed or the water — get the exact product, dose and custom-blend ingredients.</p></div><form action="/solutions" className="problem-search"><input name="q" placeholder="e.g. eggs breaking in the tray, ammonia smell in the shed…" aria-label="Describe the problem"/><button className="btn btn-gold" type="submit">Find solution</button></form><div className="problem-chip-row">{quickProblems.map(s=><a key={s.id} href={`/solutions?p=${s.id}`} className="problem-chip">{s.label}</a>)}<a href="/solutions" className="problem-chip ghost">All {solutions.length} problems →</a></div></div></div></section>
-<section className="section portfolio-tease" id="offer"><div className="container"><div className="section-head"><div><div className="eyebrow">Customized solutions</div><h2 className="serif">Three ways<br/><em>to work with us.</em></h2></div><p className="muted" style={{maxWidth:470}}>Whatever you start with — an ingredient, a formula or a field problem — the outcome is a product built to your specification.</p></div><div className="offer-grid">{offers.map(([n,t,d,cta])=><a className="offer-card" href="#contact" key={n}><span className="offer-no">{n}</span><h3 className="serif">{t}</h3><p>{d}</p><strong>{cta}</strong></a>)}</div></div></section>
-<section className="section ingredients-section" id="ingredients"><div className="container"><div className="section-head"><div><div className="eyebrow">What we can supply</div><h2 className="serif">Ingredients<br/><em>to your specification.</em></h2></div><p className="muted" style={{maxWidth:470}}>A broad library of enzymes, probiotic strains and yeast cultures, supplied on their own or blended into your formulation.</p></div><div className="categories catalogue-tease ingredient-tease">{ingredients.map(({c,count})=><a className="category" href={`/products#${slugify(c)}`} key={c}><span className="category-no">{count} available</span><h3 className="serif">{categoryMeta[c].label}</h3><p>{categoryMeta[c].intro}</p><strong>Browse {categoryMeta[c].label.toLowerCase()}</strong></a>)}</div><p className="ingredient-note">Don&rsquo;t see the activity, strain or form you need? <a href="#contact">Ask us — we work to your specification</a></p></div></section>
-<section className="section process-section"><div className="container"><div className="section-head"><div><div className="eyebrow">How we work</div><h2 className="serif">From requirement<br/><em>to delivered product.</em></h2></div></div><div className="process-grid">{steps.map(([t,d],i)=><div key={t}><span className="offer-no">{String(i+1).padStart(2,'0')}</span><h3 className="serif">{t}</h3><p>{d}</p></div>)}</div></div></section>
-<section className="section dark-section" id="formulations"><div className="container"><div className="section-head"><div><div className="eyebrow">Our own formulations</div><h2 className="serif">Proven in the field.<br/><em>Proof of what we build.</em></h2></div><p className="market-copy">These are formulations we have developed and use in the industry ourselves. They show the kind of solution we can build for you — and any of them can be the starting point for your own custom blend.</p></div><div className="formulation-grid">{formulations.map(p=><a className="formulation-card" href={`/products/${productSlug(p)}`} key={p.name}>{p.image&&<img src={p.image} alt={`${p.name} drum`} loading="lazy"/>}<div><h3 className="serif">{p.name}</h3><p>{p.tagline}</p></div></a>)}</div></div></section>
-<section className="section technical" id="company"><div className="container"><div className="technical-grid"><div><div className="eyebrow">Our company</div><h2 className="serif">A better option for<br/><em>biotechnology products.</em></h2><p className="lead">The profound knowledge and rich experience of our business associates in enzyme technology have helped AHWAN LAB earn a distinguished position in its market segment.</p><ul className="strength-list">{strengths.map(s=><li key={s}>{s}</li>)}</ul><div className="hero-actions"><a className="btn btn-gold" href="/about">More about us</a></div></div><div className="technical-board"><div className="board-top"><span>AHWAN LAB</span><span>WHAT DRIVES US</span></div><div className="tech-steps"><div className="tech-step"><span className="tech-step-label">Mission</span><h4 className="serif">Quality enzymes at affordable prices</h4><p>Deliver quality enzymes at affordable prices, to global standards.</p></div><div className="tech-step"><span className="tech-step-label">Vision</span><h4 className="serif">Leadership in animal-health enzymes</h4><p>Gain leadership positions in poultry and animal-health enzymes.</p></div><div className="tech-step"><span className="tech-step-label">Quality</span><h4 className="serif">Quality at the heart of everything</h4><p>We believe quality assurance and quality control are the heart of our business — every product is matched to a specification agreed with you.</p></div></div></div></div></div></section>
-<QualitySection/><section className="section faq-section"><div className="container"><div className="section-head"><div><div className="eyebrow">Buyer questions</div><h2 className="serif">Before you<br/><em>send the enquiry.</em></h2></div><p className="muted">Straight answers for feed manufacturers, integrators and distributors.</p></div><div className="faq-grid">{faqs.map(([q,a])=><details key={q}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></section>
-<section className="section contact-section" id="contact"><div className="container"><div className="contact-heading"><div><div className="eyebrow">Get in touch</div><h2 className="serif">Tell us what<br/><em>you need.</em></h2><p className="muted">An ingredient and specification, your own composition, or a problem in the field — share it and we&rsquo;ll take it from there.</p></div><div className="contact-details"><div><span className="eyebrow">Address</span><p>{SITE.address.map(l=><span key={l}>{l}<br/></span>)}</p></div><div><span className="eyebrow">Phone / WhatsApp</span><p><a href={SITE.phoneHref}>{SITE.phone}</a> · <a href={SITE.whatsapp()} target="_blank" rel="noopener">Chat on WhatsApp</a></p></div><div><span className="eyebrow">Email</span><p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p></div></div></div><EnquiryForm/></div></section>
+
+const families=['Enzymes','Probiotics','Yeast'];
+const familyDescriptions:Record<string,string>={
+  Enzymes:'Industrial enzyme options for defined processing requirements, available subject to current product and specification confirmation.',
+  Probiotics:'Microbial cultures for relevant applications, with strain, viable count and format confirmed against the product specification.',
+  Yeast:'Yeast-based ingredients for suitable industrial and biological applications, subject to product availability and technical fit.'
+};
+const featuredIndustries=industries.filter(i=>/food|starch|textile|paper|detergent|wastewater|biofuel|agriculture|pharma|polymer/i.test(i.name)).slice(0,8);
+const featuredProducts=products.filter(p=>p.category!=='Our Formulations').slice(0,4);
+
+export default function Home(){return <main className="home-industrial">
+<header className="industrial-hero">
+  <div className="industrial-hero-image" aria-hidden="true"></div>
+  <div className="container">
+    <nav className="nav industrial-nav">
+      <a href="/" className="logo" aria-label={SITE.name}><Logo tagline/></a>
+      <div className="navlinks"><a href="/products">Products</a><a href="/industries">Industries</a><a href="#manufacturing">Manufacturing &amp; Quality</a><a href="/about">About</a><a href="#contact">Contact</a></div>
+      <div className="nav-actions"><a className="btn btn-gold" href="#contact">Discuss your requirement</a><MenuButton/></div>
+    </nav>
+    <div className="industrial-hero-copy">
+      <div className="industrial-kicker"><span></span> AHWAN LAB / INDUSTRIAL BIOTECHNOLOGY</div>
+      <h1 className="serif">Enzyme solutions<br/><em>for complex processes.</em></h1>
+      <p>Industrial enzymes, microbial cultures and tailored formulations—matched to your application, process and specification.</p>
+      <div className="industrial-hero-actions"><a className="btn btn-gold" href="/products">Explore products <span aria-hidden="true">↗</span></a><a className="industrial-secondary" href="#contact">Tell us what you need <span aria-hidden="true">→</span></a></div>
+      <div className="industrial-hero-note"><span>01 / APPLICATION</span><span>02 / SPECIFICATION</span><span>03 / SUPPLY</span></div>
+    </div>
+    <div className="industrial-hero-caption"><span>SCIENCE APPLIED TO INDUSTRY</span><span>INDIA · INDUSTRIAL MARKETS</span></div>
+  </div>
+</header>
+
+<section className="industrial-intro section">
+  <div className="container industrial-intro-grid">
+    <div><div className="eyebrow">What we supply</div><h2 className="serif">The right ingredient.<br/><em>The right specification.</em></h2></div>
+    <div><p className="industrial-lead">We help industrial buyers identify and source enzyme and microbial solutions for defined applications—whether you know the ingredient you need or want to start with a process challenge.</p><a className="industrial-inline-link" href="/products">Explore the product range <span>↗</span></a></div>
+  </div>
+  <div className="container industrial-family-grid">
+    {families.map((family,i)=><a className="industrial-family-card" href={`/products#${slugify(family)}`} key={family}><span className="industrial-card-number">0{i+1}</span><div><h3 className="serif">{categoryMeta[family]?.label||family}</h3><p>{familyDescriptions[family]}</p><strong>Explore range <span>↗</span></strong></div></a>)}
+  </div>
+</section>
+
+<section className="industrial-applications section" id="industries">
+  <div className="container">
+    <div className="industrial-section-heading"><div><div className="eyebrow">Solutions by application</div><h2 className="serif">Different industries.<br/><em>Specific requirements.</em></h2></div><p>Explore applications and identify the product families relevant to your process. Final suitability depends on the product grade and agreed technical specification.</p></div>
+    <div className="industrial-industry-grid">{featuredIndustries.map((industry,i)=><a href={`/industries/${industrySlug(industry)}`} className="industrial-industry-card" key={industry.name}><span>0{i+1}</span><h3 className="serif">{industry.name}</h3><span className="industrial-arrow">↗</span><p>{industry.short}</p></a>)}</div>
+    <div className="industrial-more-link"><a className="industrial-inline-link" href="/industries">View all industries <span>↗</span></a></div>
+  </div>
+</section>
+
+<section className="industrial-manufacturing section" id="manufacturing">
+  <div className="container industrial-manufacturing-grid">
+    <div className="industrial-manufacturing-visual" aria-label="Manufacturing and quality overview">
+      <div className="industrial-visual-top"><span>MANUFACTURING PARTNERSHIP</span><span>AHWAN LAB</span></div>
+      <div className="industrial-visual-mark"><span></span><span></span><span></span><i></i></div>
+      <div className="industrial-visual-bottom"><span>FERMENTATION</span><span>FORMULATION</span><span>QUALITY CONTROL</span></div>
+    </div>
+    <div className="industrial-manufacturing-copy"><div className="eyebrow">Manufacturing &amp; quality</div><h2 className="serif">Built on a clear<br/><em>specification.</em></h2><p>AHWAN LAB’s portfolio is manufactured through its manufacturing partner, Gujarat Enzyme. Product availability, specifications, documentation and claims are confirmed product by product before supply.</p><p>We aim to make technical information easier to evaluate—from the requested activity or strain to the product form, pack and documentation required for your application.</p><a className="industrial-inline-link" href="/about">Learn about AHWAN LAB <span>↗</span></a><p className="industrial-note">Manufacturing imagery and facility-specific claims will be added only where media rights and the underlying facts are confirmed.</p></div>
+  </div>
+</section>
+
+<section className="industrial-featured section">
+  <div className="container">
+    <div className="industrial-section-heading"><div><div className="eyebrow">Product discovery</div><h2 className="serif">Start with the<br/><em>ingredient you need.</em></h2></div><p>Browse selected catalogue entries. Confirm current availability, activity, strain, grade and packaging with our team before ordering.</p></div>
+    <div className="industrial-product-grid">{featuredProducts.map((product,i)=><a className="industrial-product-card" href={`/products/${productSlug(product)}`} key={product.name}><div className="industrial-product-image">{product.image?<img src={product.image} alt="" loading="lazy"/>:<span>AHWAN LAB</span>}</div><div className="industrial-product-meta"><span>{product.category}</span><span>0{i+1}</span></div><h3 className="serif">{product.name}</h3><p>{product.tagline}</p><strong>View product <span>↗</span></strong></a>)}</div>
+    <div className="industrial-more-link"><a className="industrial-inline-link" href="/products">Browse full catalogue <span>↗</span></a></div>
+  </div>
+</section>
+
+<section className="industrial-partner-band">
+  <div className="container industrial-partner-content"><div><div className="eyebrow">From requirement to supply</div><h2 className="serif">A clear brief makes<br/><em>a better starting point.</em></h2></div><p>Share your industry, application, target specification and estimated quantity. If you do not know which enzyme or culture you need, describe the process challenge and we can review it with you.</p><a className="btn btn-gold" href="#contact">Discuss your requirement <span>↗</span></a></div>
+</section>
+
+<QualitySection/>
+
+<section className="section industrial-contact" id="contact"><div className="container"><div className="industrial-contact-heading"><div><div className="eyebrow">Contact AHWAN LAB</div><h2 className="serif">Let's discuss<br/><em>your process.</em></h2><p>Tell us what you are trying to achieve and the specification you need to meet.</p></div><div className="industrial-contact-details"><div><span>Address</span><p>{SITE.address.map(l=><span key={l}>{l}<br/></span>)}</p></div><div><span>Phone / WhatsApp</span><p><a href={SITE.phoneHref}>{SITE.phone}</a> · <a href={SITE.whatsapp()} target="_blank" rel="noopener">WhatsApp</a></p></div><div><span>Email</span><p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p></div></div></div><EnquiryForm/></div></section>
 </main>}
