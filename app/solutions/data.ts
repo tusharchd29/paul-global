@@ -1,4 +1,5 @@
 import {products,productSlug,type Product} from '../products/data';
+import {industrySolutions} from './industrySolutions';
 
 // Problem → product knowledge base behind the Solution Finder. Every formulation link and
 // "reason" restates an indication or benefit printed in the AHWAN LAB brochure; the ingredient
@@ -8,9 +9,9 @@ import {products,productSlug,type Product} from '../products/data';
 export const AREAS=['Broilers','Layers','Breeders','Water & environment'] as const;
 export type Area=typeof AREAS[number];
 type Pick={name:string;reason:string};
-export type Solution={id:string;label:string;symptom:string;areas:Area[];keywords:string[];why:string;primary:Pick[];also:Pick[];ingredients:Pick[];track:string[];caution?:string};
+export type Solution={id:string;industry?:string;label:string;symptom:string;areas:Area[];keywords:string[];why:string;primary:Pick[];also:Pick[];ingredients:Pick[];track:string[];caution?:string};
 
-export const solutions:Solution[]=[
+const feedSolutions:Solution[]=[
  {id:'weak-egg-shells',label:'Weak or thin egg shells',symptom:'Cracked, thin or soft-shelled eggs; rising breakage in the tray.',areas:['Layers','Breeders'],
   keywords:['egg','eggs','shell','shells','thin','crack','cracked','broken','breakage','soft','calcium','layer'],
   why:'Shell quality depends on enough available calcium and phosphorus, plus vitamin D3 to use them. Demand climbs as layers age and egg mass rises.',
@@ -90,6 +91,13 @@ export const solutions:Solution[]=[
   ingredients:[{name:'Nitrosomonas sp.',reason:'Converts ammonia to nitrite.'},{name:'Nitrobacter sp.',reason:'Converts nitrite to nitrate.'},{name:'Rhodobacter sp.',reason:'Photosynthetic bacteria used in pond programmes.'},{name:'Bacillus subtilis',reason:'Degrades organic matter and sludge.'},{name:'Bacillus licheniformis',reason:'Degrades organic waste in ponds and effluent.'},{name:'Pseudomonas putida',reason:'Used in waste-treatment blends.'},{name:'Thiobacillus thioxidans',reason:'Oxidises sulphur compounds behind foul odour.'}],
   track:['Ammonia and nitrite levels','Dissolved oxygen','Sludge build-up']},
 ];
+
+// Poultry and feed problems first, then process problems for the other industries.
+export const FEED='Animal Feed';
+export const solutions:Solution[]=[...feedSolutions,...industrySolutions];
+export const solutionIndustry=(s:Solution)=>s.industry??FEED;
+export const isFeed=(s:Solution)=>solutionIndustry(s)===FEED;
+export const solutionsForIndustry=(name:string)=>solutions.filter(s=>solutionIndustry(s)===name);
 
 export const productByName=(name:string):Product|undefined=>products.find(p=>p.name===name);
 export const productHref=(name:string)=>{const p=productByName(name);return p?`/products/${productSlug(p)}`:'/products'};
