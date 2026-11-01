@@ -7,7 +7,7 @@ import {industries,industrySlug} from '../industries/data';
 import {products,categoryMeta,slugify} from '../products/data';
 const ingredientCount=products.filter(p=>p.category!=='Our Formulations').length;
 const formulationCount=products.length-ingredientCount;
-export const metadata={title:'About Us | AHWAN LAB',description:'AHWAN LAB develops customized enzyme, probiotic and yeast solutions, manufactured at a partner facility in Gujarat, India, for animal feed, food and industry.'};
+export const metadata={title:'About Us | AHWAN LAB',description:'AHWAN LAB develops customized enzyme, probiotic and yeast solutions, manufactured at a partner facility in Gujarat, India, for animal feed and poultry, food & beverage, human nutrition, pharma, starch, textile, paper, detergent, wastewater, agriculture and ethanol.'};
 const pillars=[
  ['Mission','Quality enzymes at affordable prices','Deliver quality enzymes at affordable prices, to global standards.'],
  ['Vision','Leadership in enzyme solutions','Gain leadership positions in poultry, animal-health and industrial enzymes.'],
