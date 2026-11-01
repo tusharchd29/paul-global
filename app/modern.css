@@ -102,3 +102,10 @@
 }
 @media (prefers-reduced-motion:reduce){.hero-visual{transform:none}.hero-spot{display:none}}
 .hero p strong{color:#fff;font-weight:700}
+/* Phones: portrait film in the top of the screen, enzyme above the headline, copy on navy below */
+@media(max-width:700px){
+ .hero-media{bottom:auto;height:min(100svh,920px);background:#03112f url(/video/hero-bg-portrait-poster.jpg) center 56px/cover no-repeat}
+ .hero-media video{top:56px;height:calc(100% - 56px);object-position:50% 0}
+ .hero-media:after{background:linear-gradient(180deg,#03112f 0,#03112f 56px,transparent 120px,transparent 34%,rgba(3,17,47,.55) 46%,rgba(3,17,47,.92) 70%,#03112f 100%)}
+ .hero-has-video .hero-copy{padding-top:300px}
+}
