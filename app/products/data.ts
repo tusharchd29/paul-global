@@ -1,6 +1,6 @@
 export type Row=[string,string];
 export type Grade={spec:string;form:string;pack:string};
-export type Product={name:string;category:string;type:string;tagline:string;summary:string;image?:string;notice?:string;sections?:{title:string;body:string}[];composition?:{title:string;rows:Row[]}[];points?:string[];benefits:string[];dosage:string[];presentation?:string;storage?:string;matrix?:{note:string;columns:string[];rows:[string,string,string][]};grades?:Grade[]};
+export type Product={name:string;category:string;type:string;ec?:string;tagline:string;summary:string;image?:string;notice?:string;sections?:{title:string;body:string}[];composition?:{title:string;rows:Row[]}[];points?:string[];benefits:string[];dosage:string[];presentation?:string;storage?:string;matrix?:{note:string;columns:string[];rows:[string,string,string][]};grades?:Grade[]};
 
 // Finished poultry formulations, transcribed from the AHWAN LAB brochure (composition, indication,
 // dose and presentation exactly as printed; obvious spelling slips corrected).
@@ -21,15 +21,15 @@ const formulations:Omit<Product,'category'>[]=[
   sections:[
    {title:'Role of probiotics in poultry',body:'Maintain and improve the gut microflora as an external supplement, and reduce pathogenic load by competitive exclusion.'},
    {title:'Role of enzymes in poultry',body:'Maintain or improve bird performance by increasing the nutritional value of feed ingredients and reducing feed costs.'},
-   {title:'Role of yeast in poultry',body:'Supports performance, digestibility, mucosal development and immunomodulatory functions. S. boulardii increases the production and secretion of glycoproteins — namely the secretory component of immunoglobulin A — and, supplemented into poultry feed, helps prevent colonisation by Clostridium difficile, a food-associated pathogen causing gastroenteritis. S. cerevisiae also produces invertase, which hydrolyses sucrose into glucose and fructose, making more glucose available to the bird and to other microorganisms in the surrounding environment.'},
+   {title:'Role of yeast in poultry',body:'Supports performance, digestibility, mucosal development and immunomodulatory functions. Live yeast cultures such as S. cerevisiae and S. boulardii help keep the gut microflora balanced and support the gut lining. S. cerevisiae also produces invertase, which hydrolyses sucrose into glucose and fructose, making more glucose available to the bird and to other microorganisms in the surrounding environment.'},
   ],
-  benefits:['Optimises gut health, enhancing digestibility and nutrient absorption','Helps body-weight gain','Reduces mortality','Improves FCR','Reduces ammonia production in litter','Uniform growth','Supportive therapy for bacterial and viral diseases'],
+  benefits:['Optimises gut health, enhancing digestibility and nutrient absorption','Helps body-weight gain','Reduces mortality','Improves FCR','Reduces ammonia production in litter','Uniform growth'],
   dosage:['Poultry mash feed — Starter: 200 g / ton','Grower: 150 g / ton','Finisher: 100 g / ton','Morning drinking water: 1 g in 2 litres of water, or as directed by a veterinarian.'],
   presentation:'25 kg powder'},
  {name:'Livoshield',type:'Herbal liver protector',tagline:'Herbal liver protector',image:'/products/livoshield.png',
   summary:'A blend of six medicinal herbs — Eclipta alba, Picrorhiza kurroa, Tephrosia purpurea, Cichorium endivia, Phyllanthus niruri and Terminalia chebula — for liver protection, FCR and growth.',
   composition:[{title:'Blend of medicinal herbs',rows:[['Eclipta alba',''],['Picrorhiza kurroa',''],['Tephrosia purpurea',''],['Cichorium endivia',''],['Phyllanthus niruri',''],['Terminalia chebula','']]}],
-  benefits:['Liver upgradation and protection','Better FCR and growth','Growth promoter','Builds immunity'],
+  benefits:['Supports liver function and protection','Better FCR and growth','Supports immunity'],
   dosage:['200 g per ton of poultry feed, or as directed by a veterinarian.'],
   presentation:'30 kg powder'},
  {name:'Phytomin Pro',type:'Phytase enzyme',tagline:'Micronised powder phytase enzyme',image:'/products/phytomin-pro.png',
@@ -37,16 +37,16 @@ const formulations:Omit<Product,'category'>[]=[
   composition:[{title:'Each gram contains',rows:[['Phytase (minimum activity)','5,000 FTU']]}],
   points:['When added to the feed it facilitates the release of phytate-bound phosphorus.','It also helps release other minerals like calcium and magnesium.','Other trace minerals like copper and zinc, and phytate-bound nutrients like protein, amino acids and starch, are also released.','Phytomin Pro therefore works as an excellent source of phosphorus, helping reduce the inclusion rate of inorganic / organic phosphorus like DCP, MCP or bone meal.'],
   benefits:['Reduces supplementation of costly inorganic phosphorus in the feed, thereby reducing feed cost','Increases the utilisation and efficiency of minerals, protein and other nutrients','Reduces the cost of feed and thereby the cost of production'],
-  dosage:['Layers: per ton of feed with 2–4 kg of DCP / ton — contact us for the inclusion rate.','Broilers: 100–200 g / ton of feed with 2–6 kg of DCP / ton.','Breeders: as recommended by the nutritionist / veterinarian.','Please consult the veterinarian / nutritionist while using the product.']},
+  dosage:['Layers (feed with 2–4 kg of DCP / ton): inclusion rate given on request — contact us.','Broilers: 100–200 g / ton of feed with 2–6 kg of DCP / ton.','Breeders: as recommended by the nutritionist / veterinarian.','Please consult the veterinarian / nutritionist while using the product.']},
  {name:'Digesmo-Pro',type:'Protease enzyme blend',tagline:'Optimizing protein digestion',image:'/products/digesmo-pro.png',
-  summary:'An acid and alkaline protease blend with cellulase, amylase and Lactobacillus sporogenes that breaks protein down into the amino acids and peptides poultry need.',
+  summary:'An acid and alkaline protease blend with cellulase, amylase and Bacillus coagulans (Lactobacillus sporogenes) that breaks protein down into the amino acids and peptides poultry need.',
   sections:[{title:'Why it matters',body:'Protein is one of the most expensive but essential components of poultry feed. The challenge is to use protein more efficiently and control feed cost without compromising bird performance at any stage of the life cycle. Digesmo-Pro is specially developed to break protein molecules down into the amino acids and peptides needed by poultry, significantly increasing the digestibility of protein.'}],
-  composition:[{title:'Composition',rows:[['Acid & alkaline protease','NLT 500,000 U/g'],['Cellulase','NLT 50,000 U/g'],['Amylase','NLT 50,000 U/g'],['Lactobacillus sporogenes','NLT 10 million /g'],['Powered by protein hydrolysate, amino acids & minerals','']]},{title:'Operating range',rows:[['Effective pH range','3.5 to 9.5'],['Effective temperature range','10 to 90 °C']]}],
+  composition:[{title:'Composition',rows:[['Acid & alkaline protease','NLT 500,000 U/g'],['Cellulase','NLT 50,000 U/g'],['Amylase','NLT 50,000 U/g'],['Bacillus coagulans (Lactobacillus sporogenes)','NLT 10 million /g'],['Powered by protein hydrolysate, amino acids & minerals','']]},{title:'Operating range',rows:[['Effective pH range','3.5 to 9.5'],['Effective temperature range','10 to 90 °C']]}],
   benefits:['Improves protein digestibility and absorption','Allows lower-quality protein sources to be included in feed to manage feed cost','Improves nutrient absorption and reduces nitrogen excretion, helping protect the environment'],
   dosage:['150 g to 330 g per ton of poultry feed.'],
   storage:'Room temperature',
-  matrix:{note:'Calculated matrix value at the recommended inclusion of 330 g per ton of poultry feed. The final CP% of feed should be worked out based on the type of feed ingredients used as substitutes.',columns:['Broiler — pre-starter / starter CP 7–9%, finisher CP 9–12%','Layer — laying phase CP 7–11%'],
-   rows:[['ME','50–60 Kcal','50–60 Kcal'],['Methionine','0.03%','0.03%'],['Lysine','0.12%','0.12%'],['Methionine + Cysteine','0.07%','0.07%'],['Threonine','0.08%','0.13%'],['Valine','0.12%','0.15%'],['Arginine','0.15%','0.16%'],['Tryptophan','0.03%','0.03%'],['Leucine','0.20%','0.13%'],['Isoleucine','0.11%','0.8%'],['Histidine','0.06%','0.05%'],['Phenylalanine','0.13%','0.12%']]}},
+  matrix:{note:'Calculated matrix value at the recommended inclusion of 330 g per ton of poultry feed. The final CP% of feed should be worked out based on the type of feed ingredients used as substitutes.',columns:['Broiler','Layer (laying phase)'],
+   rows:[['ME','50–60 Kcal','50–60 Kcal'],['Methionine','0.03%','0.03%'],['Lysine','0.12%','0.12%'],['Methionine + Cysteine','0.07%','0.07%'],['Threonine','0.08%','0.13%'],['Valine','0.12%','0.15%'],['Arginine','0.15%','0.16%'],['Tryptophan','0.03%','0.03%'],['Leucine','0.20%','0.13%'],['Isoleucine','0.11%','0.08%'],['Histidine','0.06%','0.05%'],['Phenylalanine','0.13%','0.12%']]}},
  {name:'XP-Zyme',type:'Xylanase · phytase blend',tagline:'Unique blend of thermostable xylanase and phytase enzyme powder',image:'/products/xp-zyme.png',
   summary:'A thermostable xylanase (160,000 U/g) and phytase (5,000 U/g) powder that breaks down plant cell-wall hemicellulose and releases phytate-bound phosphorus.',
   sections:[
@@ -64,6 +64,11 @@ const formulations:Omit<Product,'category'>[]=[
 const PACK='25 kg HDPE drum or bag';
 const CFU='5 to 20 billion CFU per g';
 const range=(a:string,b:string,u:string)=>`${a} to ${b} ${u}`;
+// Standard EC (Enzyme Commission) numbers for each enzyme class. Phytase and protease cover
+// more than one class, so both common ones are given. Confirm against the supplier's TDS.
+const EC:Record<string,string>={Phytase:'3.1.3.8 / 3.1.3.26',Protease:'3.4.21 / 3.4.23 (serine / aspartic)',Cellulase:'3.2.1.4',Amylase:'3.2.1.1',Xylanase:'3.2.1.8',Pectinase:'3.2.1.15',['Beta-glucanase']:'3.2.1.6',Lipase:'3.1.1.3',['Beta-mannanase']:'3.2.1.78',Serratiopeptidase:'3.4.24.40',Tannase:'3.1.1.20',Laccase:'1.10.3.2'};
+// Former or trade names buyers still search for.
+const AKA:Record<string,string>={'Bacillus coagulans':'Also sold as Lactobacillus sporogenes.','Enterococcus faecalis':'Formerly Streptococcus faecalis.','Lactococcus lactis':'Formerly Streptococcus lactis.','Bifidobacterium animalis subsp. lactis':'Often sold as Bifidobacterium lactis.'};
 const ENZYMES:{name:string;summary:string;grades:Grade[]}[]=[
  {name:'Phytase',summary:'Hydrolyses phytate (phytic acid) to release bound phosphorus and minerals from grains and oil seeds.',grades:[{spec:range('100,000','200,000','FTU/g'),form:'Powder',pack:PACK},{spec:range('100,000','200,000','FTU/g'),form:'Water soluble powder',pack:PACK}]},
  {name:'Protease',summary:'Hydrolyses proteins into peptides and amino acids, improving protein digestibility.',grades:[{spec:range('100,000','1,000,000','U/g'),form:'Powder',pack:PACK},{spec:range('100,000','1,000,000','U/g'),form:'Water soluble powder',pack:PACK}]},
@@ -79,8 +84,8 @@ const ENZYMES:{name:string;summary:string;grades:Grade[]}[]=[
  {name:'Laccase',summary:'An oxidative enzyme acting on phenolic compounds.',grades:[{spec:'On request',form:'Powder',pack:PACK}]},
 ];
 const STRAIN_GROUPS:{type:string;summary:string;names:string[]}[]=[
- {type:'Lactic acid bacteria',summary:'A lactic acid–producing strain used in gut-health and probiotic formulations.',names:['Lactobacillus acidophilus','Lactobacillus fermentum','Lactobacillus casei','Lactobacillus lactis','Lactobacillus reuteri','Lactobacillus rhamnosus','Lactobacillus rhamnosus GG (LGG)','Lactobacillus bulgaricus','Pediococcus acidilactici','Enterococcus faecium','Streptococcus faecalis','Streptococcus sp.','Bifidobacterium bifidum','Bifidobacterium longum','Bifidobacterium infantis']},
- {type:'Spore-forming bacteria',summary:'A spore-forming strain — spores tolerate feed processing and storage well, making these a common choice for feed-applied probiotics.',names:['Lactobacillus sporogenes','Bacillus coagulans','Bacillus subtilis','Bacillus licheniformis','Bacillus megaterium','Bacillus amyloliquefaciens','Bacillus firmus','Bacillus cereus','Bacillus lactis','Bacillus mesentericus','Bacillus clausii','Clostridium butyricum']},
+ {type:'Lactic acid bacteria',summary:'A lactic acid–producing strain used in gut-health and probiotic formulations.',names:['Lactobacillus acidophilus','Lactobacillus fermentum','Lactobacillus casei','Lactococcus lactis','Lactobacillus reuteri','Lactobacillus rhamnosus','Lactobacillus rhamnosus GG (LGG)','Lactobacillus bulgaricus','Pediococcus acidilactici','Enterococcus faecium','Enterococcus faecalis','Bifidobacterium bifidum','Bifidobacterium longum','Bifidobacterium infantis','Bifidobacterium animalis subsp. lactis']},
+ {type:'Spore-forming bacteria',summary:'A spore-forming strain — spores tolerate feed processing and storage well, making these a common choice for feed-applied probiotics.',names:['Bacillus coagulans','Bacillus subtilis','Bacillus licheniformis','Bacillus megaterium','Bacillus amyloliquefaciens','Bacillus firmus','Bacillus mesentericus','Bacillus clausii','Clostridium butyricum']},
  {type:'Water & environmental bacteria',summary:'Used in water-quality, pond-management and waste-treatment microbial programmes.',names:['Nitrosomonas sp.','Nitrobacter sp.','Rhodococcus sp.','Rhodobacter sp.','Pseudomonas putida','Thiobacillus thiooxidans']},
  {type:'Fungal culture',summary:'A fungal culture used as an enzyme-production source or in agricultural biocontrol programmes.',names:['Aspergillus niger','Trichoderma harzianum','Beauveria bassiana','Metarhizium anisopliae']},
 ];
@@ -91,8 +96,8 @@ const gradeTagline=(g:Grade[])=>[...new Set(g.map(x=>x.form))].join(' · ');
 // Ingredient catalogues come first: supplying these to a buyer's specification is the core
 // offer. The finished formulations follow as AHWAN LAB's own formulations.
 export const products:Product[]=[
- ...ENZYMES.map(e=>({name:e.name,category:'Enzymes',type:'Enzyme',tagline:gradeTagline(e.grades),summary:e.summary,grades:e.grades,benefits:[],dosage:[]})),
- ...STRAIN_GROUPS.flatMap(g=>g.names.map(name=>({name,category:'Probiotics',type:g.type,tagline:'Water soluble powder',summary:g.summary,grades:[{spec:CFU,form:'Water soluble powder',pack:PACK}],benefits:[],dosage:[]}))),
+ ...ENZYMES.map(e=>({name:e.name,category:'Enzymes',type:'Enzyme',ec:EC[e.name],tagline:gradeTagline(e.grades),summary:e.summary,grades:e.grades,benefits:[],dosage:[]})),
+ ...STRAIN_GROUPS.flatMap(g=>g.names.map(name=>({name,category:'Probiotics',type:g.type,tagline:'Water soluble powder',summary:AKA[name]?`${g.summary} ${AKA[name]}`:g.summary,grades:[{spec:CFU,form:'Water soluble powder',pack:PACK}],benefits:[],dosage:[]}))),
  ...YEASTS.map(name=>({name,category:'Yeast',type:'Yeast culture',tagline:'Water soluble powder · Powder',summary:'A live yeast culture supplied as a standalone raw material for probiotic and feed formulations.',grades:[{spec:CFU,form:'Water soluble powder',pack:PACK},{spec:CFU,form:'Powder',pack:PACK}],benefits:[],dosage:[]})),
  ...formulations.map(f=>({...f,category:'Our Formulations'})),
 ];

@@ -6,11 +6,11 @@ import QualitySection from '../components/QualitySection';
 import {SITE} from '../site';
 import {products,productSlug} from '../products/data';
 
-export const metadata={title:'Export & Distributors | AHWAN LAB',description:'Import enzymes, probiotics, yeast and ready formulations for poultry and animal feed from AHWAN LAB, India — supplied to your specification, with COA, SDS and TDS. Distributor enquiries welcome.'};
+export const metadata={title:'Export & Distributors | AHWAN LAB',description:'Import enzymes, probiotic strains, yeast cultures and ready poultry formulations from AHWAN LAB, India — for feed, food and industrial use, supplied to your specification with COA, SDS and TDS. Distributor enquiries welcome.'};
 
 const formulations=products.filter(p=>p.category==='Our Formulations');
 const why=[
- ['01','Built to your specification','Activity, CFU count, carrier and form matched to your market, your feed and your registration — not a fixed catalogue grade.'],
+ ['01','Built to your specification','Activity, CFU count, carrier and form matched to your market, your application and your registration — not a fixed catalogue grade.'],
  ['02','Documents for registration','COA, SDS and TDS for each product, and Certificate of Origin for each shipment, to support your import registration.'],
  ['03','From trial lot to full lots','Start with samples and a trial quantity, then move to regular commercial lots as your market grows.'],
 ];
@@ -21,19 +21,19 @@ const terms=[
  ['Quotation','Quantity, lead time and payment terms confirmed with each quotation.'],
 ];
 const offer=['Product range across enzymes, probiotics, yeast and ready formulations','Technical support on dose, application and field trials','Documents for product registration in your country','Private-label packing for your own brand','Territory arrangements discussed with committed partners'];
-const lookFor=['An established business in feed additives, premixes or animal health','A sales network reaching feed mills, integrators or farms','Ability to handle import registration in your country','Interest in building the range over the long term'];
+const lookFor=['An established business in feed additives, food ingredients or industrial chemicals','A sales network reaching feed mills, food processors or industrial plants','Ability to handle import registration in your country','Interest in building the range over the long term'];
 const faqs=[
- ['Do you supply buyers outside India?','Yes. We supply importers, distributors and feed manufacturers outside India. Share your country, products and quantity and we will send a quotation.'],
+ ['Do you supply buyers outside India?','Yes. We supply importers, distributors and manufacturers outside India. Share your country, products and quantity and we will send a quotation.'],
  ['Can you help with product registration in my country?','We provide the product documents usually asked for — COA, SDS, TDS and Certificate of Origin. Tell us what your authority requires and we will confirm what we can supply.'],
  ['Can I get samples before ordering?','Yes. We send samples for evaluation and field trials before the first commercial order.'],
  ['Can you pack under my brand?','Yes. We can supply in your pack size and with your own label, to the specification we agree with you.'],
 ];
 
 export default function Export(){return <main className="products-page">
- <header className="products-header"><div className="container"><div className="products-nav"><Link className="logo" href="/" aria-label={SITE.name}><Logo tagline/></Link><nav className="products-links"><Link href="/">Home</Link><Link href="/industries">Industries</Link><Link href="/products">Ingredients</Link><a href="#quality">Quality</a><a href="#distributor">Distributors</a><a href="#contact">Contact</a></nav><div className="nav-actions"><a className="btn btn-gold" href="#contact">Request a Quotation</a><MenuButton/></div></div><div className="products-title"><div className="eyebrow">AHWAN LAB · Export &amp; distributors</div><h1 className="serif">Shipping from Ahmedabad<br/><em>to feed and food makers abroad.</em></h1><p>Enzymes, probiotic strains, yeast cultures and ready formulations for poultry and animal feed — made to your specification, documented for your registration and packed for export.</p><div className="hero-actions"><a className="btn btn-gold" href="#contact">Request a quotation</a><a className="btn btn-light" href="#distributor">Become a distributor</a></div></div></div></header>
+ <header className="products-header"><div className="container"><div className="products-nav"><Link className="logo" href="/" aria-label={SITE.name}><Logo tagline/></Link><nav className="products-links"><Link href="/">Home</Link><Link href="/industries">Industries</Link><Link href="/products">Ingredients</Link><a href="#quality">Quality</a><a href="#distributor">Distributors</a><a href="#contact">Contact</a></nav><div className="nav-actions"><a className="btn btn-gold" href="#contact">Request a Quotation</a><MenuButton/></div></div><div className="products-title"><div className="eyebrow">AHWAN LAB · Export &amp; distributors</div><h1 className="serif">Shipping from Ahmedabad<br/><em>to feed, food and industrial buyers abroad.</em></h1><p>Enzymes, probiotic strains and yeast cultures for feed, food and industrial processes, plus ready formulations for poultry — made to your specification, documented for your registration and packed for export.</p><div className="hero-actions"><a className="btn btn-gold" href="#contact">Request a quotation</a><a className="btn btn-light" href="#distributor">Become a distributor</a></div></div></div></header>
 
  <section className="section portfolio-tease"><div className="container">
-  <div className="section-head"><div><div className="eyebrow">For importers</div><h2 className="serif">Why import<br/><em>from AHWAN LAB.</em></h2></div><p className="muted" style={{maxWidth:470}}>For importers, distributors and feed manufacturers who need a dependable source of feed enzymes, probiotics and yeast.</p></div>
+  <div className="section-head"><div><div className="eyebrow">For importers</div><h2 className="serif">Why import<br/><em>from AHWAN LAB.</em></h2></div><p className="muted" style={{maxWidth:470}}>For importers, distributors and manufacturers who need a dependable source of enzymes, probiotics and yeast.</p></div>
   <div className="offer-grid">{why.map(([n,t,d])=><a className="offer-card" href="#contact" key={n}><h3 className="serif">{t}</h3><p>{d}</p><strong>Request a quotation</strong></a>)}</div>
  </div></section>
 
@@ -45,7 +45,7 @@ export default function Export(){return <main className="products-page">
  <QualitySection/>
 
  <section className="section technical" id="distributor"><div className="container"><div className="technical-grid">
-  <div><div className="eyebrow">Become a distributor</div><h2 className="serif">Represent AHWAN LAB<br/><em>in your country.</em></h2><p className="lead">We are looking for distribution partners in poultry and animal-health markets. You bring the market; we bring the product range, the documents and the technical support.</p><ul className="strength-list">{offer.map(s=><li key={s}>{s}</li>)}</ul><div className="hero-actions"><a className="btn btn-gold" href="#contact">Apply to distribute</a><a className="btn btn-light" href={SITE.whatsapp('Hello AHWAN LAB, I am interested in becoming a distributor in:')} target="_blank" rel="noopener">WhatsApp us</a></div></div>
+  <div><div className="eyebrow">Become a distributor</div><h2 className="serif">Represent AHWAN LAB<br/><em>in your country.</em></h2><p className="lead">We are looking for distribution partners in animal-feed, food-ingredient and industrial-enzyme markets. You bring the market; we bring the product range, the documents and the technical support.</p><ul className="strength-list">{offer.map(s=><li key={s}>{s}</li>)}</ul><div className="hero-actions"><a className="btn btn-gold" href="#contact">Apply to distribute</a><a className="btn btn-light" href={SITE.whatsapp('Hello AHWAN LAB, I am interested in becoming a distributor in:')} target="_blank" rel="noopener">WhatsApp us</a></div></div>
   <div className="technical-board"><div className="board-top"><span>AHWAN LAB</span><span>PARTNERS WE LOOK FOR</span></div><div className="tech-steps">{lookFor.map((s,i)=><div className="tech-step" key={s}><span className="tech-step-label">{String(i+1).padStart(2,'0')}</span><h4 className="serif">{s}</h4></div>)}</div></div>
  </div></div></section>
 
