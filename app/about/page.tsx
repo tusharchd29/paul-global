@@ -4,7 +4,9 @@ import Logo from '../components/Logo';
 import QualitySection from '../components/QualitySection';
 import {SITE} from '../site';
 import {industries,industrySlug} from '../industries/data';
-import {categoryMeta,slugify} from '../products/data';
+import {products,categoryMeta,slugify} from '../products/data';
+const ingredientCount=products.filter(p=>p.category!=='Our Formulations').length;
+const formulationCount=products.length-ingredientCount;
 export const metadata={title:'About Us | AHWAN LAB',description:'AHWAN LAB develops customized enzyme, probiotic and yeast solutions, manufactured at a partner facility in Gujarat, India, for animal feed, food and industry.'};
 const pillars=[
  ['Mission','Quality enzymes at affordable prices','Deliver quality enzymes at affordable prices, to global standards.'],
@@ -18,7 +20,7 @@ const model=[
  ['Documented supply','Supplied in your format, with COA, SDS and TDS on request, in India or for export.'],
 ];
 export default function About(){return <main className="products-page">
- <header className="products-header"><div className="container"><div className="products-nav"><Link className="logo" href="/" aria-label={SITE.name}><Logo tagline/></Link><nav className="products-links"><Link href="/">Home</Link><Link href="/industries">Industries</Link><Link href="/products">Ingredients</Link><Link href="/export">Export</Link><a href="/#contact">Contact</a></nav><div className="nav-actions"><Link className="btn btn-gold" href="/#contact">Share Your Requirement</Link><MenuButton/></div></div><div className="products-title"><div className="eyebrow">AHWAN LAB · About us</div><h1 className="serif">A better option for<br/><em>biotechnology products.</em></h1><p>AHWAN LAB develops customized enzyme, probiotic and yeast solutions. The profound knowledge and rich experience of our business associates in enzyme technology have helped us earn a distinguished position in our market segment.</p></div></div></header>
+ <header className="products-header"><div className="container"><div className="products-nav"><Link className="logo" href="/" aria-label={SITE.name}><Logo tagline/></Link><nav className="products-links"><Link href="/">Home</Link><Link href="/industries">Industries</Link><Link href="/products">Ingredients</Link><Link href="/export">Export</Link><a href="/#contact">Contact</a></nav><div className="nav-actions"><Link className="btn btn-gold" href="/#contact">Share Your Requirement</Link><MenuButton/></div></div><div className="products-title"><div className="eyebrow">AHWAN LAB · About us</div><h1 className="serif">Enzymes, probiotics and yeast.<br/><em>Made to your specification.</em></h1><p>AHWAN LAB is an Ahmedabad-based company that develops customized enzyme, probiotic and yeast solutions. We supply {ingredientCount} ingredients across {industries.length} industries, plus {formulationCount} poultry formulations of our own, manufactured at a partner facility in Gujarat to the specification we agree with each buyer.</p></div></div></header>
 
  <section className="section portfolio-tease"><div className="container">
   <div className="section-head"><div><div className="eyebrow">What drives us</div><h2 className="serif">Mission, vision<br/><em>and approach.</em></h2></div></div>

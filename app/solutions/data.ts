@@ -1,4 +1,5 @@
 import {products,productSlug,type Product} from '../products/data';
+import {industrySolutions} from './industrySolutions';
 
 // Problem → product knowledge base behind the Solution Finder. Every formulation link and
 // "reason" restates an indication or benefit printed in the AHWAN LAB brochure; the ingredient
@@ -8,9 +9,9 @@ import {products,productSlug,type Product} from '../products/data';
 export const AREAS=['Broilers','Layers','Breeders','Water & environment'] as const;
 export type Area=typeof AREAS[number];
 type Pick={name:string;reason:string};
-export type Solution={id:string;label:string;symptom:string;areas:Area[];keywords:string[];why:string;primary:Pick[];also:Pick[];ingredients:Pick[];track:string[];caution?:string};
+export type Solution={id:string;industry?:string;label:string;symptom:string;areas:Area[];keywords:string[];why:string;primary:Pick[];also:Pick[];ingredients:Pick[];track:string[];caution?:string};
 
-export const solutions:Solution[]=[
+const feedSolutions:Solution[]=[
  {id:'weak-egg-shells',label:'Weak or thin egg shells',symptom:'Cracked, thin or soft-shelled eggs; rising breakage in the tray.',areas:['Layers','Breeders'],
   keywords:['egg','eggs','shell','shells','thin','crack','cracked','broken','breakage','soft','calcium','layer'],
   why:'Shell quality depends on enough available calcium and phosphorus, plus vitamin D3 to use them. Demand climbs as layers age and egg mass rises.',
@@ -43,8 +44,8 @@ export const solutions:Solution[]=[
  {id:'gut-health-mortality',label:'Poor gut health or high mortality',symptom:'Loose droppings, poor gut condition or higher-than-expected mortality.',areas:['Broilers','Layers','Breeders'],
   keywords:['gut','intestine','mortality','death','dying','loose','droppings','diarrhea','diarrhoea','wet droppings','enteritis','digestion','immunity','disease','weak chicks'],
   why:'An unbalanced gut microflora lets harmful bacteria gain ground — hurting digestion, nutrient absorption and survivability.',
-  primary:[{name:'Progrow',reason:'Optimises gut health, reduces mortality and gives supportive therapy for bacterial and viral diseases.'}],
-  also:[{name:'Livoshield',reason:'Herbal liver protector that helps build immunity.'}],
+  primary:[{name:'Progrow',reason:'Optimises gut health, helps reduce mortality and improves FCR.'}],
+  also:[{name:'Livoshield',reason:'Herbal liver protector that supports immunity.'}],
   ingredients:[{name:'Bacillus subtilis',reason:'Spore-forming probiotic for feed or water.'},{name:'Bacillus coagulans',reason:'Spore-forming probiotic that tolerates feed processing.'},{name:'Lactobacillus acidophilus',reason:'Lactic acid bacteria for gut-flora balance.'},{name:'Enterococcus faecium',reason:'Lactic acid bacteria used in gut-health blends.'},{name:'Pediococcus acidilactici',reason:'Lactic acid bacteria that help exclude harmful bacteria.'},{name:'Clostridium butyricum',reason:'Butyrate-producing strain that supports the gut lining.'},{name:'Saccharomyces boulardii',reason:'Probiotic yeast supporting the gut lining and immunity.'}],
   track:['Weekly mortality %','Dropping and litter condition','FCR'],
   caution:'For an active disease outbreak, always involve your veterinarian first.'},
@@ -58,7 +59,7 @@ export const solutions:Solution[]=[
  {id:'liver-stress',label:'Liver stress or low immunity',symptom:'Poor appetite and growth, weak response to vaccination, birds that look dull.',areas:['Broilers','Layers','Breeders'],
   keywords:['liver','fatty liver','immunity','immune','vaccination','vaccine','dull','appetite','stress','toxin','medication','antibiotic'],
   why:'The liver drives metabolism and detoxification. When it is under strain, appetite, growth and immunity all suffer.',
-  primary:[{name:'Livoshield',reason:'Blend of six medicinal herbs for liver upgradation and protection, better FCR and immunity.'}],
+  primary:[{name:'Livoshield',reason:'Blend of six medicinal herbs to support liver function, FCR and immunity.'}],
   also:[{name:'Progrow',reason:'Supports gut health and digestibility alongside liver care.'}],
   ingredients:[{name:'Saccharomyces cerevisiae',reason:'Yeast culture supporting digestibility and immune function.'},{name:'Saccharomyces boulardii',reason:'Probiotic yeast supporting immunity.'},{name:'Bacillus coagulans',reason:'Spore-forming probiotic supporting gut health.'},{name:'Lactobacillus acidophilus',reason:'Lactic acid bacteria for gut-flora balance.'}],
   track:['Feed intake','Growth vs target','Vaccination response']},
@@ -74,7 +75,7 @@ export const solutions:Solution[]=[
   why:'Protein is one of the most expensive parts of the feed, and any that is not digested is wasted and excreted as nitrogen.',
   primary:[{name:'Digesmo-Pro',reason:'Acid and alkaline protease blend that improves protein digestibility and lets lower-cost protein sources into the diet.'}],
   also:[],
-  ingredients:[{name:'Protease',reason:'Available from 100,000 up to 1,000,000 U/g.'},{name:'Lactobacillus sporogenes',reason:'Spore-forming probiotic used in Digesmo-Pro.'},{name:'Bacillus subtilis',reason:'Probiotic strain that produces its own proteases.'},{name:'Bacillus licheniformis',reason:'Spore-forming strain known for protease production.'}],
+  ingredients:[{name:'Protease',reason:'Available from 100,000 up to 1,000,000 U/g.'},{name:'Bacillus coagulans',reason:'Spore-forming probiotic (sold as Lactobacillus sporogenes) used in Digesmo-Pro.'},{name:'Bacillus subtilis',reason:'Probiotic strain that produces its own proteases.'},{name:'Bacillus licheniformis',reason:'Spore-forming strain known for protease production.'}],
   track:['Crude protein in the diet','Feed cost per ton','FCR']},
  {id:'high-fibre-diet',label:'High-fibre diets (wheat, rice bran, DDGS)',symptom:'Sticky droppings or lower performance on fibre-rich or by-product ingredients.',areas:['Broilers','Layers','Breeders'],
   keywords:['fibre','fiber','nsp','wheat','barley','rice bran','bran','ddgs','sticky','viscosity','by-product','byproduct','cellulose'],
@@ -87,9 +88,16 @@ export const solutions:Solution[]=[
   keywords:['water','pond','ponds','aqua','aquaculture','fish','shrimp','tank','effluent','sludge','nitrite','nitrate','waste','odour','smell'],
   why:'Ammonia, nitrite and organic load build up when nitrifying and degrading bacteria cannot keep up with the waste going in.',
   primary:[],also:[],
-  ingredients:[{name:'Nitrosomonas sp.',reason:'Converts ammonia to nitrite.'},{name:'Nitrobacter sp.',reason:'Converts nitrite to nitrate.'},{name:'Rhodobacter sp.',reason:'Photosynthetic bacteria used in pond programmes.'},{name:'Bacillus subtilis',reason:'Degrades organic matter and sludge.'},{name:'Bacillus licheniformis',reason:'Degrades organic waste in ponds and effluent.'},{name:'Pseudomonas putida',reason:'Used in waste-treatment blends.'},{name:'Thiobacillus thioxidans',reason:'Oxidises sulphur compounds behind foul odour.'}],
+  ingredients:[{name:'Nitrosomonas sp.',reason:'Converts ammonia to nitrite.'},{name:'Nitrobacter sp.',reason:'Converts nitrite to nitrate.'},{name:'Rhodobacter sp.',reason:'Photosynthetic bacteria used in pond programmes.'},{name:'Bacillus subtilis',reason:'Degrades organic matter and sludge.'},{name:'Bacillus licheniformis',reason:'Degrades organic waste in ponds and effluent.'},{name:'Pseudomonas putida',reason:'Used in waste-treatment blends.'},{name:'Thiobacillus thiooxidans',reason:'Oxidises sulphur compounds behind foul odour.'}],
   track:['Ammonia and nitrite levels','Dissolved oxygen','Sludge build-up']},
 ];
+
+// Poultry and feed problems first, then process problems for the other industries.
+export const FEED='Animal Feed';
+export const solutions:Solution[]=[...feedSolutions,...industrySolutions];
+export const solutionIndustry=(s:Solution)=>s.industry??FEED;
+export const isFeed=(s:Solution)=>solutionIndustry(s)===FEED;
+export const solutionsForIndustry=(name:string)=>solutions.filter(s=>solutionIndustry(s)===name);
 
 export const productByName=(name:string):Product|undefined=>products.find(p=>p.name===name);
 export const productHref=(name:string)=>{const p=productByName(name);return p?`/products/${productSlug(p)}`:'/products'};
