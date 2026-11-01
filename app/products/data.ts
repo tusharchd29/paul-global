@@ -7,16 +7,16 @@ export type Product={name:string;category:string;type:string;ec?:string;tagline:
 const formulations:Omit<Product,'category'>[]=[
  {name:'Calshell',type:'Calcium supplement',tagline:'Calcium granules to improve egg shell',image:'/products/calshell.png',
   summary:'Calcium granules built on a microcrystalline hydroxyapatite complex (MCHC), delivering calcium and phosphorus together with vitamin D3, vitamin B12, magnesium and manganese.',
-  notice:'Animal feed supplement — for animal use only, not for human use.',
+  notice:'Animal feed supplement. For animal use only, not for human use.',
   composition:[{title:'Each 5 g contains MCHC equivalent to',rows:[['Calcium','165 mg'],['Phosphorus','75 mg'],['Vitamin D3','500 IU'],['Vitamin B12','5 mcg'],['Magnesium','2 mg'],['Manganese','10 mg']]}],
   benefits:['Improves egg shell quality','Better weight gain in broiler','Better skeletal integrity'],
   dosage:['500 g to 1 kg per ton of poultry feed, or as per the advice of consultants.']},
  {name:'Progrow',type:'Probiotic · enzyme · yeast',tagline:'Multistrain probiotic with enzyme and yeast',image:'/products/progrow.png',
   summary:'A multistrain probiotic (3,600 million CFU/g) combined with a five-enzyme profile and Saccharomyces yeast (1,800 million CFU/g) for gut health, digestibility and uniform growth.',
   composition:[
-   {title:'Probiotic profile — 3,600 million CFU/g',rows:[['Bacillus sp.',''],['Lactobacillus sp.',''],['Enterococcus sp.',''],['Streptococcus sp.',''],['Pediococcus sp.','']]},
+   {title:'Probiotic profile: 3,600 million CFU/g',rows:[['Bacillus sp.',''],['Lactobacillus sp.',''],['Enterococcus sp.',''],['Streptococcus sp.',''],['Pediococcus sp.','']]},
    {title:'Enzyme profile',rows:[['Protease','90,000 U/g'],['Cellulase','45,000 U/g'],['Amylase','63,000 U/g'],['Phytase','18,000 U/g'],['Xylanase','27,000 U/g']]},
-   {title:'Yeast profile — 1,800 million CFU/g',rows:[['Saccharomyces sp.','']]},
+   {title:'Yeast profile: 1,800 million CFU/g',rows:[['Saccharomyces sp.','']]},
   ],
   sections:[
    {title:'Role of probiotics in poultry',body:'Maintain and improve the gut microflora as an external supplement, and reduce pathogenic load by competitive exclusion.'},
@@ -24,20 +24,20 @@ const formulations:Omit<Product,'category'>[]=[
    {title:'Role of yeast in poultry',body:'Supports performance, digestibility, mucosal development and immunomodulatory functions. Live yeast cultures such as S. cerevisiae and S. boulardii help keep the gut microflora balanced and support the gut lining. S. cerevisiae also produces invertase, which hydrolyses sucrose into glucose and fructose, making more glucose available to the bird and to other microorganisms in the surrounding environment.'},
   ],
   benefits:['Optimises gut health, enhancing digestibility and nutrient absorption','Helps body-weight gain','Reduces mortality','Improves FCR','Reduces ammonia production in litter','Uniform growth'],
-  dosage:['Poultry mash feed — Starter: 200 g / ton','Grower: 150 g / ton','Finisher: 100 g / ton','Morning drinking water: 1 g in 2 litres of water, or as directed by a veterinarian.'],
+  dosage:['Poultry mash feed. Starter: 200 g / ton','Grower: 150 g / ton','Finisher: 100 g / ton','Morning drinking water: 1 g in 2 litres of water, or as directed by a veterinarian.'],
   presentation:'25 kg powder'},
  {name:'Livoshield',type:'Herbal liver protector',tagline:'Herbal liver protector',image:'/products/livoshield.png',
-  summary:'A blend of six medicinal herbs — Eclipta alba, Picrorhiza kurroa, Tephrosia purpurea, Cichorium endivia, Phyllanthus niruri and Terminalia chebula — for liver protection, FCR and growth.',
+  summary:'A blend of six medicinal herbs (Eclipta alba, Picrorhiza kurroa, Tephrosia purpurea, Cichorium endivia, Phyllanthus niruri and Terminalia chebula) for liver protection, FCR and growth.',
   composition:[{title:'Blend of medicinal herbs',rows:[['Eclipta alba',''],['Picrorhiza kurroa',''],['Tephrosia purpurea',''],['Cichorium endivia',''],['Phyllanthus niruri',''],['Terminalia chebula','']]}],
   benefits:['Supports liver function and protection','Better FCR and growth','Supports immunity'],
   dosage:['200 g per ton of poultry feed, or as directed by a veterinarian.'],
   presentation:'30 kg powder'},
  {name:'Phytomin Pro',type:'Phytase enzyme',tagline:'Micronised powder phytase enzyme',image:'/products/phytomin-pro.png',
-  summary:'A micronised phytase powder with a minimum activity of 5,000 FTU/g that releases phytate-bound phosphorus, minerals and nutrients — reducing the need for costly inorganic phosphorus.',
+  summary:'A micronised phytase powder with a minimum activity of 5,000 FTU/g that releases phytate-bound phosphorus, minerals and nutrients, reducing the need for costly inorganic phosphorus.',
   composition:[{title:'Each gram contains',rows:[['Phytase (minimum activity)','5,000 FTU']]}],
   points:['When added to the feed it facilitates the release of phytate-bound phosphorus.','It also helps release other minerals like calcium and magnesium.','Other trace minerals like copper and zinc, and phytate-bound nutrients like protein, amino acids and starch, are also released.','Phytomin Pro therefore works as an excellent source of phosphorus, helping reduce the inclusion rate of inorganic / organic phosphorus like DCP, MCP or bone meal.'],
   benefits:['Reduces supplementation of costly inorganic phosphorus in the feed, thereby reducing feed cost','Increases the utilisation and efficiency of minerals, protein and other nutrients','Reduces the cost of feed and thereby the cost of production'],
-  dosage:['Layers (feed with 2–4 kg of DCP / ton): inclusion rate given on request — contact us.','Broilers: 100–200 g / ton of feed with 2–6 kg of DCP / ton.','Breeders: as recommended by the nutritionist / veterinarian.','Please consult the veterinarian / nutritionist while using the product.']},
+  dosage:['Layers (feed with 2–4 kg of DCP / ton): inclusion rate given on request; contact us.','Broilers: 100–200 g / ton of feed with 2–6 kg of DCP / ton.','Breeders: as recommended by the nutritionist / veterinarian.','Please consult the veterinarian / nutritionist while using the product.']},
  {name:'Digesmo-Pro',type:'Protease enzyme blend',tagline:'Optimizing protein digestion',image:'/products/digesmo-pro.png',
   summary:'An acid and alkaline protease blend with cellulase, amylase and Bacillus coagulans (Lactobacillus sporogenes) that breaks protein down into the amino acids and peptides poultry need.',
   sections:[{title:'Why it matters',body:'Protein is one of the most expensive but essential components of poultry feed. The challenge is to use protein more efficiently and control feed cost without compromising bird performance at any stage of the life cycle. Digesmo-Pro is specially developed to break protein molecules down into the amino acids and peptides needed by poultry, significantly increasing the digestibility of protein.'}],
@@ -50,8 +50,8 @@ const formulations:Omit<Product,'category'>[]=[
  {name:'XP-Zyme',type:'Xylanase · phytase blend',tagline:'Unique blend of thermostable xylanase and phytase enzyme powder',image:'/products/xp-zyme.png',
   summary:'A thermostable xylanase (160,000 U/g) and phytase (5,000 U/g) powder that breaks down plant cell-wall hemicellulose and releases phytate-bound phosphorus.',
   sections:[
-   {title:'Xylanase',body:'Xylanase (endo-1,4-β-xylanase) degrades the linear polysaccharide xylan into xylose, breaking down hemicellulose — one of the major components of plant cell walls.'},
-   {title:'Phytase',body:'Phytase is a phosphatase enzyme that catalyses the hydrolysis of phytic acid — the indigestible, organic form of phosphorus found in grains and oil seeds — releasing a usable form of inorganic phosphorus.'},
+   {title:'Xylanase',body:'Xylanase (endo-1,4-β-xylanase) degrades the linear polysaccharide xylan into xylose, breaking down hemicellulose, one of the major components of plant cell walls.'},
+   {title:'Phytase',body:'Phytase is a phosphatase enzyme that catalyses the hydrolysis of phytic acid (the indigestible, organic form of phosphorus found in grains and oil seeds), releasing a usable form of inorganic phosphorus.'},
   ],
   composition:[{title:'Each gram contains',rows:[['Xylanase','160,000 U'],['Phytase','5,000 U']]}],
   benefits:['Flexibility in diet formulation','Improves weight gain','Improves feed efficiency'],
@@ -85,7 +85,7 @@ const ENZYMES:{name:string;summary:string;grades:Grade[]}[]=[
 ];
 const STRAIN_GROUPS:{type:string;summary:string;names:string[]}[]=[
  {type:'Lactic acid bacteria',summary:'A lactic acid–producing strain used in gut-health and probiotic formulations.',names:['Lactobacillus acidophilus','Lactobacillus fermentum','Lactobacillus casei','Lactococcus lactis','Lactobacillus reuteri','Lactobacillus rhamnosus','Lactobacillus rhamnosus GG (LGG)','Lactobacillus bulgaricus','Pediococcus acidilactici','Enterococcus faecium','Enterococcus faecalis','Bifidobacterium bifidum','Bifidobacterium longum','Bifidobacterium infantis','Bifidobacterium animalis subsp. lactis']},
- {type:'Spore-forming bacteria',summary:'A spore-forming strain — spores tolerate feed processing and storage well, making these a common choice for feed-applied probiotics.',names:['Bacillus coagulans','Bacillus subtilis','Bacillus licheniformis','Bacillus megaterium','Bacillus amyloliquefaciens','Bacillus firmus','Bacillus mesentericus','Bacillus clausii','Clostridium butyricum']},
+ {type:'Spore-forming bacteria',summary:'A spore-forming strain. Its spores tolerate feed processing and storage well, making these a common choice for feed-applied probiotics.',names:['Bacillus coagulans','Bacillus subtilis','Bacillus licheniformis','Bacillus megaterium','Bacillus amyloliquefaciens','Bacillus firmus','Bacillus mesentericus','Bacillus clausii','Clostridium butyricum']},
  {type:'Water & environmental bacteria',summary:'Used in water-quality, pond-management and waste-treatment microbial programmes.',names:['Nitrosomonas sp.','Nitrobacter sp.','Rhodococcus sp.','Rhodobacter sp.','Pseudomonas putida','Thiobacillus thiooxidans']},
  {type:'Fungal culture',summary:'A fungal culture used as an enzyme-production source or in agricultural biocontrol programmes.',names:['Aspergillus niger','Trichoderma harzianum','Beauveria bassiana','Metarhizium anisopliae']},
 ];
@@ -103,10 +103,10 @@ export const products:Product[]=[
 ];
 export const categories=[...new Set(products.map(p=>p.category))];
 export const categoryMeta:Record<string,{label:string;intro:string}>={
- 'Enzymes':{label:'Enzymes',intro:'Enzymes in powder and water-soluble grades — phytase, protease, carbohydrases, lipase and specialty activities — for feed, food and industrial use, to your required specification.'},
+ 'Enzymes':{label:'Enzymes',intro:'Enzymes in powder and water-soluble grades: phytase, protease, carbohydrases, lipase and specialty activities, for feed, food and industrial use, to your required specification.'},
  'Probiotics':{label:'Probiotics & cultures',intro:'Lactic acid, spore-forming, environmental and fungal strains at 5 to 20 billion CFU per gram, available as standalone raw materials.'},
  'Yeast':{label:'Yeast',intro:'Saccharomyces cerevisiae and Saccharomyces boulardii cultures in water-soluble and standard powder grades.'},
- 'Our Formulations':{label:'Our Formulations',intro:'Formulations we have developed and use in the industry ourselves — proof of what we can build for you, and a starting point for your own custom blend.'},
+ 'Our Formulations':{label:'Our Formulations',intro:'Formulations we have developed and use in the industry ourselves: proof of what we can build for you, and a starting point for your own custom blend.'},
 };
 export function slugify(v:string){return v.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'')}
 export function productSlug(p:Product){return `${slugify(p.category)}--${slugify(p.name)}`}

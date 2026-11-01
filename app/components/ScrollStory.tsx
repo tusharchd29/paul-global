@@ -37,7 +37,7 @@ export default function ScrollStory({steps}:{steps:Step[]}){
    <div className="story-copy">
     <div className="eyebrow">Customized solutions</div>
     <h2 className="serif">Three ways<br/><em>to work with us.</em></h2>
-    <p className="muted">Whatever you start with — an ingredient, a formula or a field problem — the outcome is a product built to your specification.</p>
+    <p className="muted">Whatever you start with, whether an ingredient, a formula or a field problem, the outcome is a product built to your specification.</p>
     <div className="story-progress" aria-hidden="true"><span/></div>
     <ol className="story-steps">{steps.map(([n,t,d,cta],i)=><li key={n} className={on&&i===active?'is-active':on&&i<active?'is-done':''}>
      <a href="#contact" className="story-step"><span className="offer-no">{n}</span><div><h3 className="serif">{t}</h3><p>{d}</p><strong>{cta} →</strong></div></a>
