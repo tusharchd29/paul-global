@@ -41,7 +41,10 @@ html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:#03112f
  <div id="brand" class="o"><div class="word">AHWAN<b>LAB</b><svg viewBox="0 0 28 26"><circle cx="4" cy="9" r="1.6"/><circle cx="11" cy="4.5" r="2.2"/><circle cx="19.5" cy="3.5" r="2.8"/><circle cx="25" cy="10" r="3"/><circle cx="23" cy="20" r="2.4"/></svg></div><div class="tag">Animal Health, Wellness and Nutrition</div></div>
 </div>
 <script>
-const W=1920,H=1080,T=20,TAU=Math.PI*2;
+const Q=new URLSearchParams(location.search),PORT=Q.has('portrait');
+// ?portrait renders a 1080x1920 cut for phones, with the enzyme in the upper part of the frame
+const W=PORT?1080:1920,H=PORT?1920:1080,T=20,TAU=Math.PI*2;
+{const c=document.getElementById('c');c.width=W;c.height=H;document.documentElement.style.width=document.body.style.width=W+'px';document.documentElement.style.height=document.body.style.height=H+'px'}
 // ?bg renders the text-free background cut used behind the website hero
 const BG=location.search.includes('bg');if(BG)document.querySelector('.layer').style.display='none';
 const ctx=document.getElementById('c').getContext('2d');
@@ -77,9 +80,9 @@ function renderAt(t){
 
  // enzyme morph amount, centre and rotation
  const m=BG?ease(seg(t,2.6,5.6))*(1-ease(seg(t,13,16.5))):ease(seg(t,2.6,5.0))*(1-ease(seg(t,9.4,11.2)));
- const cx=BG?W*.7:lerp(W*.5,W*.8,ease(seg(t,6.8,8.0))),cy=H*.5;
+ const cx=BG?(PORT?W*.5:W*.7):lerp(W*.5,W*.8,ease(seg(t,6.8,8.0))),cy=BG&&PORT?H*.24:H*.5;
  const rot=.25*Math.sin(TAU*t/T)-.1;
- const scale=BG?.95:lerp(1,.74,ease(seg(t,6.8,8.0)));
+ const scale=BG?(PORT?1.05:.95):lerp(1,.74,ease(seg(t,6.8,8.0)));
  // network dims under text
  const dim=BG?.9:1-.45*win(t,10.2,15.2,.6,.6)-.35*win(t,15.2,18.3,.6,.6);
  const pos=nodes.map(n=>{
@@ -107,7 +110,7 @@ function renderAt(t){
  const sIn=ease(seg(t,3.8,5.8));
  if(t>3.8&&t<8.4){
   const split=easeOut(seg(t,6.3,8.2));const fade=1-seg(t,7.4,8.4);
-  const sx=lerp(W+180,px+30,sIn),sy=lerp(H*.28,py,sIn);const spin=lerp(1.4,0,sIn)+split*.8;
+  const sx=lerp(W+180,px+30,sIn),sy=lerp(PORT?py-260:H*.28,py,sIn);const spin=lerp(1.4,0,sIn)+split*.8;
   ctx.lineWidth=4;ctx.strokeStyle=`rgba(255,255,255,${.95*fade})`;ctx.fillStyle=`rgba(94,234,212,${.12*fade})`;
   const off=30+split*170;
   const ax=sx+Math.cos(spin+1.9)*off,ay=sy+Math.sin(spin+1.9)*off-split*60,bx=sx+Math.cos(spin-1.9)*off,by=sy+Math.sin(spin-1.9)*off+split*60;
