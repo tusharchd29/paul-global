@@ -98,3 +98,10 @@ section[id]{scroll-margin-top:64px}
 @media(max-width:900px){.industry-grid,.industry-grid.compact{grid-template-columns:1fr 1fr}.footer-main{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.industry-grid,.industry-grid.compact{grid-template-columns:1fr}.footer-main{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.industry-card,.industry-card:hover{transition:none;transform:none}}
+
+/* Background videos (hero + lab band). The section gradient shows until a clip is playing. */
+.bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0;transition:opacity 1.2s ease;pointer-events:none;filter:saturate(.55)}.bg-video.is-playing{opacity:1}
+.video-shade{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;transition:opacity 1.2s ease;background:linear-gradient(90deg,rgba(3,17,47,.94) 0%,rgba(4,27,79,.82) 50%,rgba(4,27,79,.6) 100%)}.bg-video.is-playing+.video-shade{opacity:1}
+.video-band{position:relative;overflow:hidden;isolation:isolate;color:#fff;background:radial-gradient(circle at 80% 40%,rgba(53,103,198,.4),transparent 45%),linear-gradient(120deg,#03112f 0%,#041b4f 60%,#0a2766 100%);min-height:520px;display:flex;align-items:center}
+.video-band-inner{position:relative;z-index:1;width:100%;padding:110px 28px}.video-band h2{font-size:clamp(38px,5.4vw,72px);line-height:1;margin:12px 0 18px;max-width:760px}.video-band p{max-width:560px;font-size:17px;line-height:1.7;color:#c2cfe8;margin:0}
+@media(max-width:600px){.video-band{min-height:440px}.video-band-inner{padding:80px 20px}.video-shade{background:rgba(3,17,47,.86)}}
