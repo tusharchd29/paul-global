@@ -1,5 +1,5 @@
 /* Modern, animated layer (loads last). Keeps the navy brand and adds a bio-tech accent (teal),
-   a living molecule network in the hero, cursor-reactive light, a pinned scroll story and glowing
+   a full-bleed background film in the hero, cursor-reactive light, a pinned scroll story and glowing
    cards. All motion is code-driven, and everything holds still for prefers-reduced-motion. */
 :root{--teal:#5eead4;--electric:#6f9be8;--glass:rgba(4,22,64,.86)}
 
@@ -8,7 +8,12 @@
 
 /* ---------- Hero ---------- */
 .hero{min-height:100svh;max-height:none}
-.molecule-field{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.9;mask-image:linear-gradient(180deg,#000 70%,transparent)}
+/* Background film (HeroVideo.tsx): full-bleed, muted, looping, darkened on the left for the copy */
+.hero-media{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:#03112f url(/video/hero-bg-poster.jpg) center/cover no-repeat}
+.hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 50%}
+.hero-media:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,17,47,.88) 0%,rgba(3,17,47,.6) 38%,rgba(3,17,47,.08) 70%),linear-gradient(180deg,rgba(3,17,47,.45) 0%,transparent 22%,transparent 72%,rgba(3,17,47,.75) 100%)}
+.hero-has-video:before{display:none}
+@media(max-width:900px){.hero-media video{object-position:78% 50%}.hero-media:after{background:linear-gradient(180deg,rgba(3,17,47,.55),rgba(3,17,47,.78))}}
 .hero-spot{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(520px circle at calc(var(--hx,.72)*100%) calc(var(--hy,.35)*100%),rgba(94,234,212,.16),transparent 60%);transition:background .2s}
 .hero .nav{background:transparent}
 .hero-copy .eyebrow{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 10px;border:1px solid rgba(143,176,239,.3);border-radius:999px;background:rgba(255,255,255,.04);backdrop-filter:blur(6px)}
@@ -96,10 +101,3 @@
  }
 }
 @media (prefers-reduced-motion:reduce){.hero-visual{transform:none}.hero-spot{display:none}}
-
-/* ---------- Brand film (EnzymeFilm.tsx) ---------- */
-.film-section{padding:90px 0 10px;background:linear-gradient(180deg,#fff 0%,var(--cream) 100%)}
-.film-frame{position:relative;border-radius:22px;overflow:hidden;background:#03112f;aspect-ratio:16/9;box-shadow:0 40px 90px rgba(4,22,64,.28),0 0 0 1px rgba(10,39,102,.12)}
-.film-frame:before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(135deg,rgba(94,234,212,.7),rgba(111,155,232,.2) 40%,transparent 70%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:1}
-.film-frame video{display:block;width:100%;height:100%;object-fit:cover}
-@media(max-width:600px){.film-section{padding:56px 0 0}.film-frame{border-radius:14px}}
