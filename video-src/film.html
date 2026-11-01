@@ -1,0 +1,134 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto+Condensed:ital,wght@0,400;0,700;1,700&display=block" rel="stylesheet">
+<style>
+html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:#03112f}
+#c{position:absolute;inset:0}
+.layer{position:absolute;inset:0;font-family:'Open Sans',sans-serif;color:#fff}
+.o{opacity:0;will-change:opacity,transform}
+#head{position:absolute;left:170px;top:360px}
+#head .eyebrow{font:700 22px 'Open Sans';letter-spacing:.22em;color:#8fb0ef;text-transform:uppercase;display:flex;align-items:center;gap:16px}
+#head .eyebrow i{width:14px;height:14px;border-radius:50%;background:#5eead4;box-shadow:0 0 18px #5eead4}
+#head h1{margin:22px 0 0;font:700 150px/0.95 'Roboto Condensed';letter-spacing:-.01em}
+#head h2{margin:8px 0 0;font:italic 700 96px/1 'Roboto Condensed';color:#5eead4}
+#cards{position:absolute;left:0;right:0;top:300px;display:flex;justify-content:center;gap:44px}
+.card{width:500px;padding:44px 40px 40px;border-radius:22px;background:linear-gradient(160deg,rgba(255,255,255,.10),rgba(255,255,255,.03));border:1px solid rgba(143,176,239,.28);border-top:4px solid #5eead4;box-shadow:0 30px 70px rgba(0,0,0,.35)}
+.card .k{font:700 30px 'Open Sans';color:#a9bde6;letter-spacing:.04em}
+.card .v{font:700 82px/1.05 'Roboto Condensed';margin:14px 0 10px;background:linear-gradient(135deg,#fff,#5eead4);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+.card .l{font:600 24px 'Open Sans';letter-spacing:.16em;text-transform:uppercase;color:#8fb0ef}
+#spec{position:absolute;left:0;right:0;top:760px;text-align:center;font:italic 700 72px 'Roboto Condensed';color:#fff}
+#spec b{color:#5eead4;font-weight:700}
+#ribbon{position:absolute;top:250px;left:0;white-space:nowrap;font:italic 700 64px 'Roboto Condensed';color:rgba(169,189,230,.55)}
+#ribbon span{margin:0 34px}
+#ribbon em{color:#5eead4;font-style:normal;font-size:36px;vertical-align:12px}
+#brand{position:absolute;left:0;right:0;top:470px;text-align:center}
+#brand .word{display:inline-flex;align-items:flex-start;font:400 150px/1 'Times New Roman',Georgia,serif;letter-spacing:.03em}
+#brand .word b{font-weight:400;color:#8fb0ef}
+#brand svg{width:96px;height:90px;margin:-26px 0 0 8px;fill:#8fb0ef}
+#brand .tag{margin-top:30px;font:700 30px 'Open Sans';letter-spacing:.32em;text-transform:uppercase;color:#cfd9ee}
+</style></head>
+<body>
+<canvas id="c" width="1920" height="1080"></canvas>
+<div class="layer">
+ <div id="head" class="o"><div class="eyebrow"><i></i>AHWAN LAB</div><h1>Enzyme science.</h1><h2>Premium quality from India.</h2></div>
+ <div id="cards">
+  <div class="card o" id="c1"><div class="k">Up to</div><div class="v"><span id="n1">1,500,000</span> U/g</div><div class="l">Enzyme activity</div></div>
+  <div class="card o" id="c2"><div class="k">Up to</div><div class="v"><span id="n2">20</span> bn CFU/g</div><div class="l">Probiotic strength</div></div>
+  <div class="card o" id="c3"><div class="k">Documented</div><div class="v" style="font-size:66px;padding:8px 0 4px">COA · SDS · TDS</div><div class="l">With every product</div></div>
+ </div>
+ <div id="spec" class="o">Built to <b>your specification.</b></div>
+ <div id="ribbon" class="o"></div>
+ <div id="brand" class="o"><div class="word">AHWAN<b>LAB</b><svg viewBox="0 0 28 26"><circle cx="4" cy="9" r="1.6"/><circle cx="11" cy="4.5" r="2.2"/><circle cx="19.5" cy="3.5" r="2.8"/><circle cx="25" cy="10" r="3"/><circle cx="23" cy="20" r="2.4"/></svg></div><div class="tag">Animal Health, Wellness and Nutrition</div></div>
+</div>
+<script>
+const W=1920,H=1080,T=20,TAU=Math.PI*2;
+const ctx=document.getElementById('c').getContext('2d');
+// seeded RNG so every render is identical
+let s=20261101;const rnd=()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const seg=(t,a,b)=>clamp((t-a)/(b-a));
+const ease=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const easeOut=x=>1-Math.pow(1-x,3);
+const lerp=(a,b,m)=>a+(b-a)*m;
+// fade window: in over [a,a+fi], out over [b-fo,b]
+const win=(t,a,b,fi=.7,fo=.6)=>Math.min(easeOut(seg(t,a,a+fi)),1-ease(seg(t,b-fo,b)));
+
+const N=150,OUT=78;
+const nodes=Array.from({length:N},(_,i)=>{
+ const outline=i<OUT;
+ return{bx:rnd()*W,by:rnd()*H,ax:20+rnd()*50,ay:20+rnd()*50,kx:1+Math.floor(rnd()*2),ky:1+Math.floor(rnd()*2),px:rnd()*TAU,py:rnd()*TAU,
+  hub:i%9===0,outline,th:outline?i/OUT*TAU:rnd()*TAU,rf:outline?1:Math.sqrt(.08+rnd()*.8),r:i%9===0?4:1.4+rnd()*1.4,ph:rnd()*TAU};
+});
+// globular protein outline with an active-site pocket facing right
+const R0=290;
+const radius=th=>{let d=Math.atan2(Math.sin(th),Math.cos(th));return R0*(1+.09*Math.sin(3*th+.6)+.05*Math.sin(5*th+1.3))*(1-.42*Math.exp(-(d*d)/.045))};
+function net(n,t){return[n.bx+n.ax*Math.sin(TAU*n.kx*t/T+n.px),n.by+n.ay*Math.sin(TAU*n.ky*t/T+n.py)]}
+
+function hexagon(cx,cy,r,rot){ctx.beginPath();for(let k=0;k<6;k++){const a=rot+k*TAU/6;const x=cx+r*Math.cos(a),y=cy+r*Math.sin(a);k?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.closePath()}
+
+function renderAt(t){
+ // background
+ const g=ctx.createLinearGradient(0,0,W,H);g.addColorStop(0,'#03112f');g.addColorStop(.55,'#041b4f');g.addColorStop(1,'#0a2766');
+ ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+ const glowX=W*(.5+.25*Math.sin(TAU*t/T)),glowY=H*(.45+.12*Math.cos(TAU*t/T));
+ const rg=ctx.createRadialGradient(glowX,glowY,0,glowX,glowY,900);rg.addColorStop(0,'rgba(53,103,198,.38)');rg.addColorStop(1,'rgba(53,103,198,0)');ctx.fillStyle=rg;ctx.fillRect(0,0,W,H);
+
+ // enzyme morph amount, centre and rotation
+ const m=ease(seg(t,2.6,5.0))*(1-ease(seg(t,9.4,11.2)));
+ const cx=lerp(W*.5,W*.8,ease(seg(t,6.8,8.0))),cy=H*.5;
+ const rot=.25*Math.sin(TAU*t/T)-.1;
+ const scale=lerp(1,.74,ease(seg(t,6.8,8.0)));
+ // network dims under text
+ const dim=1-.45*win(t,10.2,15.2,.6,.6)-.35*win(t,15.2,18.3,.6,.6);
+ const pos=nodes.map(n=>{
+  const [x0,y0]=net(n,t);
+  const th=n.th+rot;const rr=radius(n.th)*n.rf*scale;
+  const wob=4*Math.sin(TAU*2*t/T+n.ph);
+  return[lerp(x0,cx+(rr+wob)*Math.cos(th),m),lerp(y0,cy+(rr+wob)*Math.sin(th),m)];
+ });
+ const LINK=lerp(150,95,m);
+ ctx.lineCap='round';
+ for(let i=0;i<N;i++)for(let j=i+1;j<N;j++){
+  const dx=pos[i][0]-pos[j][0],dy=pos[i][1]-pos[j][1],d=Math.hypot(dx,dy);
+  if(d<LINK){const both=nodes[i].outline&&nodes[j].outline&&Math.abs(i-j)%(OUT-1)<=1;const o=(1-d/LINK)*.5*dim+(both?.5*m:0);
+   ctx.strokeStyle=both&&m>.05?`rgba(94,234,212,${o})`:`rgba(120,190,255,${o})`;ctx.lineWidth=both?2.4*m+.8:1.1;ctx.beginPath();ctx.moveTo(pos[i][0],pos[i][1]);ctx.lineTo(pos[j][0],pos[j][1]);ctx.stroke()}
+ }
+ nodes.forEach((n,i)=>{const [x,y]=pos[i];
+  if(n.hub){const p=1+.35*Math.sin(TAU*3*t/T+n.ph);const gg=ctx.createRadialGradient(x,y,0,x,y,30*p);gg.addColorStop(0,`rgba(94,234,212,${.6*dim})`);gg.addColorStop(1,'rgba(94,234,212,0)');ctx.fillStyle=gg;ctx.beginPath();ctx.arc(x,y,30*p,0,TAU);ctx.fill();ctx.fillStyle='#8ff5e3'}
+  else ctx.fillStyle=`rgba(200,220,255,${.9*dim})`;
+  ctx.beginPath();ctx.arc(x,y,n.r*(n.outline?1+m*.5:1),0,TAU);ctx.fill();
+ });
+
+ // active-site pocket glow + substrate docking and splitting (catalysis)
+ const pocketR=radius(0)*scale;const px=cx+pocketR*Math.cos(rot)+40*Math.cos(rot),py=cy+pocketR*Math.sin(rot)+40*Math.sin(rot);
+ if(m>.01){const pg=ctx.createRadialGradient(px,py,0,px,py,120);pg.addColorStop(0,`rgba(94,234,212,${.28*m})`);pg.addColorStop(1,'rgba(94,234,212,0)');ctx.fillStyle=pg;ctx.beginPath();ctx.arc(px,py,120,0,TAU);ctx.fill()}
+ const sIn=ease(seg(t,3.8,5.8));
+ if(t>3.8&&t<8.4){
+  const split=easeOut(seg(t,6.3,8.2));const fade=1-seg(t,7.4,8.4);
+  const sx=lerp(W+180,px+30,sIn),sy=lerp(H*.28,py,sIn);const spin=lerp(1.4,0,sIn)+split*.8;
+  ctx.lineWidth=4;ctx.strokeStyle=`rgba(255,255,255,${.95*fade})`;ctx.fillStyle=`rgba(94,234,212,${.12*fade})`;
+  const off=30+split*170;
+  const ax=sx+Math.cos(spin+1.9)*off,ay=sy+Math.sin(spin+1.9)*off-split*60,bx=sx+Math.cos(spin-1.9)*off,by=sy+Math.sin(spin-1.9)*off+split*60;
+  if(split<.05){ctx.beginPath();ctx.moveTo(ax,ay);ctx.lineTo(bx,by);ctx.stroke()}
+  hexagon(ax,ay,30,spin);ctx.fill();ctx.stroke();hexagon(bx,by,30,spin+.5);ctx.fill();ctx.stroke();
+  // catalysis pulse
+  const pulse=seg(t,6.0,7.2);if(pulse>0&&pulse<1){ctx.strokeStyle=`rgba(94,234,212,${(1-pulse)*.9})`;ctx.lineWidth=5*(1-pulse)+1;ctx.beginPath();ctx.arc(px,py,30+pulse*260,0,TAU);ctx.stroke()}
+ }
+
+ // vignette
+ const v=ctx.createRadialGradient(W/2,H/2,H*.35,W/2,H/2,H*1.05);v.addColorStop(0,'rgba(2,10,30,0)');v.addColorStop(1,'rgba(2,10,30,.55)');ctx.fillStyle=v;ctx.fillRect(0,0,W,H);
+
+ // ---------- text layers ----------
+ const set=(id,o,y=0,sc=1)=>{const el=document.getElementById(id);el.style.opacity=o.toFixed(3);el.style.transform=`translateY(${y.toFixed(1)}px) scale(${sc})`};
+ const h=win(t,7.0,10.2,.9,.6);set('head',h,(1-easeOut(seg(t,7,7.9)))*40);
+ [['c1',10.4],['c2',11.0],['c3',11.6]].forEach(([id,a])=>set(id,win(t,a,15.2,.6,.6),(1-easeOut(seg(t,a,a+.7)))*50));
+ const c1=easeOut(seg(t,10.5,11.9)),c2=easeOut(seg(t,11.1,12.5));
+ document.getElementById('n1').textContent=Math.round(1500000*c1).toLocaleString('en-US');
+ document.getElementById('n2').textContent=Math.round(20*c2);
+ set('spec',win(t,12.8,15.2,.7,.6),(1-easeOut(seg(t,12.8,13.6)))*30);
+ const rb=document.getElementById('ribbon');rb.style.opacity=win(t,15.2,18.4,.6,.7).toFixed(3);rb.style.transform=`translateX(${lerp(80,-700,seg(t,15.2,18.4)).toFixed(1)}px)`;
+ set('brand',win(t,15.7,18.3,.8,.7),(1-easeOut(seg(t,15.7,16.6)))*30,lerp(.96,1,easeOut(seg(t,15.7,18.3))));
+}
+document.getElementById('ribbon').innerHTML=['Phytase','Protease','Xylanase','Amylase','Cellulase','Beta-glucanase','Lipase','Pectinase','Beta-mannanase','Laccase'].map(x=>`<span>${x}</span>`).join('<em>◆</em>');
+window.renderAt=renderAt;renderAt(0);
+</script></body></html>

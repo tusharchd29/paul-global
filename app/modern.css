@@ -96,3 +96,10 @@
  }
 }
 @media (prefers-reduced-motion:reduce){.hero-visual{transform:none}.hero-spot{display:none}}
+
+/* ---------- Brand film (EnzymeFilm.tsx) ---------- */
+.film-section{padding:90px 0 10px;background:linear-gradient(180deg,#fff 0%,var(--cream) 100%)}
+.film-frame{position:relative;border-radius:22px;overflow:hidden;background:#03112f;aspect-ratio:16/9;box-shadow:0 40px 90px rgba(4,22,64,.28),0 0 0 1px rgba(10,39,102,.12)}
+.film-frame:before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(135deg,rgba(94,234,212,.7),rgba(111,155,232,.2) 40%,transparent 70%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:1}
+.film-frame video{display:block;width:100%;height:100%;object-fit:cover}
+@media(max-width:600px){.film-section{padding:56px 0 0}.film-frame{border-radius:14px}}
