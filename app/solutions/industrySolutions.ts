@@ -131,7 +131,7 @@ export const industrySolutions:Solution[]=[
  s({id:'effluent-odour',industry:'Wastewater',label:'Hydrogen sulphide or foul odour',symptom:'Rotten-egg smell from tanks, sumps or lagoons.',
   keywords:['h2s','hydrogen sulphide','hydrogen sulfide','sulphide','sulfide','rotten egg','odour','odor','smell','lagoon','sump'],
   why:'Sulphur compounds released under low-oxygen conditions cause the smell and corrode equipment.',
-  ingredients:[{name:'Thiobacillus thioxidans',reason:'Oxidises sulphur compounds that cause odour.'},{name:'Bacillus subtilis',reason:'Reduces the organic load that feeds odour formation.'}],
+  ingredients:[{name:'Thiobacillus thiooxidans',reason:'Oxidises sulphur compounds that cause odour.'},{name:'Bacillus subtilis',reason:'Reduces the organic load that feeds odour formation.'}],
   track:['H₂S (ppm)','Dissolved oxygen','Odour complaints']}),
 
  // Agriculture

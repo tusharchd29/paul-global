@@ -67,7 +67,7 @@ const range=(a:string,b:string,u:string)=>`${a} to ${b} ${u}`;
 const ENZYMES:{name:string;summary:string;grades:Grade[]}[]=[
  {name:'Phytase',summary:'Hydrolyses phytate (phytic acid) to release bound phosphorus and minerals from grains and oil seeds.',grades:[{spec:range('100,000','200,000','FTU/g'),form:'Powder',pack:PACK},{spec:range('100,000','200,000','FTU/g'),form:'Water soluble powder',pack:PACK}]},
  {name:'Protease',summary:'Hydrolyses proteins into peptides and amino acids, improving protein digestibility.',grades:[{spec:range('100,000','1,000,000','U/g'),form:'Powder',pack:PACK},{spec:range('100,000','1,000,000','U/g'),form:'Water soluble powder',pack:PACK}]},
- {name:'Cellulase',summary:'Breaks down cellulose, the main structural polysaccharide of plant cell walls.',grades:[{spec:range('100,000','1,100,000','U/g'),form:'Powder',pack:PACK},{spec:range('100,000','200,000','FTU/g'),form:'Water soluble powder',pack:PACK}]},
+ {name:'Cellulase',summary:'Breaks down cellulose, the main structural polysaccharide of plant cell walls.',grades:[{spec:range('100,000','1,100,000','U/g'),form:'Powder',pack:PACK},{spec:range('100,000','200,000','U/g'),form:'Water soluble powder',pack:PACK}]},
  {name:'Amylase',summary:'Hydrolyses starch into dextrins and sugars.',grades:[{spec:range('100,000','600,000','U/g'),form:'Powder',pack:PACK},{spec:range('100,000','200,000','U/g'),form:'Water soluble powder',pack:PACK}]},
  {name:'Xylanase',summary:'Breaks down xylan, a major hemicellulose of cereal and plant cell walls.',grades:[{spec:range('100,000','1,200,000','U/g'),form:'Powder',pack:PACK},{spec:range('100,000','200,000','U/g'),form:'Water soluble powder',pack:PACK}]},
  {name:'Pectinase',summary:'Breaks down pectin in plant cell walls.',grades:[{spec:range('100,000','1,200,000','U/g'),form:'Powder',pack:PACK},{spec:range('100,000','200,000','U/g'),form:'Water soluble powder',pack:PACK}]},
@@ -81,7 +81,7 @@ const ENZYMES:{name:string;summary:string;grades:Grade[]}[]=[
 const STRAIN_GROUPS:{type:string;summary:string;names:string[]}[]=[
  {type:'Lactic acid bacteria',summary:'A lactic acid–producing strain used in gut-health and probiotic formulations.',names:['Lactobacillus acidophilus','Lactobacillus fermentum','Lactobacillus casei','Lactobacillus lactis','Lactobacillus reuteri','Lactobacillus rhamnosus','Lactobacillus rhamnosus GG (LGG)','Lactobacillus bulgaricus','Pediococcus acidilactici','Enterococcus faecium','Streptococcus faecalis','Streptococcus sp.','Bifidobacterium bifidum','Bifidobacterium longum','Bifidobacterium infantis']},
  {type:'Spore-forming bacteria',summary:'A spore-forming strain — spores tolerate feed processing and storage well, making these a common choice for feed-applied probiotics.',names:['Lactobacillus sporogenes','Bacillus coagulans','Bacillus subtilis','Bacillus licheniformis','Bacillus megaterium','Bacillus amyloliquefaciens','Bacillus firmus','Bacillus cereus','Bacillus lactis','Bacillus mesentericus','Bacillus clausii','Clostridium butyricum']},
- {type:'Water & environmental bacteria',summary:'Used in water-quality, pond-management and waste-treatment microbial programmes.',names:['Nitrosomonas sp.','Nitrobacter sp.','Rhodococcus sp.','Rhodobacter sp.','Pseudomonas putida','Thiobacillus thioxidans']},
+ {type:'Water & environmental bacteria',summary:'Used in water-quality, pond-management and waste-treatment microbial programmes.',names:['Nitrosomonas sp.','Nitrobacter sp.','Rhodococcus sp.','Rhodobacter sp.','Pseudomonas putida','Thiobacillus thiooxidans']},
  {type:'Fungal culture',summary:'A fungal culture used as an enzyme-production source or in agricultural biocontrol programmes.',names:['Aspergillus niger','Trichoderma harzianum','Beauveria bassiana','Metarhizium anisopliae']},
 ];
 const YEASTS=['Saccharomyces cerevisiae','Saccharomyces boulardii'];
@@ -99,7 +99,7 @@ export const products:Product[]=[
 export const categories=[...new Set(products.map(p=>p.category))];
 export const categoryMeta:Record<string,{label:string;intro:string}>={
  'Enzymes':{label:'Enzymes',intro:'Enzymes in powder and water-soluble grades — phytase, protease, carbohydrases, lipase and specialty activities — for feed, food and industrial use, to your required specification.'},
- 'Probiotics':{label:'Probiotics',intro:'Lactic acid, spore-forming, environmental and fungal strains at 5 to 20 billion CFU per gram, available as standalone raw materials.'},
+ 'Probiotics':{label:'Probiotics & cultures',intro:'Lactic acid, spore-forming, environmental and fungal strains at 5 to 20 billion CFU per gram, available as standalone raw materials.'},
  'Yeast':{label:'Yeast',intro:'Saccharomyces cerevisiae and Saccharomyces boulardii cultures in water-soluble and standard powder grades.'},
  'Our Formulations':{label:'Our Formulations',intro:'Formulations we have developed and use in the industry ourselves — proof of what we can build for you, and a starting point for your own custom blend.'},
 };

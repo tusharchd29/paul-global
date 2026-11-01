@@ -88,7 +88,7 @@ const feedSolutions:Solution[]=[
   keywords:['water','pond','ponds','aqua','aquaculture','fish','shrimp','tank','effluent','sludge','nitrite','nitrate','waste','odour','smell'],
   why:'Ammonia, nitrite and organic load build up when nitrifying and degrading bacteria cannot keep up with the waste going in.',
   primary:[],also:[],
-  ingredients:[{name:'Nitrosomonas sp.',reason:'Converts ammonia to nitrite.'},{name:'Nitrobacter sp.',reason:'Converts nitrite to nitrate.'},{name:'Rhodobacter sp.',reason:'Photosynthetic bacteria used in pond programmes.'},{name:'Bacillus subtilis',reason:'Degrades organic matter and sludge.'},{name:'Bacillus licheniformis',reason:'Degrades organic waste in ponds and effluent.'},{name:'Pseudomonas putida',reason:'Used in waste-treatment blends.'},{name:'Thiobacillus thioxidans',reason:'Oxidises sulphur compounds behind foul odour.'}],
+  ingredients:[{name:'Nitrosomonas sp.',reason:'Converts ammonia to nitrite.'},{name:'Nitrobacter sp.',reason:'Converts nitrite to nitrate.'},{name:'Rhodobacter sp.',reason:'Photosynthetic bacteria used in pond programmes.'},{name:'Bacillus subtilis',reason:'Degrades organic matter and sludge.'},{name:'Bacillus licheniformis',reason:'Degrades organic waste in ponds and effluent.'},{name:'Pseudomonas putida',reason:'Used in waste-treatment blends.'},{name:'Thiobacillus thiooxidans',reason:'Oxidises sulphur compounds behind foul odour.'}],
   track:['Ammonia and nitrite levels','Dissolved oxygen','Sludge build-up']},
 ];
 
