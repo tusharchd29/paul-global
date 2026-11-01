@@ -7,11 +7,11 @@ import {industries,industrySlug} from '../industries/data';
 import {products,categoryMeta,slugify} from '../products/data';
 const ingredientCount=products.filter(p=>p.category!=='Our Formulations').length;
 const formulationCount=products.length-ingredientCount;
-export const metadata={title:'About Us | AHWAN LAB',description:'AHWAN LAB develops customized enzyme, probiotic and yeast solutions, manufactured at a partner facility in Gujarat, India, for animal feed, food and industry.'};
+export const metadata={title:'About Us | AHWAN LAB',description:'AHWAN LAB develops customized enzyme, probiotic and yeast solutions, manufactured at a partner facility in Gujarat, India, for animal feed and poultry, food & beverage, human nutrition, pharma, starch, textile, paper, detergent, wastewater, agriculture and ethanol.'};
 const pillars=[
  ['Mission','Quality enzymes at affordable prices','Deliver quality enzymes at affordable prices, to global standards.'],
  ['Vision','Leadership in enzyme solutions','Gain leadership positions in poultry, animal-health and industrial enzymes.'],
- ['Approach','Tailor-made for your application','Every product is matched to a specification agreed with you — activity, strain, form and pack.'],
+ ['Approach','Tailor-made for your application','Every product is matched to a specification agreed with you: activity, strain, form and pack.'],
 ];
 const model=[
  ['Your requirement','You share the ingredient, composition or problem, with the application and quantity.'],
@@ -28,7 +28,7 @@ export default function About(){return <main className="products-page">
  </div></section>
 
  <section className="section technical"><div className="container"><div className="technical-grid">
-  <div><div className="eyebrow">How we work</div><h2 className="serif">Our science.<br/><em>Partner manufacturing.</em></h2><p className="lead">We focus on what matters to the buyer — the right specification, technical support and dependable supply. Our products are manufactured at a partner facility in Gujarat, India, to the specification we agree with you.</p><div className="hero-actions"><a className="btn btn-gold" href="/#contact">Share your requirement</a><Link className="btn btn-light" href="/export">Export &amp; distributors</Link></div></div>
+  <div><div className="eyebrow">How we work</div><h2 className="serif">Our science.<br/><em>Partner manufacturing.</em></h2><p className="lead">We focus on what matters to the buyer: the right specification, technical support and dependable supply. Our products are manufactured at a partner facility in Gujarat, India, to the specification we agree with you.</p><div className="hero-actions"><a className="btn btn-gold" href="/#contact">Share your requirement</a><Link className="btn btn-light" href="/export">Export &amp; distributors</Link></div></div>
   <div className="technical-board"><div className="board-top"><span>AHWAN LAB</span><span>FROM REQUIREMENT TO SUPPLY</span></div><div className="tech-steps">{model.map(([t,d],i)=><div className="tech-step" key={t}><span className="tech-step-label">{String(i+1).padStart(2,'0')}</span><h4 className="serif">{t}</h4><p>{d}</p></div>)}</div></div>
  </div></div></section>
 

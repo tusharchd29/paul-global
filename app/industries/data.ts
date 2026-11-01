@@ -2,7 +2,7 @@ import {products,slugify,type Product} from '../products/data';
 
 // Industries AHWAN LAB supplies. `uses` pair a catalogue ingredient (by exact product name) with the
 // job it does in that industry; names not in the catalogue are skipped. `enquiry` lists further
-// activities supplied on request, with specification agreed per enquiry — no specs are shown for them.
+// activities supplied on request, with specification agreed per enquiry. No specs are shown for them.
 export type Use={name:string;role:string};
 export type Industry={name:string;short:string;intro:string;uses:Use[];enquiry?:string[];note?:string;formulations?:boolean};
 
@@ -26,15 +26,15 @@ export const industries:Industry[]=[
   note:'Supplied as raw materials. Pharmacopoeial grade and registration status are confirmed per enquiry.'},
  {name:'Starch & Sweeteners',short:'Liquefaction and saccharification enzymes for starch processing.',
   intro:'Enzymes convert starch into dextrins, glucose and maltose syrups more efficiently than acid hydrolysis.',
-  uses:[{name:'Amylase',role:'Liquefaction — breaks gelatinised starch into dextrins.'},{name:'Cellulase',role:'Releases starch bound in fibre to improve yield.'}],
+  uses:[{name:'Amylase',role:'Liquefaction: breaks gelatinised starch into dextrins.'},{name:'Cellulase',role:'Releases starch bound in fibre to improve yield.'}],
   enquiry:['Glucoamylase','β-Amylase','Invertase']},
  {name:'Textile',short:'Desizing, bio-polishing, bio-scouring and denim finishing.',
   intro:'Enzymes replace harsh chemicals in textile wet processing, working at milder temperatures and pH.',
-  uses:[{name:'Amylase',role:'Desizing — removes starch size from woven fabric.'},{name:'Cellulase',role:'Bio-polishing and denim stone-wash effects.'},{name:'Pectinase',role:'Bio-scouring of cotton.'},{name:'Laccase',role:'Denim bleaching and indigo shade adjustment.'}],
+  uses:[{name:'Amylase',role:'Desizing: removes starch size from woven fabric.'},{name:'Cellulase',role:'Bio-polishing and denim stone-wash effects.'},{name:'Pectinase',role:'Bio-scouring of cotton.'},{name:'Laccase',role:'Denim bleaching and indigo shade adjustment.'}],
   enquiry:['Catalase']},
  {name:'Paper & Pulp',short:'Bleach boosting, deinking, pitch control and starch modification.',
   intro:'Enzymes reduce chemical and energy use across pulping, bleaching and papermaking.',
-  uses:[{name:'Xylanase',role:'Bleach boosting — reduces chlorine-based bleaching chemicals.'},{name:'Cellulase',role:'Deinking and fibre modification.'},{name:'Lipase',role:'Pitch control.'},{name:'Amylase',role:'Starch modification for surface sizing and coating.'},{name:'Laccase',role:'Lignin modification.'}]},
+  uses:[{name:'Xylanase',role:'Bleach boosting: reduces chlorine-based bleaching chemicals.'},{name:'Cellulase',role:'Deinking and fibre modification.'},{name:'Lipase',role:'Pitch control.'},{name:'Amylase',role:'Starch modification for surface sizing and coating.'},{name:'Laccase',role:'Lignin modification.'}]},
  {name:'Detergent & Household Care',short:'Stain-removing enzymes for detergents, soaps and cleaners.',
   intro:'Each enzyme targets a type of stain, allowing effective cleaning at lower wash temperatures.',
   uses:[{name:'Protease',role:'Removes protein stains such as blood, egg and grass.'},{name:'Amylase',role:'Removes starch stains.'},{name:'Lipase',role:'Removes fat and oil stains.'},{name:'Cellulase',role:'Colour care and anti-pilling.'},{name:'Beta-mannanase',role:'Removes gum-based food stains.'}]},

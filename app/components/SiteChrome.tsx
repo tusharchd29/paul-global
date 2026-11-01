@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import {useEffect,useState} from 'react';
+import {useEffect,useRef,useState} from 'react';
 import {usePathname} from 'next/navigation';
 import Logo from './Logo';
 import {MenuButton} from './SiteMenu';
@@ -8,13 +8,35 @@ import {SITE} from '../site';
 import {products,categories,categoryMeta,slugify,productSlug} from '../products/data';
 import {industries,industrySlug} from '../industries/data';
 
-const REVEAL='.section-head,.offer-card,.category,.formulation-card,.process-grid>div,.doc-card,.industry-card,.faq-grid details,.tech-step,.directory-card,.product-card,.detail-card,.stats-grid>div,.problem-panel,.finder-panel,.catalogue-intro,.enquiry-form';
+const REVEAL='.section-head,.offer-card,.category,.formulation-card,.process-grid>div,.doc-card,.industry-card,.faq-grid details,.tech-step,.directory-card,.product-card,.detail-card,.stats-grid>div,.problem-panel,.story-copy>*,.finder-panel,.catalogue-intro,.enquiry-form';
+const GLOW='.offer-card,.industry-card,.formulation-card,.category,.directory-card,.product-card,.detail-card,.doc-card,.story-step,.problem-panel';
 const NAV=[['/solutions','Solution Finder'],['/industries','Industries'],['/products','Ingredients'],['/#formulations','Our Formulations'],['/export','Export'],['/about','Company']];
 
 export default function SiteChrome(){
  const [showTop,setShowTop]=useState(false);
  const pathname=usePathname();
- useEffect(()=>{const onScroll=()=>setShowTop(window.scrollY>520);window.addEventListener('scroll',onScroll,{passive:true});onScroll();return()=>window.removeEventListener('scroll',onScroll)},[]);
+ const bar=useRef<HTMLDivElement>(null);
+ useEffect(()=>{
+  let frame=0;
+  const update=()=>{frame=0;setShowTop(window.scrollY>520);const max=document.documentElement.scrollHeight-window.innerHeight;bar.current?.style.setProperty('--sp',String(max>0?window.scrollY/max:0))};
+  const onScroll=()=>{if(!frame)frame=requestAnimationFrame(update)};
+  window.addEventListener('scroll',onScroll,{passive:true});update();
+  return()=>{window.removeEventListener('scroll',onScroll);cancelAnimationFrame(frame)};
+ },[]);
+ // Pointer effects: the hero spotlight and product drums follow the cursor, and cards light up
+ // a soft glow under it. Fine pointers only; nothing runs for reduced motion.
+ useEffect(()=>{
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!window.matchMedia('(pointer: fine)').matches)return;
+  const onMove=(e:PointerEvent)=>{
+   const t=e.target as Element|null;
+   const hero=t?.closest?.('.hero') as HTMLElement|null;
+   if(hero){const r=hero.getBoundingClientRect();hero.style.setProperty('--hx',((e.clientX-r.left)/r.width).toFixed(3));hero.style.setProperty('--hy',((e.clientY-r.top)/r.height).toFixed(3))}
+   const card=t?.closest?.(GLOW) as HTMLElement|null;
+   if(card){const r=card.getBoundingClientRect();card.style.setProperty('--mx',`${e.clientX-r.left}px`);card.style.setProperty('--my',`${e.clientY-r.top}px`)}
+  };
+  window.addEventListener('pointermove',onMove,{passive:true});
+  return()=>window.removeEventListener('pointermove',onMove);
+ },[]);
  // Scroll-reveal: cards and section headings fade up as they enter the viewport, staggered
  // within their row. Classes are added from here so content stays visible without JS, and
  // removed once played so they don't fight the cards' own hover transforms.
@@ -27,11 +49,12 @@ export default function SiteChrome(){
   return()=>io.disconnect();
  },[pathname]);
  return <>
+  <div ref={bar} className="scroll-progress" aria-hidden="true"/>
   <header className={`sticky-bar ${showTop?'visible':''}`} aria-hidden={!showTop}><div className="container"><Link href="/" className="logo" aria-label={SITE.name} tabIndex={showTop?0:-1}><Logo/></Link><nav>{NAV.map(([href,label])=><Link key={href} href={href} tabIndex={showTop?0:-1}>{label}</Link>)}</nav><div className="nav-actions"><Link className="btn btn-gold" href="/#contact" tabIndex={showTop?0:-1}>Share Your Requirement</Link><MenuButton tabIndex={showTop?0:-1}/></div></div></header>
   <footer className="site-footer">
    <div className="container">
     <div className="footer-main">
-     <div className="footer-brand"><Link href="/" className="footer-logo" aria-label={SITE.name}><Logo tagline/></Link><p>Customized enzyme, probiotic and yeast solutions for animal health, food and industry — built to your specification.</p><a href={`mailto:${SITE.email}`} className="footer-email">{SITE.email}</a><a href={SITE.phoneHref} className="footer-email">{SITE.phone}</a><span>{SITE.address.join(' ')}</span></div>
+     <div className="footer-brand"><Link href="/" className="footer-logo" aria-label={SITE.name}><Logo tagline/></Link><p>Customized enzymes, probiotics and yeast for animal feed and poultry, food &amp; beverage, human nutrition, pharma, starch, textile, paper, detergent, wastewater, agriculture and ethanol, built to your specification.</p><a href={`mailto:${SITE.email}`} className="footer-email">{SITE.email}</a><a href={SITE.phoneHref} className="footer-email">{SITE.phone}</a><span>{SITE.address.join(' ')}</span></div>
      <div className="footer-column"><h4>Explore</h4><Link href="/">Home</Link><Link href="/solutions">Solution Finder</Link><Link href="/industries">Industries</Link><Link href="/products">Ingredients</Link><a href="/#offer">Custom Solutions</a><Link href="/export">Export &amp; Distributors</Link><a href="/about#quality">Quality</a><Link href="/about">About Us</Link><a href="/#contact">Share a Requirement</a></div>
      <div className="footer-column"><h4>Industries</h4>{industries.map(i=><Link key={i.name} href={`/industries/${industrySlug(i)}`}>{i.name}</Link>)}</div>
      <div className="footer-column"><h4>Our Formulations</h4>{products.filter(p=>p.category==='Our Formulations').map(p=><Link key={p.name} href={`/products/${productSlug(p)}`}>{p.name}</Link>)}</div>

@@ -70,8 +70,8 @@ export async function POST(req: NextRequest) {
     <p><strong>Company:</strong> ${escapeHtml(company)}</p>
     <p><strong>Email:</strong> ${escapeHtml(email)}</p>
     <p><strong>Country:</strong> ${escapeHtml(country)}</p>
-    <p><strong>Interested in:</strong> ${escapeHtml(interest || '—')}</p>
-    <p><strong>Product (if known):</strong> ${escapeHtml(product || '—')}</p>
+    <p><strong>Interested in:</strong> ${escapeHtml(interest || 'Not specified')}</p>
+    <p><strong>Product (if known):</strong> ${escapeHtml(product || 'Not specified')}</p>
     <p><strong>Message:</strong></p>
     <p>${escapeHtml(message).replace(/\n/g, '<br/>')}</p>
   `;
